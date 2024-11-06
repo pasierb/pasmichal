@@ -1,23 +1,37 @@
 [
 	{
-		"dates": "June 2018 · Present",
-		"role": "Front-end Engineer",
-		"company": "Full Truck Alliance",
-		"description": "Responsible for customer service and CRM system front-end development.",
-		"logo": "/assets/images/experiences/fta.ico"
+		"dates": "November 2021 · Present",
+		"role": "Software Engineer",
+		"company": "Google",
+		"description": "Zurich, Switzerland",
+		"logo": "/assets/images/experiences/google.svg"
 	},
 	{
-		"dates": "July 2015 · June 2018",
-		"role": "Front-end Engineer",
-		"company": "YOHO!",
-		"description": "Responsible for mobile front-end development of e-commerce platform.",
-		"logo": "/assets/images/experiences/yoho.ico"
+		"dates": "August 2020 · October 2021",
+		"role": "Software Engineer",
+		"company": "Amazon AWS",
+		"description": "Berlin, Germany",
+		"logo": "/assets/images/experiences/aws.svg"
 	},
 	{
-		"dates": "September 2014 · July 2015 ",
-		"role": "Node.JS Developer",
-		"company": "WuLian",
-		"description": "Intern, involved in the development of Internet of Things cloud systems.",
-		"logo": "/assets/images/experiences/wulian.ico"
+		"dates": "July 2019 · July 2020",
+		"role": "Lead Software Engineer",
+		"company": "EF Education First",
+		"description": "Zurich, Switzerland",
+		"logo": "/assets/images/experiences/EF_logo.svg"
+	},
+	{
+		"dates": "2010 · 2019",
+		"role": "Software Engineer & Architect",
+		"company": "at bunch of other companies",
+		"description": "while living in Poland, Spain and Switzerland",
+		"logo": "/assets/images/experiences/more.svg"
+	},
+	{
+		"dates": "May 2009 · September 2010",
+		"role": "Java Developer",
+		"company": "CMS Mirage",
+		"description": "Wroclaw, Poland",
+		"logo": "/assets/images/experiences/start.svg"
 	}
 ]
