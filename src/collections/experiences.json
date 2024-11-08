@@ -2,36 +2,98 @@
 	{
 		"dates": "November 2021 · Present",
 		"role": "Software Engineer",
-		"company": "Google",
-		"description": "Zurich, Switzerland",
+		"company": "Google, Zurich, Switzerland",
+		"description": [
+			"Migrated legacy Merchant Center product issues debugging UI to new Merchant Center UI version",
+			"Led UI/features team in implementing first-party linking between Merchant Identity and other Google products (Ads, Analytics, YouTube, etc.)",
+			"Tech: Dart, Java, Bazel, Angular"
+		],
 		"logo": "/assets/images/experiences/google.svg"
 	},
 	{
 		"dates": "August 2020 · October 2021",
 		"role": "Software Engineer",
-		"company": "Amazon AWS",
-		"description": "Berlin, Germany",
+		"company": "Amazon AWS, Berlin, Germany",
+		"description": [
+			"Implemented internal testing solution for AWS Console teams covering functional, integration and canary testing verticals. (WebdriverIO, Typescript, AWS Device Farm)",
+			"Tech: WebdriverIO, Typescript, AWS serverless stack"
+		],
 		"logo": "/assets/images/experiences/aws.svg"
 	},
 	{
 		"dates": "July 2019 · July 2020",
 		"role": "Lead Software Engineer",
-		"company": "EF Education First",
-		"description": "Zurich, Switzerland",
+		"company": "EF Education First, Zurich, Switzerland",
+		"description": [
+			"Led front-end infrastructure team",
+			"Designed and led the implementation of Cloudflare workers handling all of EF product pages traffic",
+			"Created React version of EF design system, adopted by multiple teams and later taken over by central team.",
+			"Tech: TypeScript, React, Cloudflare Workers, Go, AWS serverless stack"
+		],
 		"logo": "/assets/images/experiences/EF_logo.svg"
 	},
 	{
-		"dates": "2010 · 2019",
-		"role": "Software Engineer & Architect",
-		"company": "at bunch of other companies",
-		"description": "while living in Poland, Spain and Switzerland",
-		"logo": "/assets/images/experiences/more.svg"
+		"dates": "September 2018 · April 2019",
+		"role": "Software Development Engineer / Front-end Lead",
+		"company": "R3PI, Zurich, Switzerland",
+		"description": [
+			"Led 3-man front-end team",
+			"Introduced and enforced best practices in code quality and consistency, especially around GraphQL and data-loaders",
+			"Tech: TypeScript, React, NodeJS, GraphQL"
+		],
+		"logo": "/assets/images/experiences/r3pi.jpeg"
+	},
+	{
+		"dates": "December 2017 · August 2018",
+		"role": "Senior Front-end Engineer",
+		"company": "EF Education First, Luzern, Switzerland",
+		"description": [
+			"Led front-end development for a greenfield project to replace legacy monolith with JAM stack",
+			"Tech: JavaScript, VueJS, NodeJS, PostgreSQL"
+		],
+		"logo": "/assets/images/experiences/EF_logo.svg"
+	},
+	{
+		"dates": "January 2014 · December 2017",
+		"role": "Chief Software Architect",
+		"company": "IS Engineering",
+		"description": [
+			"Designed and implemented distributed analytics system for glass plants, a.k.a. Industry 4.0",
+			"Personally overseen deployment of the system to 10+ locations worldwide",
+			"Tech: Ruby on Rails, JavaScript, NodeJS, VueJS, PostgreSQL, Docker"
+		],
+		"logo": "/assets/images/experiences/ise.png"
+	},
+	{
+		"dates": "September 2013 · December 2013",
+		"role": "JavaScript Developer",
+		"company": "PGS Software",
+		"description": [
+			"Facilitated migration from SVN to Git",
+			"Played key role in defining workflow process for the team (trunk based development)",
+			"Tech: JavaScript, BackboneJS, Git, SVN"
+		],
+		"logo": "/assets/images/experiences/pgs.jpg"
+	},
+	{
+		"dates": "February 2011 · September 2013",
+		"role": "Ruby on Rails / JavaScript Developer",
+		"company": "sharewise GmbH, Wroclaw, Poland",
+		"description": [
+			"Designed & implemented WebSocket push service used across all apps to deliver real-time updates (mostly stock prices)",
+			"Led mobile site development",
+			"Tech: Ruby on Rails, JavaScript, NodeJS, jQuery, AngularJS, PostgreSQL"
+		],
+		"logo": "/assets/images/experiences/sw.png"
 	},
 	{
 		"dates": "May 2009 · September 2010",
 		"role": "Java Developer",
-		"company": "CMS Mirage",
-		"description": "Wroclaw, Poland",
+		"company": "CMS Mirage, Wroclaw, Poland",
+		"description": [
+			"Maintained a fleet management system",
+			"Tech: Java, XLSX, jQuery, PostgreSQL"
+		],
 		"logo": "/assets/images/experiences/start.svg"
 	}
 ]
