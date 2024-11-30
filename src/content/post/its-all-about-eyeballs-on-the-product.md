@@ -60,3 +60,6 @@ Indie hackers, it’s time to stop chasing the perfect launch strategy and focus
 ---
 
 You can grab a free copy of [How to Dominate Reddit, One Sub at a Time: r/SideProject Edition](https://notmichal.gumroad.com/l/how-to-dominate-reddit-r-side-project-edition) and try it out for yourself. More subreddits analysis coming soon!
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
