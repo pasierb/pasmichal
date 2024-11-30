@@ -7,6 +7,13 @@
 		"status": "active"
 	},
 	{
+		"name": "Glow & Flow",
+		"description": "My wife's beauty salon website.",
+		"image": "/assets/images/projects/glownflow.png",
+		"url": "https://glownflow.ch/",
+		"status": "active"
+	},
+	{
 		"name": "Launch Soon (discontinued)",
 		"description": "Waitlist generator that generates waitlists that look like pages, not forms.",
 		"image": "/assets/images/projects/launchsoon.avif",
