@@ -1,5 +1,12 @@
 [
 	{
+		"name": "Notamify",
+		"description": "AI-powered platform that transforms complex NOTAM data into clear, actionable briefings, streamlining pre-flight preparations for aviation professionals.",
+		"image": "/assets/images/projects/notamify.png",
+		"url": "https://notamify.com",
+		"status": "active"
+	},
+	{
 		"name": "Purposely",
 		"description": "A browser extension that helps you focus on your goals.",
 		"image": "/assets/images/projects/purposely.png",
