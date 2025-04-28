@@ -4,7 +4,7 @@ import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
 import ContentSection from "../components/content-section.astro";
 import { getCollection } from "astro:content";
-const allAppearances = await getCollection("appearance");
+const allAppearances = await getCollection("podcast");
 
 const dateFormat = new Intl.DateTimeFormat();
 ---
@@ -77,8 +77,7 @@ const dateFormat = new Intl.DateTimeFormat();
                 <time datetime={appearance.data.date} class="text-sm text-neutral-600 dark:text-neutral-400">{dateFormat.format(new Date(appearance.data.date))}</time>
               </div>
               <a
-                href={appearance.data.link}
-                target="_blank"
+                href={`/podcast/${appearance.id}`}
                 class="text-blue-500 hover:underline flex items-center gap-2"
               >
                 {appearance.data.title}

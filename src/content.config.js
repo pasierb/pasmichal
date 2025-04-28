@@ -15,8 +15,11 @@ const postCollection = defineCollection({
 	}),
 });
 
-const appearanceCollection = defineCollection({
-  loader: file('./src/collections/appearances.json'),
+const podcastCollection = defineCollection({
+  loader: glob({
+    pattern: "*.md",
+    base: "./src/content/podcast",
+  }),
   schema: z.object({
     title: z.string(),
     author: z.string(),
@@ -29,4 +32,5 @@ const appearanceCollection = defineCollection({
 export const collections = {
 	post: postCollection,
   appearance: appearanceCollection,
+  podcast: podcastCollection,
 };
