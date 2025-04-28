@@ -3,6 +3,7 @@ layout: ../../layouts/post.astro
 title: "How to Pass Data from a Function Tool to State in ADK (Agent Development Kit)"
 description: "Discover key limitations of Cloudflare Workers KV from real production experience: unavailability in China market, cold cache latency issues of up to 500ms, and practical workarounds learned during migration from DynamoDB at EF Education First."
 dateFormatted: "April 21, 2025"
+heroImage: /assets/images/posts/004_adk_state.webp
 ---
 
 ![](/assets/images/posts/004_adk_state.webp)
