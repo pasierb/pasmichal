@@ -3,6 +3,7 @@ layout: ../../layouts/post.astro
 title: "Product Hunt drama: It's All About Eyeballs on the Product"
 description: "There’s been a lot of chatter lately about Product Hunt’s shift from a discovery platform to a showcase for VC-backed projects. For indie hackers, the platform was once a go-to for visibility. But now, it feels like the deck is stacked against them. So, where does that leave those of us who need every bit of attention we can get?"
 dateFormatted: "October 19, 2024"
+heroImage: "/assets/images/posts/product.webp"
 ---
 
 There’s been a lot of chatter lately about Product Hunt’s shift from a discovery platform to a showcase for VC-backed projects. For indie hackers, the platform was once a go-to for visibility. But now, it feels like the deck is stacked against them. So, where does that leave those of us who need every bit of attention we can get?
