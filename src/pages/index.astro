@@ -1,9 +1,9 @@
 ---
-import Button from "../components/button.astro";
 import Projects from "../components/home/projects.astro";
-import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
+import { getCollection } from "astro:content";
+const allAppearances = await getCollection("appearance");
 ---
 
 <Layout title="Michal Pasierbski - Consultant, Architect, Engineer">

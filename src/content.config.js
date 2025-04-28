@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 
 
 const postCollection = defineCollection({
@@ -15,6 +15,18 @@ const postCollection = defineCollection({
 	}),
 });
 
+const appearanceCollection = defineCollection({
+  loader: file('./src/collections/appearances.json'),
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    link: z.string(),
+    date: z.string(),
+    type: z.enum(['youtube']),
+  }),
+});
+
 export const collections = {
 	post: postCollection,
+  appearance: appearanceCollection,
 };
