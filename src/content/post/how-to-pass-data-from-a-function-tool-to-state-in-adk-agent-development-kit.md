@@ -6,8 +6,6 @@ dateFormatted: "April 21, 2025"
 heroImage: /assets/images/posts/004_adk_state.webp
 ---
 
-![](/assets/images/posts/004_adk_state.webp)
-
 ## What is ADK?
 
 Google’s new ADK (Agent Development Kit) is an exciting step forward in building AI agents. Think of it as a framework for composing tools, states, and logic in a way that feels modular and powerful—kind of like LangChain or LangGraph, but backed by Google.

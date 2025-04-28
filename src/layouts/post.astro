@@ -11,21 +11,37 @@ const { frontmatter } = Astro.props;
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.url).href} />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, Astro.url).href}
+    />
     <meta property="og:title" content={frontmatter.title} />
     <meta property="og:description" content={frontmatter.description} />
-    {frontmatter.heroImage && (
-      <meta property="og:image" content={new URL(frontmatter.heroImage, Astro.url).href} />
-    )}
+    {
+      frontmatter.heroImage && (
+        <meta
+          property="og:image"
+          content={new URL(frontmatter.heroImage, Astro.url).href}
+        />
+      )
+    }
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.url).href} />
+    <meta
+      property="twitter:url"
+      content={new URL(Astro.url.pathname, Astro.url).href}
+    />
     <meta property="twitter:title" content={frontmatter.title} />
     <meta property="twitter:description" content={frontmatter.description} />
-    {frontmatter.heroImage && (
-      <meta property="twitter:image" content={new URL(frontmatter.heroImage, Astro.url).href} />
-    )}
+    {
+      frontmatter.heroImage && (
+        <meta
+          property="twitter:image"
+          content={new URL(frontmatter.heroImage, Astro.url).href}
+        />
+      )
+    }
   </Fragment>
 
   <main
@@ -42,16 +58,29 @@ const { frontmatter } = Astro.props;
         class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"
       >
       </div>
-      <h1
-        class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none"
-      >
-        {frontmatter.title}
-      </h1>
     </div>
 
     <article
       class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert"
     >
+      {
+        frontmatter.heroImage && (
+          <div class="w-full bg-neutral-100 dark:bg-neutral-900 rounded-md">
+            <img
+              src={frontmatter.heroImage}
+              alt={frontmatter.title}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        )
+      }
+
+      <h1
+        class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none"
+      >
+        {frontmatter.title}
+      </h1>
+
       <slot />
     </article>
   </main>
