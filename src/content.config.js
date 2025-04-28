@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob, file } from 'astro/loaders';
+import { glob } from 'astro/loaders';
 
 
 const postCollection = defineCollection({
@@ -31,6 +31,5 @@ const podcastCollection = defineCollection({
 
 export const collections = {
 	post: postCollection,
-  appearance: appearanceCollection,
   podcast: podcastCollection,
 };
