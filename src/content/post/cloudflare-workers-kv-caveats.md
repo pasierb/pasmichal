@@ -3,6 +3,7 @@ layout: ../../layouts/post.astro
 title: "Cloudflare: Workers KV caveats"
 description: "Discover key limitations of Cloudflare Workers KV from real production experience: unavailability in China market, cold cache latency issues of up to 500ms, and practical workarounds learned during migration from DynamoDB at EF Education First."
 dateFormatted: "November 17, 2019"
+heroImage: "/assets/images/posts/cloudflare-kv.png"
 ---
 
 > Workers KV is a global, low-latency, key-value data store. It supports exceptionally high read volumes with low latency, making it possible to build highly dynamic APIs and websites that respond as quickly as a cached static file would.
