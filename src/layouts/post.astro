@@ -4,6 +4,30 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title + " | Michal Pasierbski"}>
+  <Fragment slot="meta-tags">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content={frontmatter.title} />
+    <meta name="description" content={frontmatter.description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.url).href} />
+    <meta property="og:title" content={frontmatter.title} />
+    <meta property="og:description" content={frontmatter.description} />
+    {frontmatter.heroImage && (
+      <meta property="og:image" content={new URL(frontmatter.heroImage, Astro.url).href} />
+    )}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.url).href} />
+    <meta property="twitter:title" content={frontmatter.title} />
+    <meta property="twitter:description" content={frontmatter.description} />
+    {frontmatter.heroImage && (
+      <meta property="twitter:image" content={new URL(frontmatter.heroImage, Astro.url).href} />
+    )}
+  </Fragment>
+
   <main
     class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900"
   >

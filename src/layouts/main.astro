@@ -2,7 +2,7 @@
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
-const { title, noFooter = false, noHeader = false } = Astro.props;
+const { title, noFooter = false, noHeader = false,  } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,12 +14,12 @@ const { title, noFooter = false, noHeader = false } = Astro.props;
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script is:inline>
-      if (typeof Storage !== 'undefined') {
+      if (typeof Storage !== "undefined") {
         if (
-          localStorage.getItem('dark_mode') &&
-          localStorage.getItem('dark_mode') == 'true'
+          localStorage.getItem("dark_mode") &&
+          localStorage.getItem("dark_mode") == "true"
         ) {
-          document.documentElement.classList.add('dark')
+          document.documentElement.classList.add("dark");
         }
       }
     </script>
@@ -29,12 +29,14 @@ const { title, noFooter = false, noHeader = false } = Astro.props;
         border-radius: 20px;
       }
     </style>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
     <script src="../assets/css/main.css"></script>
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
+
+    <slot name="meta-tags" />
   </head>
   <body class="antialiased bg-white dark:bg-neutral-950">
     <SquareLines />
