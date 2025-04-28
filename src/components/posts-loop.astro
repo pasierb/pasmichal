@@ -39,7 +39,8 @@ const postsLoop = sortedPosts.slice(0, count).map((post) => {
               <img
                 src={post.heroImage}
                 alt={post.title}
-                class="w-full h-48 object-cover rounded-lg" />
+                class="w-full h-48 object-cover rounded-lg"
+              />
             </div>
           )}
 
@@ -72,19 +73,17 @@ const postsLoop = sortedPosts.slice(0, count).map((post) => {
                   stroke-width="2.4"
                 >
                   <g>
-                    <>
-                      <polyline
-                        class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100"
-                        points="5.33333333 0 10.8333333 5.5 5.33333333 11"
-                      />
-                      <line
-                        class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0"
-                        x1="10.8333333"
-                        y1="5.5"
-                        x2="0.833333333"
-                        y2="5.16666667"
-                      />
-                    </>
+                    <polyline
+                      class="transition-all duration-200 ease-out opacity-0 delay-0 group-hover:opacity-100"
+                      points="5.33333333 0 10.8333333 5.5 5.33333333 11"
+                    />
+                    <line
+                      class="transition-all duration-200 ease-out transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:ml-0"
+                      x1="10.8333333"
+                      y1="5.5"
+                      x2="0.833333333"
+                      y2="5.16666667"
+                    />
                   </g>
                 </g>
               </g>
@@ -98,6 +97,6 @@ const postsLoop = sortedPosts.slice(0, count).map((post) => {
           </div>
         </div>
       </div>
-    )
+    );
   })
 }
