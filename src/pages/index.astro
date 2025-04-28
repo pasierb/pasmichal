@@ -1,10 +1,8 @@
 ---
 import Projects from "../components/home/projects.astro";
 import Writings from "../components/home/writings.astro";
+import Podcasts from "../components/home/podcasts.astro";
 import Layout from "../layouts/main.astro";
-import ContentSection from "../components/content-section.astro";
-import { getCollection } from "astro:content";
-const allAppearances = await getCollection("podcast");
 
 const dateFormat = new Intl.DateTimeFormat();
 ---
@@ -62,39 +60,6 @@ const dateFormat = new Intl.DateTimeFormat();
   </div>
 
   <Writings />
+  <Podcasts />
   <Projects />
-
-  <ContentSection
-    title="Podcasts"
-    description="Some of my guest appearances."
-  >
-    <ul class="space-y-4">
-      {
-        allAppearances.map((appearance) => {
-          return (
-            <li>
-              <div>
-                <time datetime={appearance.data.date} class="text-sm text-neutral-600 dark:text-neutral-400">{dateFormat.format(new Date(appearance.data.date))}</time>
-              </div>
-              <a
-                href={`/podcast/${appearance.id}`}
-                class="text-blue-500 hover:underline flex items-center gap-2"
-              >
-                {appearance.data.title}
-
-                {appearance.data.type === "youtube" && (
-                  <span class="text-sm text-neutral-600 dark:text-neutral-400">
-                    <img src="/assets/icons/youtube.svg" alt="YouTube" class="w-4 h-4 inline-block" />
-                  </span>
-                )}
-              </a>
-              <div>
-                <p>{appearance.data.author}</p>
-              </div>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </ContentSection>
 </Layout>

@@ -15,5 +15,29 @@ const { Content } = await render(entry!);
 ---
 
 <Layout frontmatter={entry!.data}>
+  <Fragment slot="before-content">
+    <div class="w-full max-w-2xl mx-auto dark:prose-invert">
+      <a
+        href="/posts"
+        class="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Back to posts
+      </a>
+    </div>
+  </Fragment>
+
 	<Content />
 </Layout>

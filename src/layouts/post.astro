@@ -60,6 +60,8 @@ const { frontmatter } = Astro.props;
       </div>
     </div>
 
+    <slot name="before-content" />
+
     <article
       class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert"
     >

@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import ContentSection from "../content-section.astro";
+const allAppearances = await getCollection("podcast");
+
+const dateFormat = new Intl.DateTimeFormat();
+---
+
+<ContentSection title="Podcasts" description="Some of my guest appearances.">
+  <ul class="space-y-4">
+    {
+      allAppearances.map((appearance) => {
+        return (
+          <li>
+            <div>
+              <time
+                datetime={appearance.data.date}
+                class="text-sm text-neutral-600 dark:text-neutral-400"
+              >
+                {dateFormat.format(new Date(appearance.data.date))}
+              </time>
+            </div>
+            <a
+              href={`/podcast/${appearance.id}`}
+              class="text-blue-500 hover:underline flex items-center gap-2"
+            >
+              {appearance.data.title}
+
+              {appearance.data.type === "youtube" && (
+                <span class="text-sm text-neutral-600 dark:text-neutral-400">
+                  <img
+                    src="/assets/icons/youtube.svg"
+                    alt="YouTube"
+                    class="w-4 h-4 inline-block"
+                  />
+                </span>
+              )}
+            </a>
+            <div>
+              <p>{appearance.data.author}</p>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</ContentSection>
