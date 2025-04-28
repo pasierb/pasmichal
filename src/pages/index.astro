@@ -2,8 +2,11 @@
 import Projects from "../components/home/projects.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
+import ContentSection from "../components/content-section.astro";
 import { getCollection } from "astro:content";
 const allAppearances = await getCollection("appearance");
+
+const dateFormat = new Intl.DateTimeFormat();
 ---
 
 <Layout title="Michal Pasierbski - Consultant, Architect, Engineer">
@@ -35,29 +38,67 @@ const allAppearances = await getCollection("appearance");
         I share quick thoughts on <a
           href="https://x.com/pasmichal_"
           target="_blank"
-          class="text-blue-500 hover:underline">Twitter (formerly X)</a>
+          class="text-blue-500 hover:underline">Twitter (formerly X)</a
+        >
       </li>
       <li>
         Longer form content lives on my <a
           href="/posts"
-          class="text-blue-500 hover:underline">blog</a>
+          class="text-blue-500 hover:underline">blog</a
+        >
       </li>
       <li>
         My attempts at explaining tech on <a
           href="https://www.youtube.com/@pasmichal"
           target="_blank"
-          class="text-blue-500 hover:underline">YouTube</a>
+          class="text-blue-500 hover:underline">YouTube</a
+        >
       </li>
       <li>
         Find my work history on <a
           href="https://linkedin.com/in/mpasierbski"
           target="_blank"
-          class="text-blue-500 hover:underline">LinkedIn</a>
+          class="text-blue-500 hover:underline">LinkedIn</a
+        >
       </li>
     </ul>
   </div>
 
   <Writings />
-
   <Projects />
+
+  <ContentSection
+    title="Appearances"
+    description="Some of my recent appearances."
+  >
+    <ul class="space-y-4">
+      {
+        allAppearances.map((appearance) => {
+          return (
+            <li>
+              <div>
+                <time datetime={appearance.data.date} class="text-sm text-neutral-600 dark:text-neutral-400">{dateFormat.format(new Date(appearance.data.date))}</time>
+              </div>
+              <a
+                href={appearance.data.link}
+                target="_blank"
+                class="text-blue-500 hover:underline flex items-center gap-2"
+              >
+                {appearance.data.title}
+
+                {appearance.data.type === "youtube" && (
+                  <span class="text-sm text-neutral-600 dark:text-neutral-400">
+                    <img src="/assets/icons/youtube.svg" alt="YouTube" class="w-4 h-4 inline-block" />
+                  </span>
+                )}
+              </a>
+              <div>
+                <p>{appearance.data.author}</p>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </ContentSection>
 </Layout>
