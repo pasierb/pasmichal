@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/content.astro";
+---
+
+<Layout title="Oops!">
+  <div class="prose">
+    <p>Something went wrong 😬.</p>
+    <p id="error-message"></p>
+  </div>
+
+  <script>
+    const errorMessages = new Map<string, string>([
+      ["email-required", "Email is required"],
+      ["failed-to-subscribe", "Failed to subscribe"],
+      ["unknown", "Don't worry, I'll fix it. Please try again."],
+    ]);
+    const searchParams = new URLSearchParams(window.location.search);
+
+    const error = searchParams.get("error") || "unknown";
+    const errorMessage =
+      searchParams.get("message") ||
+      errorMessages.get(error) ||
+      errorMessages.get("unknown")!;
+
+    document.getElementById("error-message")!.textContent = errorMessage;
+  </script>
+</Layout>

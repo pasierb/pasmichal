@@ -1,0 +1,62 @@
+---
+import Layout from "./main.astro";
+const { title, description = "" } = Astro.props;
+---
+
+<Layout title={title + " | Michal Pasierbski"}>
+  <Fragment slot="meta-tags">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, Astro.url).href}
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content={new URL(Astro.url.pathname, Astro.url).href}
+    />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+  </Fragment>
+
+  <main
+    class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900"
+  >
+    <div
+      class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800"
+    >
+      <div
+        class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"
+      >
+      </div>
+      <div
+        class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"
+      >
+      </div>
+    </div>
+
+    <slot name="before-content" />
+
+    <article
+      class="w-full max-w-2xl mx-auto mb-20 px-7"
+    >
+      <h1
+        class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none"
+      >
+        {title}
+      </h1>
+
+      <slot />
+    </article>
+  </main>
+</Layout>
+

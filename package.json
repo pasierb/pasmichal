@@ -3,8 +3,8 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
+		"dev": "netlify dev",
+		"start": "netlify dev",
 		"build": "astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
@@ -14,14 +14,17 @@
 		"@astrojs/check": "^0.6.0",
 		"@astrojs/tailwind": "^6.0.2",
 		"@biomejs/biome": "1.7.3",
+		"@tailwindcss/forms": "^0.5.10",
 		"@tailwindcss/typography": "^0.5.13",
 		"astro": "^5.7.5",
+		"netlify-cli": "^20.1.1",
 		"tailwindcss": "^3.4.3",
 		"typescript": "^5.4.5"
 	},
 	"packageManager": "pnpm@9.12.2",
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
+		"@netlify/functions": "^3.1.2",
 		"typescript": "^5.6.3"
 	}
 }
