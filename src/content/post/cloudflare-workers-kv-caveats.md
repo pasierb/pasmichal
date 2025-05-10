@@ -19,6 +19,8 @@ At EF Education First, we migrated some functionality from a monolith applicatio
 
 After months of development, a few production releases, and countless hours of debugging, here are the caveats I discovered.
 
+### On this page
+
 ---
 
 ## Not Available in China

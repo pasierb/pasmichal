@@ -10,6 +10,8 @@ heroImage: "/assets/images/posts/supabase-rbac.png"
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🌠 Community Highlights <br><br>Dead simple Role-based access control in Supabase.<br><br>By @notMichal_.<a href="https://t.co/i4ekvk2pDu">https://t.co/i4ekvk2pDu</a> <a href="https://t.co/yiIIP4x1ae">pic.twitter.com/yiIIP4x1ae</a></p>&mdash; Supabase (@supabase) <a href="https://twitter.com/supabase/status/1713963289544188065?ref_src=twsrc%5Etfw">October 16, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+### On this page
+
 ## 1. Defining Roles
 
 For a more human-friendly approach to referencing roles, you can create a custom enum type:

@@ -8,6 +8,8 @@ heroImage: "/assets/images/posts/product.webp"
 
 There’s been a lot of chatter lately about Product Hunt’s shift from a discovery platform to a showcase for VC-backed projects. For indie hackers, the platform was once a go-to for visibility. But now, it feels like the deck is stacked against them. So, where does that leave those of us who need every bit of attention we can get?
 
+### On this page
+
 *Nico's tweet that started it all*
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Fuck you <a href="https://twitter.com/ProductHunt?ref_src=twsrc%5Etfw">@ProductHunt</a> 💩🖕<br><br>I will probably get banned from there because of this post, but fuck it, it&#39;s time to stop lying to your users<br><br>First, <a href="https://twitter.com/iamjasonlevin?ref_src=twsrc%5Etfw">@iamjasonlevin</a> showed how it was on the inside (imagine the CTO not knowing the #1 person in the audience. Still not sure if it was… <a href="https://t.co/ug94b7jb5P">https://t.co/ug94b7jb5P</a> <a href="https://t.co/w3qrH5VT61">pic.twitter.com/w3qrH5VT61</a></p>&mdash; Nico (@nico_jeannen) <a href="https://twitter.com/nico_jeannen/status/1840348855289905567?ref_src=twsrc%5Etfw">September 29, 2024</a></blockquote>
