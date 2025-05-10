@@ -1,0 +1,55 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Writing Style
+
+## 1. Tone and Voice
+
+Your tone is pragmatic, candid, and authoritative, balanced with a hint of personal experience. You often speak directly to the reader, especially when sharing insights or lessons learned from your own projects. This makes your writing feel approachable and relatable while maintaining credibility.
+
+* **Candid and Practical:** You often acknowledge challenges and limitations upfront (e.g., issues with Cloudflare Workers KV in China).
+* **Direct and Conversational:** You use straightforward language and occasional colloquialisms, especially when expressing frustration or pointing out flaws (e.g., "Fuck you @ProductHunt 💩🖕").
+* **Authoritative Yet Humble:** You don’t shy away from stating your opinions or providing critiques, but you ground your statements in personal experience, making them feel justified.
+* **Relatable:** You use informal expressions and personal anecdotes, especially when discussing lessons learned or sharing opinions.
+
+## 2. Structure
+
+Your posts follow a consistent structure that makes them easy to navigate:
+
+1. **Introduction:** Sets context or introduces a problem. Often starts with a personal experience or a statement that resonates with the audience.
+2. **Explanation/Analysis:** Breaks down the issue, often with bullet points or numbered lists for clarity.
+3. **Code Examples/Quotes:** You embed relevant code snippets or quotes from tweets to support your points.
+4. **Solution/Recommendation:** Offers practical advice or workarounds.
+5. **Conclusion:** Summarizes the key takeaways and often circles back to the initial problem or context.
+
+You segment your content with clear headings, bullet points, and code snippets where relevant, which improves readability.
+
+## 3. Complexity of Words and Sentences
+
+Your writing is generally simple and straightforward, with a focus on clarity rather than technical jargon. However, you aren’t afraid to use technical terms when discussing coding concepts or platform-specific features.
+
+* **Sentence Structure:** You favor short to medium-length sentences, which keeps the flow dynamic and digestible.
+* **Complexity:** You avoid overly complex words, but use technical terms when necessary. You often explain them briefly to keep the content accessible.
+* **Code and Quotes:** You often include code snippets or social media quotes to reinforce your points, making your posts a blend of narrative and practical guide.
+
+## 4. Use of Examples and Evidence
+
+You lean heavily on examples from your own experience, particularly in technical posts where you outline your process or challenges faced. This is especially true in the Product Hunt drama post, where you mix personal insights with quotes from prominent community members.
+
+## 5. Style
+
+* **Blunt and No-Nonsense:** You are not afraid to criticize platforms or tools, especially when they fall short of your expectations.
+* **Personal Insight:** You often present lessons learned as personal stories, making them feel grounded and relatable.
+* **Action-Oriented:** Your posts aim to inform and enable the reader to take practical steps. You avoid vague advice and instead focus on concrete solutions.
+
+## 6. Areas for Improvement
+
+* **Tone Consistency:** Sometimes, your tone shifts from professional to overly casual (e.g., using profanities when expressing frustration). While this can resonate with some audiences, maintaining a slightly more consistent tone might appeal to a broader range.
+* **More Visual Aids:** While your code snippets and quotes are helpful, integrating diagrams or visual summaries might enhance comprehension, especially for more complex topics.
+* **Additional Context:** In some posts, you assume the reader has a baseline knowledge of the topic. Adding a brief introduction or background to technical concepts could make your content more accessible to beginners.
+
+---
+
+Your writing style is a strong blend of practical insight, straightforward language, and an engaging, authentic tone. This makes your content highly relatable, especially for fellow developers and indie hackers.
