@@ -7,6 +7,8 @@ heroImage: "/src/assets/images/how-i-tackle-complex-projects.png"
 
 Tackling complex projects can feel overwhelming. I’ve found that breaking down the problem into manageable parts while staying mindful of potential challenges is the best way to approach it. Here’s how I do it.
 
+### On this page
+
 ## The Approach
 
 ### Break the Problem into Smaller Parts
