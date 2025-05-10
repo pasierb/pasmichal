@@ -9,4 +9,5 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [ [remarkToc, { heading: 'On this page', maxDepth: 3 } ] ],
   },
+  site: 'https://www.pasmichal.com',
 });
