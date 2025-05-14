@@ -1,6 +1,6 @@
 ---
 title: Automating Passport Status Check with n8n and Puppeteer
-description: test
+description: Learn how I set up a script to periodically check the Polish Embassy website and send Telegram notifications when my passport is ready. Save time and skip manual checks!
 dateFormatted: "May 14, 2025"
 heroImage: "/assets/images/posts/n8n-puppeteer.png"
 ---
