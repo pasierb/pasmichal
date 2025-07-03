@@ -1,0 +1,274 @@
+---
+import PageHeading from "../components/page-heading.astro";
+import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+import vibeIssue1 from "../assets/images/vibefix/vibe_issue_1.png";
+---
+
+<Layout title="When Your Code Feels Like a Mess - Fix the Vibe Before It Breaks Everything | Michal Pasierbski">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="Fix the Vibe"
+      description="Comprehensive app optimization and enhancement services to elevate your application's quality, security, and efficiency."
+    />
+
+    <div class="mt-10">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold dark:text-neutral-200 mb-4">
+          Ever found yourself in such a situation?
+        </h2>
+        <p class="text-gray-600 dark:text-neutral-400 mb-6">
+          When the vibe in your codebase goes wrong, it affects everything -
+          from development speed to team morale.
+        </p>
+      </div>
+
+      <div class="flex justify-center mb-12">
+        <Image
+          src={vibeIssue1}
+          alt="Tweet showing vibe coding gone wrong"
+          class="rounded-lg shadow-lg max-w-full"
+        />
+      </div>
+
+      <h2 class="mb-6 text-3xl font-bold dark:text-neutral-200">
+        The Offer
+      </h2>
+      <p class="text-lg leading-7 text-gray-600 dark:text-neutral-400 mb-12">
+        I offer a comprehensive suite of services designed to elevate the
+        quality, security, and efficiency of your application. Our offerings
+        include:
+      </p>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-1">
+        <div
+          class="group p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-neutral-800 hover:shadow-md transition-shadow duration-200"
+        >
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600 dark:text-indigo-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold dark:text-neutral-200">
+              Security Audit
+            </h3>
+          </div>
+          <p class="text-gray-600 dark:text-neutral-400 leading-relaxed">
+            A thorough examination of your application to identify
+            vulnerabilities and recommend robust protection strategies.
+          </p>
+        </div>
+
+        <div
+          class="group p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-neutral-800 hover:shadow-md transition-shadow duration-200"
+        >
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600 dark:text-indigo-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold dark:text-neutral-200">
+              Infrastructure Audit
+            </h3>
+          </div>
+          <p class="text-gray-600 dark:text-neutral-400 leading-relaxed">
+            An in-depth analysis of your underlying infrastructure to ensure
+            optimal performance, scalability, and reliability.
+          </p>
+        </div>
+
+        <div
+          class="group p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-neutral-800 hover:shadow-md transition-shadow duration-200"
+        >
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600 dark:text-indigo-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold dark:text-neutral-200">
+              Code Quality Audit
+            </h3>
+          </div>
+          <p class="text-gray-600 dark:text-neutral-400 leading-relaxed">
+            A detailed review of your codebase to pinpoint areas for improvement
+            in readability, maintainability, and best practices.
+          </p>
+        </div>
+
+        <div
+          class="group p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-neutral-800 hover:shadow-md transition-shadow duration-200"
+        >
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600 dark:text-indigo-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold dark:text-neutral-200">
+              AI Tooling Setup & Integration
+            </h3>
+          </div>
+          <p class="text-gray-600 dark:text-neutral-400 leading-relaxed">
+            Expert assistance in setting up and integrating advanced AI-powered
+            development tools (such as Cursor, Claude Code, Gemini CLI, and
+            Windsurf) to significantly enhance your team's code quality and
+            development workflow.
+          </p>
+        </div>
+
+        <div
+          class="group p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-neutral-800 hover:shadow-md transition-shadow duration-200"
+        >
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600 dark:text-indigo-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold dark:text-neutral-200">
+              Strategic Improvement Plan
+            </h3>
+          </div>
+          <p class="text-gray-600 dark:text-neutral-400 leading-relaxed">
+            A tailored, actionable roadmap outlining clear steps and
+            recommendations to address identified areas and achieve your
+            application's full potential.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mt-16 p-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50"
+      >
+        <div class="text-center">
+          <div class="inline-flex items-center px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-sm font-medium mb-4">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+            </svg>
+            Only 7 spots left!
+          </div>
+          <h3 class="text-2xl font-bold dark:text-neutral-200 mb-4">
+            Ready to Fix the Vibe?
+          </h3>
+          <p
+            class="text-lg text-gray-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto"
+          >
+            Let's optimize your application and enhance your development
+            workflow. Get started today!
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+            <stripe-buy-button
+              buy-button-id="buy_btn_1RgiH6LfFQVYhtFJA066934i"
+              publishable-key="pk_live_51Rgh1OLfFQVYhtFJlN9t8nlNXGg7t7KpOP0XUBYF6jueosXcoTWe7PDeOe2Zr541whbR8GxmcRBPE1SLTm0G2e4U00fCUpaj8B"
+            >
+            </stripe-buy-button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-8 p-6 bg-gray-50 dark:bg-neutral-900 rounded-xl border border-gray-100 dark:border-neutral-800"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+        >
+          <div>
+            <h3 class="text-lg font-semibold dark:text-neutral-200 mb-2">
+              Your Expert
+            </h3>
+            <p class="text-gray-600 dark:text-neutral-400">
+              With over 15 years of experience in software development, I've
+              worked with startups, corporations, and big-tech companies.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <a
+              href="/about"
+              class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors text-sm"
+            >
+              Learn More About Me
+              <svg
+                class="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
