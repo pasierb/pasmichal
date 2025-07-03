@@ -6,10 +6,10 @@ const allAppearances = await getCollection("podcast");
 const dateFormat = new Intl.DateTimeFormat();
 ---
 
-<ContentSection title="Podcasts" description="Some of my guest appearances.">
+<ContentSection title="Podcasts & talks" description="Some of my guest appearances.">
   <ul class="space-y-4">
     {
-      allAppearances.map((appearance) => {
+      allAppearances.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).map((appearance) => {
         return (
           <li>
             <div>
