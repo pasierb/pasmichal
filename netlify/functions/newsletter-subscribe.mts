@@ -9,7 +9,6 @@ function subscribe(email: string, ipAddress: string) {
     },
     body: JSON.stringify({
       email_address: email,
-      type: "regular",
       ip_address: ipAddress,
     }),
   };
