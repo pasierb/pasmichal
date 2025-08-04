@@ -1,7 +1,6 @@
 ---
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
-import SquareLines from "../components/square-lines.astro";
 const { title, noFooter = false, noHeader = false,  } = Astro.props;
 ---
 
@@ -38,8 +37,7 @@ const { title, noFooter = false, noHeader = false,  } = Astro.props;
 
     <slot name="meta-tags" />
   </head>
-  <body class="antialiased bg-white dark:bg-neutral-950">
-    <SquareLines />
+  <body class="antialiased bg-neutral-50 dark:bg-neutral-950">
     {!noHeader && <Header />}
     <slot />
     {!noFooter && <Footer />}
