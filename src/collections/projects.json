@@ -1,5 +1,12 @@
 [
 	{
+		"name": "Practically Agents",
+		"description": "Consulting service helping companies design, build, and deploy production-grade AI agent systems integrated with existing workflows and tools.",
+		"image": "/assets/images/projects/practicallyagents.png",
+		"url": "https://practicallyagents.com",
+		"status": "active"
+	},
+	{
 		"name": "Notamify",
 		"description": "AI-powered platform that transforms complex NOTAM data into clear, actionable briefings, streamlining pre-flight preparations for aviation professionals.",
 		"image": "/assets/images/projects/notamify.png",
