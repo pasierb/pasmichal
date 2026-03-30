@@ -1,29 +1,33 @@
 ---
 import projects from "../../collections/projects.json";
-import Button from "../button.astro";
 import Project from "../project.astro";
-import ContentSection from "../content-section.astro";
+
+const activeProjects = projects.filter((p) => p.status === "active").slice(0, 3);
 ---
 
-<ContentSection title="Projects" description="Some of my recent projects.">
-  <div
-    class="grid items-stretch w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 mt-7"
-  >
+<section class="max-w-4xl mx-auto px-7 lg:px-0 mb-20">
+  <div class="flex items-baseline justify-between mb-10">
+    <h2 class="text-xl font-semibold text-primary dark:text-primary-dark">
+      Latest Projects
+    </h2>
+    <a
+      href="/projects"
+      class="text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+    >
+      View all
+    </a>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
     {
-      projects.map((project) => {
-        return (
-          <Project
-            name={project.name}
-            description={project.description}
-            image={project.image}
-            status={project.status}
-            url={project.url}
-          />
-        );
-      })
+      activeProjects.map((project) => (
+        <Project
+          name={project.name}
+          description={project.description}
+          image={project.image}
+          status={project.status}
+          url={project.url}
+        />
+      ))
     }
   </div>
-  <div slot="buttons">
-    <Button text="View All My Projects" link="/projects" />
-  </div>
-</ContentSection>
+</section>
