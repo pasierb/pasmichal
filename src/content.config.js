@@ -12,6 +12,7 @@ const postCollection = defineCollection({
 		description: z.string(),
 		dateFormatted: z.string(),
     heroImage: z.string().optional(),
+    externalUrl: z.string().url().optional(),
 	}),
 });
 

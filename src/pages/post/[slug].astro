@@ -3,7 +3,7 @@ import { getCollection, render, getEntry } from "astro:content";
 import Layout from "../../layouts/post.astro";
 
 export async function getStaticPaths() {
-	const postEntries = await getCollection("post");
+	const postEntries = await getCollection("post", (entry) => !entry.data.externalUrl);
 	return postEntries.map((entry) => ({
 		params: { slug: entry.id },
 		props: { entry },
