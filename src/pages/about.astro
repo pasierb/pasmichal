@@ -1,60 +1,65 @@
 ---
 import experiences from "../collections/experiences.json";
 import AboutExperience from "../components/about-experience.astro";
-import PageHeading from "../components/page-heading.astro";
 import Layout from "../layouts/main.astro";
 ---
 
 <Layout title="About Me | Michal Pasierbski">
-  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
-    <PageHeading
-      title="About Me"
-      description="With over 15 years of experience in software development, I've worked with startups, large corporations, big-techs and everything in between. I've built products, led teams, and architected systems."
-    />
-
-    <img src="/assets/images/fam.jpg" class="relative z-30 w-full my-10 rounded-xl" />
-
-    <h2 class="mb-2 text-2xl font-bold text-primary dark:text-primary-dark">Short Bio</h2>
-    <p
-      class="text-sm leading-6 text-secondary dark:text-secondary-dark sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+  <section class="max-w-4xl mx-auto mt-20 px-7 md:mt-28 lg:mt-36 lg:px-0 mb-24">
+    <h1
+      class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tight text-primary dark:text-primary-dark"
     >
-      I'm passionate about solving real problems in elegant ways. Over the years, I've learned that simple is hard - it takes experience and discipline to resist complexity and find the straightforward solution. I believe the best approach is often to solve problems without writing code at all, as every line of code brings maintenance burden and potential for bugs. My focus is on finding pragmatic solutions that deliver value while remaining maintainable and sustainable for the long term.
+      About Me
+    </h1>
+    <p class="mt-6 text-base leading-relaxed text-secondary dark:text-secondary-dark max-w-2xl">
+      With over 15 years of experience in software development, I've worked with startups, large corporations, big-techs and everything in between. I've built products, led teams, and architected systems.
     </p>
 
-    <h2
-      class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 text-primary dark:text-primary-dark"
-    >
-      Experience
-    </h2>
-    <div class="px-5 py-10">
-      {
-        experiences.map((experience) => {
-          return (
-            <div class="pb-10 border-l border-border dark:border-border-dark last:border-l-0">
-              <AboutExperience
-                dates={experience.dates}
-                role={experience.role}
-                company={experience.company}
-                description={experience.description}
-                logo={experience.logo}
-              />
-            </div>
-          )
-        })
-      }
+    <div class="mt-16">
+      <img src="/assets/images/fam.jpg" class="w-full rounded-xl" />
+
+      <h2 class="mt-16 mb-2 text-2xl font-bold text-primary dark:text-primary-dark">Short Bio</h2>
+      <p
+        class="text-sm leading-6 text-secondary dark:text-secondary-dark sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+      >
+        I'm passionate about solving real problems in elegant ways. Over the years, I've learned that simple is hard - it takes experience and discipline to resist complexity and find the straightforward solution. I believe the best approach is often to solve problems without writing code at all, as every line of code brings maintenance burden and potential for bugs. My focus is on finding pragmatic solutions that deliver value while remaining maintainable and sustainable for the long term.
+      </p>
+
+      <h2
+        class="mt-16 mb-2 text-2xl font-bold text-primary dark:text-primary-dark"
+      >
+        Experience
+      </h2>
+      <div class="px-5 py-10">
+        {
+          experiences.map((experience) => {
+            return (
+              <div class="pb-10 border-l border-border dark:border-border-dark last:border-l-0">
+                <AboutExperience
+                  dates={experience.dates}
+                  role={experience.role}
+                  company={experience.company}
+                  description={experience.description}
+                  logo={experience.logo}
+                />
+              </div>
+            )
+          })
+        }
+      </div>
+
+      <h2 class="mt-16 mb-2 text-2xl font-bold text-primary dark:text-primary-dark">Let's Connect</h2>
+      <p
+        class="text-sm leading-6 text-secondary dark:text-secondary-dark sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+      >
+        If you want to stay up to date with my work be sure to <a
+          href="https://x.com/pasmichal_"
+          target="_blank"
+          class="text-primary dark:text-primary-dark underline">follow me on twitter</a
+        >, or you can send me an <a href="mailto:mpasierbski@gmail.com" class="text-primary dark:text-primary-dark underline"
+          >email</a
+        > and I'll be sure to get back to you.
+      </p>
     </div>
-
-    <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 text-primary dark:text-primary-dark">Let's Connect</h2>
-    <p
-      class="text-sm leading-6 text-secondary dark:text-secondary-dark sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-    >
-      If you want to stay up to date with my work be sure to <a
-        href="https://x.com/pasmichal_"
-        target="_blank"
-        class="text-primary dark:text-primary-dark underline">follow me on twitter</a
-      >, or you can send me an <a href="mailto:mpasierbski@gmail.com" class="text-primary dark:text-primary-dark underline"
-        >email</a
-      > and I'll be sure to get back to you.
-    </p>
   </section>
 </Layout>
