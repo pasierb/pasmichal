@@ -48,6 +48,14 @@
 		"techStack": ["TypeScript", "WebdriverIO", "AWS Device Farm", "Vite"]
 	},
 	{
+		"name": "FamilyKit",
+		"description": "A Flutter app for organizing family life — calendar, notes, and chores management in one place.",
+		"image": "/assets/images/projects/familyboard.png",
+		"url": "https://familykit.app/",
+		"status": "active",
+		"techStack": ["Flutter", "Dart", "Firebase"]
+	},
+	{
 		"name": "vue-forminator",
 		"description": "Schema-based form fields factory for Vue.js that generates form components from JSON schemas with support for Bootstrap and Bulma.",
 		"image": "/assets/images/projects/vue-forminator.png",
