@@ -1,5 +1,14 @@
 ---
-const { name, description, url, image, status } = Astro.props;
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  image: string;
+  status: string;
+  techStack?: string[];
+}
+
+const { name, description, url, image, status, techStack = [] } = Astro.props;
 ---
 
 <a
@@ -21,5 +30,14 @@ const { name, description, url, image, status } = Astro.props;
     <p class="mt-1 text-sm text-muted dark:text-muted-dark line-clamp-2">
       {description}
     </p>
+    {techStack.length > 0 && (
+      <div class="mt-2 flex flex-wrap gap-1.5">
+        {techStack.map((tech) => (
+          <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-muted dark:text-muted-dark">
+            {tech}
+          </span>
+        ))}
+      </div>
+    )}
   </div>
 </a>

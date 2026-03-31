@@ -29,6 +29,7 @@ const otherProjects = projects.slice(4);
             image={project.image}
             url={project.url}
             status={project.status}
+            techStack={project.techStack}
           />
         ))
       }
@@ -53,6 +54,15 @@ const otherProjects = projects.slice(4);
                   <p class="mt-1 text-sm text-secondary dark:text-secondary-dark">
                     {project.description}
                   </p>
+                  {project.techStack.length > 0 && (
+                    <div class="mt-2 flex flex-wrap gap-1.5">
+                      {project.techStack.map((tech) => (
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-muted dark:text-muted-dark">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <svg
                   class="w-5 h-5 flex-shrink-0 ml-4 text-secondary dark:text-secondary-dark group-hover:text-primary dark:group-hover:text-primary-dark transition-colors"
