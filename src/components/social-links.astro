@@ -1,0 +1,23 @@
+---
+import socials from "../collections/socials.json";
+
+interface Props {
+  size?: "sm" | "md";
+}
+
+const { size = "md" } = Astro.props;
+const sizeClass = size === "sm" ? "w-[15px] h-[15px]" : "w-4 h-4";
+---
+
+{
+  socials.map((social) => (
+    <a
+      href={social.url}
+      target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+      class="text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+      aria-label={social.label}
+    >
+      <Fragment set:html={social.icon.replace(/<svg /, `<svg class="${sizeClass}" `)} />
+    </a>
+  ))
+}
