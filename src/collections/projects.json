@@ -40,6 +40,14 @@
 		"techStack": ["Python", "xsdata"]
 	},
 	{
+		"name": "On Marketing Assets Gen",
+		"description": "A prototype Instagram post generator for the On brand, built with Google ADK. Chains two agents — an ideation agent that reads mood boards and product catalogs, and an assets generator that produces image variations using Gemini.",
+		"image": "/assets/images/projects/on-marketing-assets-gen.png",
+		"url": "https://github.com/practicallyagents/on-marketing-assets-gen",
+		"status": "active",
+		"techStack": ["Python", "Google ADK", "Gemini"]
+	},
+	{
 		"name": "Launch Soon",
 		"description": "Waitlist generator that generates waitlists that look like pages, not forms.",
 		"image": "/assets/images/projects/launchsoon.avif",
