@@ -80,6 +80,14 @@
 		"techStack": ["TypeScript", "Next.js", "AWS", "AWS Lambda", "Docker", "Supabase", "TailwindCSS"]
 	},
 	{
+		"name": "Stencilbot",
+		"description": "A tool for automating social media preview image generation — Twitter cards, OG images, YouTube thumbnails, and blog headers from templates.",
+		"image": "/assets/images/projects/stencilbot.png",
+		"url": "https://github.com/pasierb/stencilbot",
+		"status": "discontinued",
+		"techStack": ["TypeScript", "Node.js", "Lerna"]
+	},
+	{
 		"name": "vue-forminator",
 		"description": "Schema-based form fields factory for Vue.js that generates form components from JSON schemas with support for Bootstrap and Bulma.",
 		"image": "/assets/images/projects/vue-forminator.png",
