@@ -64,6 +64,14 @@
 		"techStack": ["Flutter", "Dart", "Firebase"]
 	},
 	{
+		"name": "SiteShooter",
+		"description": "A web application for capturing website screenshots, powered by serverless infrastructure.",
+		"image": "/assets/images/projects/siteshooter.png",
+		"url": "https://github.com/pasierb/siteshooter",
+		"status": "discontinued",
+		"techStack": ["TypeScript", "Next.js", "AWS", "AWS Lambda", "Docker", "Supabase", "TailwindCSS"]
+	},
+	{
 		"name": "vue-forminator",
 		"description": "Schema-based form fields factory for Vue.js that generates form components from JSON schemas with support for Bootstrap and Bulma.",
 		"image": "/assets/images/projects/vue-forminator.png",
