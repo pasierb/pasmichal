@@ -38,5 +38,13 @@
 		"url": "https://github.com/pasierb/waitlist-app",
 		"status": "discontinued",
 		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"]
+	},
+	{
+		"name": "vue-forminator",
+		"description": "Schema-based form fields factory for Vue.js that generates form components from JSON schemas with support for Bootstrap and Bulma.",
+		"image": "/assets/images/projects/vue-forminator.png",
+		"url": "https://github.com/pasierb/vue-forminator",
+		"status": "discontinued",
+		"techStack": ["Vue.js", "JavaScript"]
 	}
 ]
