@@ -48,6 +48,14 @@
 		"techStack": ["TypeScript", "WebdriverIO", "AWS Device Farm", "Vite"]
 	},
 	{
+		"name": "Pigeon Revenge",
+		"description": "A fun infinite runner game where you play as a pigeon taking revenge on pedestrians. A father-and-son game dev project.",
+		"image": "/assets/images/projects/pigeon-revenge.png",
+		"url": "https://srjrgames.com/projects/pigeon-revenge/",
+		"status": "active",
+		"techStack": ["Unity", "C#"]
+	},
+	{
 		"name": "FamilyKit",
 		"description": "A Flutter app for organizing family life — calendar, notes, and chores management in one place.",
 		"image": "/assets/images/projects/familyboard.png",
