@@ -40,6 +40,14 @@
 		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"]
 	},
 	{
+		"name": "wdio-aws-device-farm-service",
+		"description": "AWS Device Farm service for WebdriverIO that enables desktop browser testing on AWS infrastructure.",
+		"image": "/assets/images/projects/wdio-aws-device-farm-service.png",
+		"url": "https://github.com/awslabs/wdio-aws-device-farm-service",
+		"status": "active",
+		"techStack": ["TypeScript", "WebdriverIO", "AWS Device Farm", "Vite"]
+	},
+	{
 		"name": "vue-forminator",
 		"description": "Schema-based form fields factory for Vue.js that generates form components from JSON schemas with support for Bootstrap and Bulma.",
 		"image": "/assets/images/projects/vue-forminator.png",
