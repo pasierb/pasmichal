@@ -27,7 +27,7 @@ const { name, description, url, image, status, techStack = [] } = Astro.props;
     <h3 class="text-base font-semibold text-primary dark:text-primary-dark group-hover:text-secondary dark:group-hover:text-secondary-dark transition-colors">
       {name} {status !== "active" && <span class="font-normal text-secondary dark:text-secondary-dark">({status})</span>}
     </h3>
-    <p class="mt-1 text-sm text-secondary dark:text-secondary-dark line-clamp-2">
+    <p class="mt-1 text-sm text-secondary dark:text-secondary-dark line-clamp-5">
       {description}
     </p>
     {techStack.length > 0 && (
