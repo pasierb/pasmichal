@@ -2,6 +2,9 @@
 import projects from "../collections/projects.json";
 import Project from "../components/project.astro";
 import Layout from "../layouts/main.astro";
+
+const featuredProjects = projects.slice(0, 4);
+const otherProjects = projects.slice(4);
 ---
 
 <Layout title="My Projects | Michal Pasierbski">
@@ -19,7 +22,7 @@ import Layout from "../layouts/main.astro";
       class="grid items-stretch w-full grid-cols-1 mt-16 gap-8 sm:grid-cols-2"
     >
       {
-        projects.map((project) => (
+        featuredProjects.map((project) => (
           <Project
             name={project.name}
             description={project.description}
@@ -30,5 +33,40 @@ import Layout from "../layouts/main.astro";
         ))
       }
     </div>
+
+    {otherProjects.length > 0 && (
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-primary dark:text-primary-dark">Other Projects</h2>
+        <ul class="mt-6 divide-y divide-gray-200 dark:divide-gray-700">
+          {otherProjects.map((project) => (
+            <li class="py-4">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center justify-between"
+              >
+                <div>
+                  <span class="text-lg font-medium text-primary dark:text-primary-dark group-hover:underline">
+                    {project.name}
+                  </span>
+                  <p class="mt-1 text-sm text-secondary dark:text-secondary-dark">
+                    {project.description}
+                  </p>
+                </div>
+                <svg
+                  class="w-5 h-5 flex-shrink-0 ml-4 text-secondary dark:text-secondary-dark group-hover:text-primary dark:group-hover:text-primary-dark transition-colors"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </section>
 </Layout>
