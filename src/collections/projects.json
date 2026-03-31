@@ -32,6 +32,14 @@
 		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"]
 	},
 	{
+		"name": "pyaixm",
+		"description": "Python bindings for AIXM (Aeronautical Information Exchange Model), enabling parsing and working with AIXM 5.1 XML messages for aviation data like airports, airspaces, runways, and waypoints.",
+		"image": "/assets/images/projects/pyaixm.png",
+		"url": "https://github.com/skymerse/pyaixm",
+		"status": "active",
+		"techStack": ["Python", "xsdata"]
+	},
+	{
 		"name": "Launch Soon",
 		"description": "Waitlist generator that generates waitlists that look like pages, not forms.",
 		"image": "/assets/images/projects/launchsoon.avif",
