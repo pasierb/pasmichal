@@ -13,7 +13,8 @@ const sizeClass = size === "sm" ? "w-[15px] h-[15px]" : "w-4 h-4";
   socials.map((social) => (
     <a
       href={social.url}
-      target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+      target={social.url.startsWith("mailto:") || social.download ? undefined : "_blank"}
+      download={social.download ? "" : undefined}
       class="text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
       aria-label={social.label}
     >
