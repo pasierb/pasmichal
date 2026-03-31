@@ -64,6 +64,14 @@
 		"techStack": ["Flutter", "Dart", "Firebase"]
 	},
 	{
+		"name": "Sauna Tracker",
+		"description": "A Fitbit smartwatch app for tracking hot and cold exposure sessions to optimize sauna and cold therapy routines.",
+		"image": "/assets/images/projects/sauna-tracker.png",
+		"url": "https://gallery.fitbit.com/details/d757a093-bec5-4ae8-8abc-5f9f4cc77971",
+		"status": "active",
+		"techStack": ["TypeScript", "Fitbit SDK"]
+	},
+	{
 		"name": "SiteShooter",
 		"description": "A web application for capturing website screenshots, powered by serverless infrastructure.",
 		"image": "/assets/images/projects/siteshooter.png",
