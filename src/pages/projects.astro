@@ -49,7 +49,7 @@ const otherProjects = projects.slice(4);
               >
                 <div>
                   <span class="text-lg font-medium text-primary dark:text-primary-dark group-hover:underline">
-                    {project.name}
+                    {project.name} {project.status !== "active" && <span class="font-normal text-secondary dark:text-secondary-dark">({project.status})</span>}
                   </span>
                   <p class="mt-1 text-sm text-secondary dark:text-secondary-dark">
                     {project.description}
