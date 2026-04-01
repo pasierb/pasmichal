@@ -5,7 +5,8 @@
 		"image": "/assets/images/projects/practicallyagents.png",
 		"url": "https://practicallyagents.com",
 		"status": "active",
-		"techStack": ["Astro", "Netlify"]
+		"techStack": ["Astro", "Netlify"],
+		"featured": true
 	},
 	{
 		"name": "Notamify",
@@ -13,7 +14,8 @@
 		"image": "/assets/images/projects/notamify.png",
 		"url": "https://notamify.com",
 		"status": "exited",
-		"techStack": ["Python", "PostgreSQL", "GCP", "Docker", "quart", "OpenAI LLM"]
+		"techStack": ["Python", "PostgreSQL", "GCP", "Docker", "quart", "OpenAI LLM"],
+		"featured": true
 	},
 	{
 		"name": "Purposely",
@@ -21,7 +23,8 @@
 		"image": "/assets/images/projects/purposely.png",
 		"url": "https://github.com/pasierb/purposely-browser-extension",
 		"status": "discontinued",
-		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "Plasmo"]
+		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "Plasmo"],
+		"featured": true
 	},
 	{
 		"name": "Glow & Flow",
@@ -29,7 +32,8 @@
 		"image": "/assets/images/projects/glownflow.png",
 		"url": "https://glownflow.ch/",
 		"status": "active",
-		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"]
+		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"],
+		"featured": true
 	},
 	{
 		"name": "pyaixm",

@@ -1,10 +1,9 @@
 ---
-import projects from "../collections/projects.json";
+import { projects, featuredProjects } from "../collections/projects";
 import Project from "../components/project.astro";
 import Layout from "../layouts/main.astro";
 
-const featuredProjects = projects.slice(0, 4);
-const otherProjects = projects.slice(4);
+const allProjects = projects;
 ---
 
 <Layout title="My Projects | Michal Pasierbski">
@@ -35,11 +34,11 @@ const otherProjects = projects.slice(4);
       }
     </div>
 
-    {otherProjects.length > 0 && (
+    {allProjects.length > 0 && (
       <div class="mt-16">
-        <h2 class="text-2xl font-bold text-primary dark:text-primary-dark">Other Projects</h2>
+        <h2 class="text-2xl font-bold text-primary dark:text-primary-dark">All Projects</h2>
         <ul class="mt-6 divide-y divide-gray-200 dark:divide-gray-700">
-          {otherProjects.map((project) => (
+          {allProjects.map((project) => (
             <li class="py-4">
               <a
                 href={project.url}

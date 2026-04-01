@@ -1,8 +1,8 @@
 ---
-import projects from "../../collections/projects.json";
+import { projects } from "../../collections/projects";
 import Project from "../project.astro";
 
-const activeProjects = projects.slice(0, 3);
+const activeProjects = projects.filter(p => p.featured);
 ---
 
 <section class="max-w-4xl mx-auto px-7 lg:px-0 mb-20">
