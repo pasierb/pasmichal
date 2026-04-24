@@ -2,19 +2,7 @@
 
 window.darkMode = false;
 
-const stickyClasses = ["fixed", "h-14"];
-const unstickyClasses = ["absolute", "h-16"];
-const stickyClassesContainer = [
-	"bg-[#fafafa]/80",
-	"dark:bg-[#141414]/80",
-	"backdrop-blur-2xl",
-];
-const unstickyClassesContainer = ["border-transparent"];
-let headerElement = null;
-
 document.addEventListener("DOMContentLoaded", () => {
-	headerElement = document.getElementById("header");
-
 	if (
 		localStorage.getItem("dark_mode") &&
 		localStorage.getItem("dark_mode") === "true"
@@ -24,31 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	} else {
 		showDay();
 	}
-	stickyHeaderFuncionality();
-	evaluateHeaderPosition();
 });
 
-window.stickyHeaderFuncionality = () => {
-	window.addEventListener("scroll", () => {
-		evaluateHeaderPosition();
-	});
-};
-
-window.evaluateHeaderPosition = () => {
-	if (window.scrollY > 16) {
-		headerElement.firstElementChild.classList.add(...stickyClassesContainer);
-		headerElement.firstElementChild.classList.remove(
-			...unstickyClassesContainer,
-		);
-		headerElement.classList.add(...stickyClasses);
-		headerElement.classList.remove(...unstickyClasses);
-	} else {
-		headerElement.firstElementChild.classList.remove(...stickyClassesContainer);
-		headerElement.firstElementChild.classList.add(...unstickyClassesContainer);
-		headerElement.classList.add(...unstickyClasses);
-		headerElement.classList.remove(...stickyClasses);
-	}
-};
 
 document.getElementById("darkToggle").addEventListener("click", () => {
 	document.documentElement.classList.add("duration-300");
