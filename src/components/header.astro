@@ -6,7 +6,7 @@ import SocialLinks from "../components/social-links.astro";
 const pathname = Astro.url.pathname;
 ---
 
-<header id="header" class="w-full h-16">
+<header id="header" class="w-full h-16 relative z-50">
   <div
     class="flex items-center justify-between h-full max-w-4xl px-7 mx-auto border-b border-border dark:border-border-dark"
   >
@@ -84,8 +84,11 @@ const pathname = Astro.url.pathname;
         class="sm:hidden flex items-center justify-center w-8 h-8 text-secondary dark:text-secondary-dark"
         aria-label="Toggle menu"
       >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg id="menuIconOpen" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"></path>
+        </svg>
+        <svg id="menuIconClose" class="hidden w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
@@ -94,7 +97,7 @@ const pathname = Astro.url.pathname;
   <!-- Mobile menu -->
   <nav
     id="mobileMenu"
-    class="hidden sm:hidden bg-surface dark:bg-surface-dark border-t border-border dark:border-border-dark px-7 pb-4 pt-2"
+    class="sm:hidden bg-surface dark:bg-surface-dark border-t border-border dark:border-border-dark px-7 shadow-lg overflow-hidden transition-all duration-150 ease-in-out max-h-0 opacity-0 pt-0 pb-0"
   >
     {
       menus.map((menu) => {
@@ -123,6 +126,20 @@ const pathname = Astro.url.pathname;
 
 <script is:inline>
   document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
-    document.getElementById('mobileMenu')?.classList.toggle('hidden');
+    const menu = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('menuIconOpen');
+    const iconClose = document.getElementById('menuIconClose');
+    const isOpen = menu?.classList.contains('max-h-0');
+
+    if (isOpen) {
+      menu?.classList.remove('max-h-0', 'opacity-0', 'pt-0', 'pb-0');
+      menu?.classList.add('max-h-96', 'opacity-100', 'pt-2', 'pb-4');
+    } else {
+      menu?.classList.remove('max-h-96', 'opacity-100', 'pt-2', 'pb-4');
+      menu?.classList.add('max-h-0', 'opacity-0', 'pt-0', 'pb-0');
+    }
+
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
   });
 </script>
