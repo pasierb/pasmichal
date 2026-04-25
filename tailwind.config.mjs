@@ -21,8 +21,8 @@ export default {
 					dark: '#9A9A9A',
 				},
 				muted: {
-					DEFAULT: '#A1A1A1',
-					dark: '#5A5A5A',
+					DEFAULT: '#737373',
+					dark: '#8A8A8A',
 				},
 				border: {
 					DEFAULT: '#E8E8E4',
