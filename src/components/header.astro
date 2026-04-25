@@ -2,6 +2,8 @@
 import menus from "../collections/menu.json";
 import Logo from "../components/logo.astro";
 import SocialLinks from "../components/social-links.astro";
+
+const pathname = Astro.url.pathname;
 ---
 
 <header id="header" class="w-full h-16">
@@ -13,14 +15,23 @@ import SocialLinks from "../components/social-links.astro";
       <Logo />
       <nav class="hidden sm:flex items-center gap-1">
         {
-          menus.map((menu) => (
-            <a
-              href={menu.url}
-              class="px-3 py-1.5 text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-colors duration-200"
-            >
-              {menu.name}
-            </a>
-          ))
+          menus.map((menu) => {
+            const isActive = pathname === menu.url || pathname.startsWith(`${menu.url}/`);
+            return (
+              <a
+                href={menu.url}
+                class:list={[
+                  "px-3 py-1.5 text-sm transition-colors duration-200",
+                  isActive
+                    ? "text-primary dark:text-primary-dark font-medium"
+                    : "text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark",
+                ]}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {menu.name}
+              </a>
+            );
+          })
         }
       </nav>
     </div>
@@ -86,14 +97,23 @@ import SocialLinks from "../components/social-links.astro";
     class="hidden sm:hidden bg-surface dark:bg-surface-dark border-t border-border dark:border-border-dark px-7 pb-4 pt-2"
   >
     {
-      menus.map((menu) => (
-        <a
-          href={menu.url}
-          class="block py-2 text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark"
-        >
-          {menu.name}
-        </a>
-      ))
+      menus.map((menu) => {
+        const isActive = pathname === menu.url || pathname.startsWith(`${menu.url}/`);
+        return (
+          <a
+            href={menu.url}
+            class:list={[
+              "block py-2 text-sm",
+              isActive
+                ? "text-primary dark:text-primary-dark font-medium"
+                : "text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark",
+            ]}
+            aria-current={isActive ? "page" : undefined}
+          >
+            {menu.name}
+          </a>
+        );
+      })
     }
     <div class="flex items-center gap-4 pt-3 mt-2 border-t border-border dark:border-border-dark">
       <SocialLinks />
