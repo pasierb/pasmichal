@@ -8,7 +8,7 @@ This is a personal blog and portfolio site built with:
 - **Astro** - Static site generator with content collections
 - **TailwindCSS** - Utility-first CSS framework
 - **TypeScript** - Type-safe JavaScript
-- **Netlify** - Hosting and serverless functions
+- **Netlify** - Hosting
 - **Biome** - Linting and formatting
 - **pnpm** - Package manager
 
@@ -17,8 +17,6 @@ This is a personal blog and portfolio site built with:
 ```bash
 # Start development server
 pnpm dev
-# or
-netlify dev
 
 # Build for production (includes type checking)
 pnpm build
@@ -37,7 +35,6 @@ pnpm check
 - `src/layouts/` - Reusable page layouts
 - `src/components/` - Astro components
 - `src/collections/` - JSON data files for experiences, projects, menu
-- `netlify/functions/` - Serverless functions (newsletter subscription)
 
 ## Content System
 
@@ -51,7 +48,6 @@ Content schema is defined in `src/content.config.js` using Zod validation.
 ## Key Features
 
 - Dark mode support with localStorage persistence
-- Newsletter signup via Buttondown API (Netlify function)
 - Responsive design with TailwindCSS
 - Table of contents generation for posts
 - SEO-friendly with proper meta tags
