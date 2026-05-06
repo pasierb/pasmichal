@@ -2,7 +2,7 @@
 	{
 		"name": "Practically Agents",
 		"description": "Consulting service helping companies design, build, and deploy production-grade AI agent systems integrated with existing workflows and tools.",
-		"image": "/assets/images/projects/practicallyagents.png",
+		"image": "practicallyagents.webp",
 		"url": "https://practicallyagents.com",
 		"status": "active",
 		"techStack": ["Astro", "Netlify"],
@@ -11,7 +11,7 @@
 	{
 		"name": "Notamify",
 		"description": "AI-powered platform that transforms complex NOTAM data into clear, actionable briefings, streamlining pre-flight preparations for aviation professionals.",
-		"image": "/assets/images/projects/notamify.png",
+		"image": "notamify.png",
 		"url": "https://notamify.com",
 		"status": "exited",
 		"techStack": ["Python", "PostgreSQL", "GCP", "Docker", "quart", "OpenAI LLM"],
@@ -20,7 +20,7 @@
 	{
 		"name": "Purposely",
 		"description": "A browser extension that helps you focus on your goals.",
-		"image": "/assets/images/projects/purposely.png",
+		"image": "purposely.webp",
 		"url": "https://github.com/pasierb/purposely-browser-extension",
 		"status": "discontinued",
 		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "Plasmo"],
@@ -29,7 +29,7 @@
 	{
 		"name": "Glow & Flow",
 		"description": "My wife's beauty salon website.",
-		"image": "/assets/images/projects/glownflow.png",
+		"image": "glownflow.webp",
 		"url": "https://glownflow.ch/",
 		"status": "active",
 		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"],
@@ -38,7 +38,7 @@
 	{
 		"name": "pyaixm",
 		"description": "Python bindings for AIXM (Aeronautical Information Exchange Model), enabling parsing and working with AIXM 5.1 XML messages for aviation data like airports, airspaces, runways, and waypoints.",
-		"image": "/assets/images/projects/pyaixm.png",
+		"image": "pyaixm.png",
 		"url": "https://github.com/skymerse/pyaixm",
 		"status": "active",
 		"techStack": ["Python", "xsdata"]
@@ -46,7 +46,7 @@
 	{
 		"name": "On Marketing Assets Gen",
 		"description": "A prototype Instagram post generator for the On brand, built with Google ADK. Chains two agents — an ideation agent that reads mood boards and product catalogs, and an assets generator that produces image variations using Gemini.",
-		"image": "/assets/images/projects/on-marketing-assets-gen.png",
+		"image": "on-marketing-assets-gen.png",
 		"url": "https://github.com/practicallyagents/on-marketing-assets-gen",
 		"status": "active",
 		"techStack": ["Python", "Google ADK", "Gemini"]
@@ -54,7 +54,7 @@
 	{
 		"name": "Launch Soon",
 		"description": "Waitlist generator that generates waitlists that look like pages, not forms.",
-		"image": "/assets/images/projects/launchsoon.avif",
+		"image": "launchsoon.avif",
 		"url": "https://github.com/pasierb/waitlist-app",
 		"status": "discontinued",
 		"techStack": ["Laravel", "TailwindCSS", "PHP", "TypeScript", "SQLite"]
@@ -62,7 +62,7 @@
 	{
 		"name": "wdio-aws-device-farm-service",
 		"description": "AWS Device Farm service for WebdriverIO that enables desktop browser testing on AWS infrastructure.",
-		"image": "/assets/images/projects/wdio-aws-device-farm-service.png",
+		"image": "wdio-aws-device-farm-service.png",
 		"url": "https://github.com/awslabs/wdio-aws-device-farm-service",
 		"status": "active",
 		"techStack": ["TypeScript", "WebdriverIO", "AWS Device Farm", "Vite"]
@@ -70,7 +70,7 @@
 	{
 		"name": "Sr. Jr. Games",
 		"description": "A father-son game development studio creating fun games and sharing tutorials on developing games with kids.",
-		"image": "/assets/images/projects/srjrgames.png",
+		"image": "srjrgames.png",
 		"url": "https://srjrgames.com/",
 		"status": "active",
 		"techStack": ["Astro", "Unity", "C#", "Godot"]
@@ -78,7 +78,7 @@
 	{
 		"name": "Pigeon Revenge",
 		"description": "A fun infinite runner game where you play as a pigeon taking revenge on pedestrians. A father-and-son game dev project.",
-		"image": "/assets/images/projects/pigeon-revenge.png",
+		"image": "pigeon-revenge.png",
 		"url": "https://srjrgames.com/projects/pigeon-revenge/",
 		"status": "active",
 		"techStack": ["Unity", "C#"]
@@ -86,7 +86,7 @@
 	{
 		"name": "FamilyKit",
 		"description": "A Flutter app for organizing family life — calendar, notes, and chores management in one place.",
-		"image": "/assets/images/projects/familyboard.png",
+		"image": "familyboard.png",
 		"url": "https://familykit.app/",
 		"status": "active",
 		"techStack": ["Flutter", "Dart", "Firebase"]
@@ -94,7 +94,7 @@
 	{
 		"name": "Sauna Tracker",
 		"description": "A Fitbit smartwatch app for tracking hot and cold exposure sessions to optimize sauna and cold therapy routines.",
-		"image": "/assets/images/projects/sauna-tracker.png",
+		"image": "sauna-tracker.png",
 		"url": "https://gallery.fitbit.com/details/d757a093-bec5-4ae8-8abc-5f9f4cc77971",
 		"status": "active",
 		"techStack": ["TypeScript", "Fitbit SDK"]
@@ -102,7 +102,7 @@
 	{
 		"name": "SiteShooter",
 		"description": "A web application for capturing website screenshots, powered by serverless infrastructure.",
-		"image": "/assets/images/projects/siteshooter.png",
+		"image": "siteshooter.png",
 		"url": "https://github.com/pasierb/siteshooter",
 		"status": "discontinued",
 		"techStack": ["TypeScript", "Next.js", "AWS", "AWS Lambda", "Docker", "Supabase", "TailwindCSS"]
@@ -110,7 +110,7 @@
 	{
 		"name": "Stencilbot",
 		"description": "A tool for automating social media preview image generation — Twitter cards, OG images, YouTube thumbnails, and blog headers from templates.",
-		"image": "/assets/images/projects/stencilbot.png",
+		"image": "stencilbot.png",
 		"url": "https://github.com/pasierb/stencilbot",
 		"status": "discontinued",
 		"techStack": ["TypeScript", "Node.js", "Lerna"]
@@ -118,7 +118,7 @@
 	{
 		"name": "vue-forminator",
 		"description": "Schema-based form fields factory for Vue.js that generates form components from JSON schemas with support for Bootstrap and Bulma.",
-		"image": "/assets/images/projects/vue-forminator.png",
+		"image": "vue-forminator.png",
 		"url": "https://github.com/pasierb/vue-forminator",
 		"status": "discontinued",
 		"techStack": ["Vue.js", "JavaScript"]
