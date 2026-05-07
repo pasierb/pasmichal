@@ -1,5 +1,7 @@
 ---
+import { Picture } from "astro:assets";
 import Layout from "./main.astro";
+import profilePic from "../assets/images/profile_pic.png";
 const { frontmatter } = Astro.props;
 ---
 
@@ -56,11 +58,28 @@ const { frontmatter } = Astro.props;
       </a>
     </p>
 
+    <!-- Byline -->
+    <div class="flex items-center gap-4 mb-8">
+      <Picture
+        src={profilePic}
+        alt="Michał Pasierbski"
+        widths={[112, 168]}
+        sizes="56px"
+        formats={["avif", "webp"]}
+        class="w-14 h-14 rounded-full object-cover flex-shrink-0"
+      />
+      <div class="flex flex-col leading-tight">
+        <span class="font-sans text-base text-primary dark:text-primary-dark">
+          Michał Pasierbski
+        </span>
+        <span class="font-sans text-sm text-muted dark:text-muted-dark mt-1">
+          {frontmatter.dateFormatted}
+        </span>
+      </div>
+    </div>
+
     <!-- Page header -->
     <header class="mb-12">
-      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
-        {frontmatter.dateFormatted}
-      </p>
       <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
         {frontmatter.title}
       </h1>
