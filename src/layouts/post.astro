@@ -3,7 +3,7 @@ import Layout from "./main.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title + " | Michal Pasierbski"}>
+<Layout title={frontmatter.title + " | Michał Pasierbski"}>
   <Fragment slot="meta-tags">
     <!-- Primary Meta Tags -->
     <meta name="title" content={frontmatter.title} />
@@ -44,31 +44,46 @@ const { frontmatter } = Astro.props;
     }
   </Fragment>
 
-  <main class="relative z-30 max-w-4xl mx-auto mt-10 md:mt-20">
-    <slot name="before-content" />
+  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
-    <article
-      class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert"
-    >
-      {
-        frontmatter.heroImage && (
-          <div class="w-full rounded-xl overflow-hidden">
-            <img
-              src={frontmatter.heroImage}
-              alt={frontmatter.title}
-              class="w-full h-full object-cover"
-            />
-          </div>
-        )
-      }
-
-      <h1
-        class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl text-primary dark:text-primary-dark lg:text-5xl md:leading-none"
+    <!-- Back link -->
+    <p class="mb-12">
+      <a
+        href="/posts"
+        class="font-sans text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
       >
+        ← Back to writing
+      </a>
+    </p>
+
+    <!-- Page header -->
+    <header class="mb-12">
+      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+        {frontmatter.dateFormatted}
+      </p>
+      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
         {frontmatter.title}
       </h1>
+      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+        {frontmatter.description}
+      </p>
+    </header>
 
+    {
+      frontmatter.heroImage && (
+        <figure class="mb-12">
+          <img
+            src={frontmatter.heroImage}
+            alt={frontmatter.title}
+            class="w-full rounded-md"
+          />
+        </figure>
+      )
+    }
+
+    <div class="prose prose-sm lg:prose-lg dark:prose-invert">
       <slot />
-    </article>
-  </main>
+    </div>
+
+  </article>
 </Layout>
