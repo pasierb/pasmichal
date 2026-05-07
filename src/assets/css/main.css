@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: theme('fontFamily.sans');
+  }
+}
+
+@layer components {
+  .marker-link {
+    background-image: linear-gradient(to top, theme('colors.accent.DEFAULT') 25%, transparent 25%);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 0% 100%;
+    transition: background-size 300ms ease-out;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  html.dark .marker-link {
+    background-image: linear-gradient(to top, theme('colors.accent.dark') 25%, transparent 25%);
+  }
+  .group:hover .marker-link,
+  .marker-link:hover {
+    background-size: 100% 100%;
+  }
+}
+
 /* Add Your Custom CSS Here */
 
 .prose img {

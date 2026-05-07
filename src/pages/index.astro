@@ -1,58 +1,164 @@
 ---
 import { Picture } from "astro:assets";
-import Projects from "../components/home/projects.astro";
-import Writings from "../components/home/writings.astro";
-import Podcasts from "../components/home/podcasts.astro";
+import { getCollection } from "astro:content";
 import Layout from "../layouts/main.astro";
 import profilePic from "../assets/images/profile_pic.png";
+
+const allPosts = await getCollection("post");
+
+function parseDate(dateStr: string) {
+  const [month, day, year] = dateStr.split(" ");
+  return new Date(`${month} ${parseInt(day)}, ${year}`);
+}
+
+const sortedPosts = allPosts
+  .map((post) => ({
+    ...post,
+    date: parseDate(post.data.dateFormatted),
+  }))
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+const featured = sortedPosts[0];
+const recent = sortedPosts.slice(1, 6);
+
+function postHref(post: typeof sortedPosts[number]) {
+  return post.data.externalUrl ?? `/post/${post.id}`;
+}
+
+function isExternal(post: typeof sortedPosts[number]) {
+  return !!post.data.externalUrl;
+}
+
+const monthFormat = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  year: "numeric",
+});
 ---
 
 <Layout title="Michał Pasierbski">
-  <div class="w-full px-7 md:px-12 lg:px-16 mt-16 md:mt-20 lg:mt-24">
-    <Picture
-      src={profilePic}
-      alt="Michał Pasierbski"
-      widths={[256, 384]}
-      sizes="(min-width: 768px) 192px, 128px"
-      formats={["avif", "webp"]}
-      loading="eager"
-      class="block mb-6 md:mb-8 w-32 h-32 md:w-48 md:h-48 rounded-full object-cover"
-    />
-    <h1 class="text-[clamp(3rem,12vw,14rem)] font-extrabold uppercase leading-[0.9] tracking-tighter text-primary dark:text-primary-dark">
-      <span class="block">Michał<button
-        id="pronounce-btn"
-        type="button"
-        aria-label="Listen to name pronunciation"
-        class="inline-block align-baseline ml-[0.15em] text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-colors cursor-pointer"
-      ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-[0.35em] h-[0.35em]"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07" /></svg></button></span>
-      <span class="block">Pasierbski</span>
-    </h1>
-  </div>
+  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
-  <div class="w-full px-7 md:px-12 lg:px-16 mt-6 md:mt-8">
-    <hr class="border-t border-border dark:border-border-dark" />
-  </div>
+    <!-- Identity strip -->
+    <header class="flex items-center gap-4 mb-12 md:mb-16">
+      <Picture
+        src={profilePic}
+        alt="Michał Pasierbski"
+        widths={[128, 192]}
+        sizes="64px"
+        formats={["avif", "webp"]}
+        loading="eager"
+        class="w-16 h-16 rounded-full object-cover flex-shrink-0"
+      />
+      <div class="flex flex-col leading-tight">
+        <div class="flex items-center gap-2">
+          <span class="font-serif text-lg text-primary dark:text-primary-dark">
+            Michał Pasierbski
+          </span>
+          <button
+            id="pronounce-btn"
+            type="button"
+            aria-label="Hear my name pronounced"
+            class="inline-flex items-center justify-center w-6 h-6 text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            </svg>
+          </button>
+        </div>
+        <span class="font-sans text-sm text-secondary dark:text-secondary-dark">
+          Software Engineer · Zurich
+        </span>
+      </div>
+    </header>
 
-  <div class="w-full px-7 md:px-12 lg:px-16 mt-4 md:mt-6">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-1 sm:gap-y-2 text-base sm:text-lg text-secondary dark:text-secondary-dark">
-      <span>Software Engineer</span>
-      <span>Independent Builder</span>
-      <span>📍 Zurich, Switzerland 🇨🇭</span>
-    </div>
-  </div>
+    <!-- Featured post -->
+    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
+      <a href={postHref(featured)} {...(isExternal(featured) ? { target: "_blank", rel: "noopener noreferrer" } : {})} class="group block">
+        <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+          Latest essay
+        </p>
+        <h2 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+          <span class="marker-link">
+            {featured.data.title}
+          </span>{isExternal(featured) && <span class="font-sans text-base text-muted ml-2 align-middle">↗</span>}
+        </h2>
+        <p class="font-sans text-sm uppercase tracking-wide text-secondary dark:text-secondary-dark mt-4">
+          {monthFormat.format(featured.date)}
+        </p>
+        <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+          {featured.data.description}
+        </p>
+        <span class="font-sans text-sm text-primary dark:text-primary-dark mt-6 inline-block marker-link">
+          Read on →
+        </span>
+      </a>
+    </section>
 
-  <div class="w-full px-7 md:px-12 lg:px-16 mt-12 md:mt-16 mb-32 md:mb-40">
-    <p class="text-center text-lg md:text-xl lg:text-2xl leading-relaxed text-secondary dark:text-secondary-dark max-w-3xl mx-auto">
-      [I've spent 15+ years solving problems with software — across startups, big techs 
-      <img src="/assets/images/experiences/google.svg" alt="Google" class="inline-block align-middle h-5 md:h-6 mx-1" />
-      <img src="/assets/images/experiences/aws.svg" alt="AWS" class="inline-block align-middle h-5 md:h-6 mx-1" />,
-      and everything in between. I believe the best code is the code you don't write.]
-    </p>
-  </div>
+    <!-- Recent writing -->
+    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
+      <h3 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
+        Recent writing
+      </h3>
+      <ul class="divide-y divide-border dark:divide-border-dark">
+        {recent.map((post) => (
+          <li>
+            <a
+              href={postHref(post)}
+              {...(isExternal(post) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-3 group"
+            >
+              <span class="font-sans text-sm text-muted dark:text-muted-dark self-baseline">
+                {monthFormat.format(post.date)}
+              </span>
+              <span class="font-sans text-base text-primary dark:text-primary-dark self-baseline">
+                <span class="marker-link">
+                  {post.data.title}
+                </span>
+                {isExternal(post) && <span class="font-sans text-xs text-muted ml-1.5 align-middle">↗</span>}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="/posts"
+        class="font-sans text-sm text-primary dark:text-primary-dark mt-6 inline-block marker-link"
+      >
+        View all writings →
+      </a>
+    </section>
 
-  <Writings />
-  <Projects />
-  <Podcasts />
+    <!-- Also -->
+    <section class="border-t border-border dark:border-border-dark pt-10">
+      <h3 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-5">
+        Also
+      </h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/projects" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
+            I build things <span class="text-secondary dark:text-secondary-dark">→ projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="/podcasts" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
+            I appear on podcasts &amp; talks <span class="text-secondary dark:text-secondary-dark">→ podcasts</span>
+          </a>
+        </li>
+        <li>
+          <a href="/services" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
+            Available for consulting <span class="text-secondary dark:text-secondary-dark">→ services</span>
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
+            More about me <span class="text-secondary dark:text-secondary-dark">→ about</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
 </Layout>
 
 <script>

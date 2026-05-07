@@ -4,6 +4,10 @@ export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
 		extend: {
+			fontFamily: {
+				serif: ['var(--font-serif)', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+				sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+			},
 			fontSize: {
 				base: '16px',
 			},
@@ -27,6 +31,10 @@ export default {
 				border: {
 					DEFAULT: '#E8E8E4',
 					dark: '#2A2A2A',
+				},
+				accent: {
+					DEFAULT: '#F4C2C8',
+					dark: '#6B3942',
 				},
 			},
 		},
