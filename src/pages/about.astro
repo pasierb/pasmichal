@@ -1,69 +1,113 @@
 ---
 import experiences from "../collections/experiences.json";
-import AboutExperience from "../components/about-experience.astro";
 import Layout from "../layouts/main.astro";
 ---
 
-<Layout title="About Me | Michal Pasierbski">
-  <section class="max-w-4xl mx-auto mt-20 px-7 md:mt-28 lg:mt-36 lg:px-0 mb-24">
-    <h1
-      class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tight text-primary dark:text-primary-dark"
-    >
-      About Me
-    </h1>
-    <p class="mt-6 text-base leading-relaxed text-secondary dark:text-secondary-dark max-w-2xl">
-      With over 15 years of experience in software development, I've worked with startups, large corporations, big-techs and everything in between. I've built products, led teams, and architected systems.
-    </p>
+<Layout title="About | Michał Pasierbski">
+  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
-    <div class="mt-16">
-      <img src="/assets/images/fam.jpg" class="w-full rounded-xl" />
-
-      <h2 class="mt-16 mb-2 text-2xl font-bold text-primary dark:text-primary-dark">Short Bio</h2>
-      <p
-        class="text-sm leading-6 text-secondary dark:text-secondary-dark sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-      >
-        I'm passionate about solving real problems in elegant ways. Over the years, I've learned that simple is hard - it takes experience and discipline to resist complexity and find the straightforward solution. I believe the best approach is often to solve problems without writing code at all, as every line of code brings maintenance burden and potential for bugs. My focus is on finding pragmatic solutions that deliver value while remaining maintainable and sustainable for the long term.
+    <!-- Page header -->
+    <header class="mb-16">
+      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+        About
       </p>
+      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+        Hi, I'm Michał.
+      </h1>
+      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+        15+ years building software — startups, scale-ups, big tech. Currently in Zurich.
+      </p>
+    </header>
 
-      <h2
-        class="mt-16 mb-2 text-2xl font-bold text-primary dark:text-primary-dark"
-      >
+    <!-- Family photo -->
+    <figure class="mb-16">
+      <img
+        src="/assets/images/fam.jpg"
+        alt="Family photo"
+        class="w-full rounded-md"
+      />
+    </figure>
+
+    <!-- Short bio -->
+    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
+      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
+        Short bio
+      </h2>
+      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark">
+        I'm passionate about solving real problems in elegant ways. Over the years, I've learned that simple is hard — it takes experience and discipline to resist complexity and find the straightforward solution. I believe the best approach is often to solve problems without writing code at all, since every line brings maintenance burden and potential for bugs. My focus is on pragmatic solutions that deliver value while remaining maintainable for the long term.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
+      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-8">
         Experience
       </h2>
-      <div class="px-5 py-10">
-        {
-          experiences.map((experience) => {
-            return (
-              <div class="pb-10 border-l border-border dark:border-border-dark last:border-l-0">
-                <AboutExperience
-                  dates={experience.dates}
-                  role={experience.role}
-                  company={experience.company}
-                  description={experience.description}
-                  logo={experience.logo}
-                />
-              </div>
-            )
-          })
-        }
-      </div>
+      <ol class="space-y-10">
+        {experiences.map((experience) => (
+          <li>
+            <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-2">
+              {experience.dates}
+            </p>
+            <h3 class="font-serif text-xl leading-tight text-primary dark:text-primary-dark">
+              {experience.role}
+            </h3>
+            <p class="font-sans text-sm text-secondary dark:text-secondary-dark mt-1">
+              {experience.company}
+            </p>
+            {Array.isArray(experience.description) ? (
+              <ul class="mt-3 space-y-1.5">
+                {experience.description.map((item) => (
+                  <li class="font-sans text-sm leading-relaxed text-secondary dark:text-secondary-dark pl-4 -indent-4 before:content-['—'] before:mr-2 before:text-muted">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="font-sans text-sm leading-relaxed text-secondary dark:text-secondary-dark mt-3">
+                {experience.description}
+              </p>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
 
-      <h2 class="mt-16 mb-2 text-2xl font-bold text-primary dark:text-primary-dark">Let's Connect</h2>
-      <p
-        class="text-sm leading-6 text-secondary dark:text-secondary-dark sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-      >
-        If you want to stay up to date with my work be sure to <a
-          href="https://x.com/pasmichal_"
-          target="_blank"
-          class="text-primary dark:text-primary-dark underline">follow me on twitter</a
-        >, or you can send me an <a href="mailto:mpasierbski@gmail.com" class="text-primary dark:text-primary-dark underline"
-          >email</a
-        > and I'll be sure to get back to you. You can also <a
-          href="/michal_pasierbski_cv.pdf"
-          download
-          class="text-primary dark:text-primary-dark underline">download my CV</a
-        >.
-      </p>
-    </div>
-  </section>
+    <!-- Elsewhere -->
+    <section class="border-t border-border dark:border-border-dark pt-10">
+      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-5">
+        Elsewhere
+      </h2>
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="https://x.com/pasmichal_"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-sans text-base text-primary dark:text-primary-dark marker-link"
+          >
+            Follow me on Twitter <span class="font-sans text-xs text-muted ml-1 align-middle">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="mailto:mpasierbski@gmail.com"
+            class="font-sans text-base text-primary dark:text-primary-dark marker-link"
+          >
+            Send me an email
+          </a>
+        </li>
+        <li>
+          <a
+            href="/michal_pasierbski_cv.pdf"
+            download
+            class="font-sans text-base text-primary dark:text-primary-dark marker-link"
+          >
+            Download my CV
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
 </Layout>
