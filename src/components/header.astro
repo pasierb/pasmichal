@@ -1,7 +1,6 @@
 ---
 import menus from "../collections/menu.json";
 import Logo from "../components/logo.astro";
-import SocialLinks from "../components/social-links.astro";
 
 const pathname = Astro.url.pathname;
 ---
@@ -36,14 +35,8 @@ const pathname = Astro.url.pathname;
       </nav>
     </div>
 
-    <!-- Right: Social icons | dark mode -->
+    <!-- Right: dark mode -->
     <div class="flex items-center gap-4">
-      <div class="hidden sm:flex items-center gap-3">
-        <SocialLinks size="sm" />
-      </div>
-
-      <div class="hidden sm:block w-px h-4 bg-border dark:bg-border-dark"></div>
-
       <div
         id="darkToggle"
         class="flex items-center justify-center w-8 h-8 cursor-pointer text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
@@ -118,9 +111,6 @@ const pathname = Astro.url.pathname;
         );
       })
     }
-    <div class="flex items-center gap-4 pt-3 mt-2 border-t border-border dark:border-border-dark">
-      <SocialLinks />
-    </div>
   </nav>
 </header>
 
