@@ -86,6 +86,15 @@ const monthFormat = new Intl.DateTimeFormat("en-US", {
         <p class="font-sans text-sm uppercase tracking-wide text-secondary dark:text-secondary-dark mt-4">
           {monthFormat.format(featured.date)}
         </p>
+        {featured.data.heroImage && (
+          <figure class="mt-6">
+            <img
+              src={featured.data.heroImage}
+              alt={featured.data.title}
+              class="w-full rounded-md"
+            />
+          </figure>
+        )}
         <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
           {featured.data.description}
         </p>
