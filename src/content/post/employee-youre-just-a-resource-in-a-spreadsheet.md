@@ -37,6 +37,8 @@ You don't go looking for a job when you need one. You look when you already have
 
 When a company cuts 10% of headcount, they're not firing *you*. They're deleting a row to keep a board or a shareholder happy. If you never bought the "family" speech, you won't be gutted by the termination email either. It's a math problem. It was always a math problem.
 
+And it cuts the other way too. Didn't get the promotion? Maybe it's not about you. Maybe the company has too many seniors already. Maybe there's no budget for a raise this year. Maybe it's a math problem — same as everything else.
+
 ## Final Thoughts
 
 Stop waiting for a corporation to love you back. It's a spreadsheet. It doesn't have a heart, and it was never going to grow one for you.
