@@ -5,7 +5,7 @@ dateFormatted: "May 14, 2026"
 heroImage: "/assets/images/posts/layoffs-q1-2026.jpeg"
 ---
 
-A few years back, a layoff felt like a freak event — the kind of thing you read about, not something that happened to you. That's over. Since mid-2022 it's just been there, a low hum in the background, and 2026 has been as loud as anything I can remember.
+A few years back, a layoff felt like a freak event — the kind of thing you read about, not something that happened to you. That's over. Since mid-2022 it hasn't stopped. Q1 2026 brought the biggest spike since the peak in Q1 2023.
 
 My LinkedIn feed is a graveyard of corporate loyalty right now. People who gave a company 5, 10, 15 years, writing these aching "end of a chapter" posts. You can feel the betrayal in them. The grief, even.
 
