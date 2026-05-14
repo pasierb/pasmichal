@@ -1,6 +1,6 @@
 ---
 title: "Employee, You're Just a Resource in a Spreadsheet"
-description: "Layoffs are background noise now. Stop identifying with your employer — treat the job as a contract, always be looking, and never take the math personally."
+description: "My LinkedIn feed is a graveyard of corporate loyalty. After 15 years, here's how I stopped taking layoffs personally — and stopped being a hostage to a job."
 dateFormatted: "May 14, 2026"
 heroImage: "/assets/images/posts/layoffs-q1-2026.jpeg"
 ---
