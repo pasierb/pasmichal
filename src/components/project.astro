@@ -3,15 +3,22 @@ import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 interface Props {
-  name: string;
-  description: string;
-  url: string;
-  imageAsset: ImageMetadata | null;
-  status: string;
-  techStack?: string[];
+	name: string;
+	description: string;
+	url: string;
+	imageAsset: ImageMetadata | null;
+	status: string;
+	techStack?: string[];
 }
 
-const { name, description, url, imageAsset, status, techStack = [] } = Astro.props;
+const {
+	name,
+	description,
+	url,
+	imageAsset,
+	status,
+	techStack = [],
+} = Astro.props;
 ---
 
 <a

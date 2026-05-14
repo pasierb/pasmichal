@@ -1,37 +1,37 @@
 ---
 import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
-import Layout from "../layouts/main.astro";
 import profilePic from "../assets/images/profile_pic.png";
+import Layout from "../layouts/main.astro";
 
 const allPosts = await getCollection("post");
 
 function parseDate(dateStr: string) {
-  const [month, day, year] = dateStr.split(" ");
-  return new Date(`${month} ${parseInt(day)}, ${year}`);
+	const [month, day, year] = dateStr.split(" ");
+	return new Date(`${month} ${Number.parseInt(day)}, ${year}`);
 }
 
 const sortedPosts = allPosts
-  .map((post) => ({
-    ...post,
-    date: parseDate(post.data.dateFormatted),
-  }))
-  .sort((a, b) => b.date.getTime() - a.date.getTime());
+	.map((post) => ({
+		...post,
+		date: parseDate(post.data.dateFormatted),
+	}))
+	.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const featured = sortedPosts[0];
 const recent = sortedPosts.slice(1, 6);
 
-function postHref(post: typeof sortedPosts[number]) {
-  return post.data.externalUrl ?? `/post/${post.id}`;
+function postHref(post: (typeof sortedPosts)[number]) {
+	return post.data.externalUrl ?? `/post/${post.id}`;
 }
 
-function isExternal(post: typeof sortedPosts[number]) {
-  return !!post.data.externalUrl;
+function isExternal(post: (typeof sortedPosts)[number]) {
+	return !!post.data.externalUrl;
 }
 
 const monthFormat = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
+	month: "short",
+	year: "numeric",
 });
 ---
 

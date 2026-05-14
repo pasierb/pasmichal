@@ -1,37 +1,37 @@
 ---
-import { getCollection, render, getEntry } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
 import Layout from "../../layouts/post.astro";
 
 export async function getStaticPaths() {
-  const postEntries = await getCollection("podcast");
-  return postEntries.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+	const postEntries = await getCollection("podcast");
+	return postEntries.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}));
 }
 
 const entry = await getEntry("podcast", Astro.params.slug);
 const { Content } = await render(entry!);
 
 const getYouTubeEmbedUrl = (link: string) => {
-  const url = new URL(link);
-  const videoId = [...url.pathname.split("/")].pop();
-  const si = url.searchParams.get("si");
-  const t = url.searchParams.get("t");
+	const url = new URL(link);
+	const videoId = [...url.pathname.split("/")].pop();
+	const si = url.searchParams.get("si");
+	const t = url.searchParams.get("t");
 
-  const resultUrl = new URL(`https://www.youtube.com/embed/${videoId}`);
+	const resultUrl = new URL(`https://www.youtube.com/embed/${videoId}`);
 
-  if (si) {
-    resultUrl.searchParams.set("si", si);
-  }
+	if (si) {
+		resultUrl.searchParams.set("si", si);
+	}
 
-  var result = resultUrl.href;
+	let result = resultUrl.href;
 
-  if (t) {
-    result += `&amp;start=${t}`;
-  }
+	if (t) {
+		result += `&amp;start=${t}`;
+	}
 
-  return result;
+	return result;
 };
 ---
 

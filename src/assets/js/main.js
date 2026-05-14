@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-
 document.getElementById("darkToggle").addEventListener("click", () => {
 	document.documentElement.classList.add("duration-300");
 

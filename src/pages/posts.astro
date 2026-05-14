@@ -5,39 +5,42 @@ import Layout from "../layouts/main.astro";
 const allPosts = await getCollection("post");
 
 function parseDate(dateStr: string) {
-  const [month, day, year] = dateStr.split(" ");
-  return new Date(`${month} ${parseInt(day)}, ${year}`);
+	const [month, day, year] = dateStr.split(" ");
+	return new Date(`${month} ${Number.parseInt(day)}, ${year}`);
 }
 
 const sortedPosts = allPosts
-  .map((post) => ({
-    ...post,
-    date: parseDate(post.data.dateFormatted),
-  }))
-  .sort((a, b) => b.date.getTime() - a.date.getTime());
+	.map((post) => ({
+		...post,
+		date: parseDate(post.data.dateFormatted),
+	}))
+	.sort((a, b) => b.date.getTime() - a.date.getTime());
 
-function postHref(post: typeof sortedPosts[number]) {
-  return post.data.externalUrl ?? `/post/${post.id}`;
+function postHref(post: (typeof sortedPosts)[number]) {
+	return post.data.externalUrl ?? `/post/${post.id}`;
 }
 
-function isExternal(post: typeof sortedPosts[number]) {
-  return !!post.data.externalUrl;
+function isExternal(post: (typeof sortedPosts)[number]) {
+	return !!post.data.externalUrl;
 }
 
 const monthFormat = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
+	month: "short",
+	year: "numeric",
 });
 
-const postsByYear = sortedPosts.reduce<Record<number, typeof sortedPosts>>((acc, post) => {
-  const year = post.date.getFullYear();
-  (acc[year] ??= []).push(post);
-  return acc;
-}, {});
+const postsByYear = sortedPosts.reduce<Record<number, typeof sortedPosts>>(
+	(acc, post) => {
+		const year = post.date.getFullYear();
+		(acc[year] ??= []).push(post);
+		return acc;
+	},
+	{},
+);
 
 const years = Object.keys(postsByYear)
-  .map(Number)
-  .sort((a, b) => b - a);
+	.map(Number)
+	.sort((a, b) => b - a);
 ---
 
 <Layout title="Writing | Michał Pasierbski">

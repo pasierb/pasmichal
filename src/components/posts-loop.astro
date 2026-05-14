@@ -5,30 +5,30 @@ const allPosts = await getCollection("post");
 const { count } = Astro.props;
 
 function parseDate(dateStr: string) {
-  const [month, day, year] = dateStr.split(" ");
-  return new Date(`${month} ${parseInt(day)}, ${year}`);
+	const [month, day, year] = dateStr.split(" ");
+	return new Date(`${month} ${Number.parseInt(day)}, ${year}`);
 }
 
 const sortedPosts = allPosts
-  .map((post) => ({
-    ...post,
-    date: parseDate(post.data.dateFormatted),
-  }))
-  .sort((a, b) => b.date.getTime() - a.date.getTime());
+	.map((post) => ({
+		...post,
+		date: parseDate(post.data.dateFormatted),
+	}))
+	.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const postsLoop = sortedPosts.slice(0, count).map((post) => {
-  const isExternal = !!post.data.externalUrl;
-  return {
-    ...(post.data || {}),
-    link: post.data.externalUrl ?? `/post/${post.id}`,
-    isExternal,
-    date: parseDate(post.data.dateFormatted),
-  };
+	const isExternal = !!post.data.externalUrl;
+	return {
+		...(post.data || {}),
+		link: post.data.externalUrl ?? `/post/${post.id}`,
+		isExternal,
+		date: parseDate(post.data.dateFormatted),
+	};
 });
 
 const monthFormat = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
+	month: "short",
+	year: "numeric",
 });
 ---
 

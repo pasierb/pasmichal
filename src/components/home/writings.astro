@@ -3,27 +3,27 @@ import { getCollection } from "astro:content";
 const allPosts = await getCollection("post");
 
 function parseDate(dateStr: string) {
-  const [month, day, year] = dateStr.split(" ");
-  return new Date(`${month} ${parseInt(day)}, ${year}`);
+	const [month, day, year] = dateStr.split(" ");
+	return new Date(`${month} ${Number.parseInt(day)}, ${year}`);
 }
 
 const sortedPosts = allPosts
-  .map((post) => ({
-    ...post,
-    date: parseDate(post.data.dateFormatted),
-  }))
-  .sort((a, b) => b.date.getTime() - a.date.getTime());
+	.map((post) => ({
+		...post,
+		date: parseDate(post.data.dateFormatted),
+	}))
+	.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const posts = sortedPosts.slice(0, 4).map((post) => ({
-  title: post.data.title,
-  link: post.data.externalUrl ?? `/post/${post.id}`,
-  isExternal: !!post.data.externalUrl,
-  date: post.date,
+	title: post.data.title,
+	link: post.data.externalUrl ?? `/post/${post.id}`,
+	isExternal: !!post.data.externalUrl,
+	date: post.date,
 }));
 
 const monthFormat = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
+	month: "short",
+	year: "numeric",
 });
 ---
 

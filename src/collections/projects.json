@@ -14,7 +14,14 @@
 		"image": "notamify.png",
 		"url": "https://notamify.com",
 		"status": "exited",
-		"techStack": ["Python", "PostgreSQL", "GCP", "Docker", "quart", "OpenAI LLM"],
+		"techStack": [
+			"Python",
+			"PostgreSQL",
+			"GCP",
+			"Docker",
+			"quart",
+			"OpenAI LLM"
+		],
 		"featured": true
 	},
 	{
@@ -105,7 +112,15 @@
 		"image": "siteshooter.png",
 		"url": "https://github.com/pasierb/siteshooter",
 		"status": "discontinued",
-		"techStack": ["TypeScript", "Next.js", "AWS", "AWS Lambda", "Docker", "Supabase", "TailwindCSS"]
+		"techStack": [
+			"TypeScript",
+			"Next.js",
+			"AWS",
+			"AWS Lambda",
+			"Docker",
+			"Supabase",
+			"TailwindCSS"
+		]
 	},
 	{
 		"name": "Stencilbot",
