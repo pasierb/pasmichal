@@ -2,6 +2,7 @@
 title: "Employee, You're Just a Resource in a Spreadsheet"
 description: "Layoffs are background noise now. Stop identifying with your employer — treat the job as a contract, always be looking, and never take the math personally."
 dateFormatted: "May 14, 2026"
+heroImage: "/assets/images/posts/layoffs-q1-2026.jpeg"
 ---
 
 A few years back, a layoff felt like a freak event — the kind of thing you read about, not something that happened to you. That's over. Since mid-2022 it's just been there, a low hum in the background, and 2026 has been as loud as anything I can remember.
