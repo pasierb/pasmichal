@@ -1,5 +1,14 @@
 [
 	{
+		"name": "Elaiia",
+		"description": "AI customer simulation platform by Delta Labs. Simulates how customer segments react to product concepts, pricing, and messaging so teams can test decisions before committing.",
+		"image": "elaiia-banner.jpg",
+		"url": "https://elaiia.ai",
+		"status": "active",
+		"techStack": ["LangChain", "LangGraph", "Next.js", "FastAPI"],
+		"featured": true
+	},
+	{
 		"name": "Practically Agents",
 		"description": "Consulting service helping companies design, build, and deploy production-grade AI agent systems integrated with existing workflows and tools.",
 		"image": "practicallyagents.webp",

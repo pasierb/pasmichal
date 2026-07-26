@@ -1,6 +1,16 @@
 [
 	{
-		"dates": "November 2021 · Present",
+		"dates": "June 2026 · Present",
+		"role": "Staff Software Engineer",
+		"company": "Delta Labs AG, Zurich, Switzerland",
+		"description": [
+			"Building Elaiia, an AI customer simulation platform that predicts how customer segments respond to product, pricing, and messaging decisions",
+			"Tech: LangChain, LangGraph, Next.js, FastAPI"
+		],
+		"logo": "/assets/images/experiences/delta-labs.svg"
+	},
+	{
+		"dates": "November 2021 · May 2026",
 		"role": "Software Engineer",
 		"company": "Google, Zurich, Switzerland",
 		"description": [
