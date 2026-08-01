@@ -1,0 +1,39 @@
+---
+interface Props {
+	headings: { depth: number; slug: string; text: string }[];
+	maxDepth?: number;
+}
+
+// Mirrors the old remark-toc config: `{ heading: "On this page", maxDepth: 3 }`.
+// Post titles are rendered by the layout, so markdown headings start at depth 2.
+const { headings, maxDepth = 3 } = Astro.props;
+const items = headings.filter((h) => h.depth > 1 && h.depth <= maxDepth);
+---
+
+{
+  items.length > 0 && (
+    <nav
+      aria-labelledby="toc-heading"
+      class="mb-12 py-6 border-t border-b border-border dark:border-border-dark"
+    >
+      <h2
+        id="toc-heading"
+        class="font-sans text-[0.6rem] uppercase tracking-widest text-muted dark:text-muted-dark mb-4"
+      >
+        On this page
+      </h2>
+      <ul class="space-y-2">
+        {items.map((heading) => (
+          <li class:list={[heading.depth > 2 && "ml-5"]}>
+            <a
+              href={`#${heading.slug}`}
+              class="font-sans text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

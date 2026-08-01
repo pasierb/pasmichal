@@ -1,35 +1,33 @@
-import tailwind from "@astrojs/tailwind";
 // @ts-check
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
-import remarkToc from "remark-toc";
 
 import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind()],
-
-	experimental: {
-		fonts: [
-			{
-				provider: fontProviders.google(),
-				name: "Source Serif 4",
-				cssVariable: "--font-serif",
-				weights: ["400", "600", "700"],
-			},
-			{
-				provider: fontProviders.google(),
-				name: "Inter Tight",
-				cssVariable: "--font-sans",
-				weights: ["400", "500", "600"],
-			},
-		],
+	vite: {
+		plugins: [tailwindcss()],
 	},
 
-	markdown: {
-		remarkPlugins: [[remarkToc, { heading: "On this page", maxDepth: 3 }]],
-	},
+	fonts: [
+		{
+			provider: fontProviders.google(),
+			name: "Source Serif 4",
+			cssVariable: "--font-serif-family",
+			weights: ["400", "600", "700"],
+		},
+		{
+			provider: fontProviders.google(),
+			name: "Inter Tight",
+			cssVariable: "--font-sans-family",
+			weights: ["400", "500", "600"],
+		},
+	],
 
 	site: "https://www.pasmichal.com",
-	adapter: netlify(),
+	// imageCDN defaults to true, which routes every image through Netlify's
+	// runtime /.netlify/images endpoint instead of optimizing at build time.
+	// This site is fully static, so keep the pre-optimized build output.
+	adapter: netlify({ imageCDN: false }),
 });

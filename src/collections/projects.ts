@@ -1,5 +1,5 @@
-import { z } from "astro:content";
 import type { ImageMetadata } from "astro";
+import { z } from "astro/zod";
 import data from "./projects.json";
 
 const imageModules = import.meta.glob<{ default: ImageMetadata }>(
@@ -18,7 +18,7 @@ const projectSchema = z.object({
 	name: z.string(),
 	description: z.string(),
 	image: z.string(),
-	url: z.string().url(),
+	url: z.url(),
 	status: z.enum(["active", "exited", "discontinued"]),
 	techStack: z.array(z.string()),
 	featured: z.boolean().optional().default(false),

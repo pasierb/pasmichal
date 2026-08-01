@@ -1,16 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../../../src";
+
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* The *-family variables are emitted by Astro's <Font /> component. */
+  --font-sans: var(--font-sans-family), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif-family), Georgia, Cambria, "Times New Roman", serif;
+
+  --text-base: 16px;
+  --text-base--line-height: 1.5;
+
+  --color-surface: #FAFAFA;
+  --color-surface-dark: #141414;
+  --color-primary: #1A1A1A;
+  --color-primary-dark: #EDEDEC;
+  --color-secondary: #6B6B6B;
+  --color-secondary-dark: #9A9A9A;
+  --color-muted: #737373;
+  --color-muted-dark: #8A8A8A;
+  --color-border: #E8E8E4;
+  --color-border-dark: #2A2A2A;
+  --color-accent: #F4C2C8;
+  --color-accent-dark: #6B3942;
+}
 
 @layer base {
   html {
-    font-family: theme('fontFamily.sans');
+    font-family: var(--font-sans);
   }
 }
 
 @layer components {
   .marker-link {
-    background-image: linear-gradient(to top, theme('colors.accent.DEFAULT') 25%, transparent 25%);
+    background-image: linear-gradient(to top, var(--color-accent) 25%, transparent 25%);
     background-repeat: no-repeat;
     background-position: left;
     background-size: 0% 100%;
@@ -19,7 +45,7 @@
     -webkit-box-decoration-break: clone;
   }
   html.dark .marker-link {
-    background-image: linear-gradient(to top, theme('colors.accent.dark') 25%, transparent 25%);
+    background-image: linear-gradient(to top, var(--color-accent-dark) 25%, transparent 25%);
   }
   .group:hover .marker-link,
   .marker-link:hover {

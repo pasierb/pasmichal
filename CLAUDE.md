@@ -5,12 +5,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Tech Stack & Architecture
 
 This is a personal blog and portfolio site built with:
-- **Astro** - Static site generator with content collections
-- **TailwindCSS** - Utility-first CSS framework
+- **Astro 7** - Static site generator with content collections
+- **TailwindCSS 4** - Utility-first CSS framework
 - **TypeScript** - Type-safe JavaScript
 - **Netlify** - Hosting
 - **Biome** - Linting and formatting
-- **pnpm** - Package manager
+- **pnpm** - Package manager (the only lockfile; do not add `package-lock.json`)
+
+Requires Node 22.12+ (pinned in `.node-version`).
+
+Tailwind 4 is configured CSS-first — there is no `tailwind.config.mjs`. The
+theme, plugins, and the `dark` variant all live at the top of
+`src/assets/css/main.css` via `@theme`, `@plugin`, and `@custom-variant`. Dark
+mode keys off a `.dark` class on `<html>`, so the `@custom-variant dark` line is
+load-bearing for every `dark:` utility in the codebase.
+
+Fonts come from Astro's `fonts` config, which emits `--font-sans-family` and
+`--font-serif-family`. Those are deliberately *not* named `--font-sans` /
+`--font-serif`, because Tailwind 4 uses those names as its own theme keys;
+`@theme` composes the Astro variables into the Tailwind ones.
+
+Markdown is rendered by **Sätteri**, Astro's native pipeline. There is no
+remark/rehype setup — adding a remark or rehype plugin would require installing
+`@astrojs/markdown-remark` and setting `markdown.processor`.
 
 ## Development Commands
 
@@ -49,7 +66,9 @@ Content schema is defined in `src/content.config.js` using Zod validation.
 
 - Dark mode support with localStorage persistence
 - Responsive design with TailwindCSS
-- Table of contents generation for posts
+- Opt-in table of contents: set `toc: true` in a post's frontmatter and
+  `src/components/table-of-contents.astro` builds it from the headings returned
+  by `render()`
 - SEO-friendly with proper meta tags
 
 ## Writing Style Guidelines

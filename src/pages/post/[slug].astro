@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/post.astro";
 
 export async function getStaticPaths() {
@@ -13,10 +13,10 @@ export async function getStaticPaths() {
 	}));
 }
 
-const entry = await getEntry("post", Astro.params.slug);
-const { Content } = await render(entry!);
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
 ---
 
-<Layout frontmatter={entry!.data}>
+<Layout frontmatter={entry.data} headings={headings}>
 	<Content />
 </Layout>
