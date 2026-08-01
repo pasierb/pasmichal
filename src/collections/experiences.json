@@ -1,13 +1,13 @@
 [
 	{
 		"dates": "June 2026 · Present",
-		"role": "Staff Software Engineer",
+		"role": "Engineering Lead",
 		"company": "Delta Labs AG, Zurich, Switzerland",
 		"description": [
-			"Building Elaiia, an AI customer simulation platform that predicts how customer segments respond to product, pricing, and messaging decisions",
+			"Leading engineering on Elaiia, an AI customer simulation platform that predicts how customer segments respond to product, pricing, and messaging decisions",
+			"Own technical direction, architecture and delivery across the product",
 			"Tech: LangChain, LangGraph, Next.js, FastAPI"
-		],
-		"logo": "/assets/images/experiences/delta-labs.svg"
+		]
 	},
 	{
 		"dates": "November 2021 · May 2026",

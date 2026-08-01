@@ -7,16 +7,19 @@ const { logo, dates, role, company, description } = Astro.props;
     class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-surface border rounded-full w-14 h-14 border-border dark:border-border-dark"
   >
     {/* Decorative: {company} is rendered as text just below. Explicit
-        dimensions matter here because this repeats 11x down /resume. */}
-    <img
-      src={logo}
-      alt=""
-      width="32"
-      height="32"
-      loading="lazy"
-      decoding="async"
-      class="w-8 max-h-8"
-    />
+        dimensions matter here because this repeats 11x down /resume. The
+        circle still renders without a logo — it masks the timeline rule. */}
+    {logo && (
+      <img
+        src={logo}
+        alt=""
+        width="32"
+        height="32"
+        loading="lazy"
+        decoding="async"
+        class="w-8 max-h-8"
+      />
+    )}
   </div>
 
   <p
