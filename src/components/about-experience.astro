@@ -6,7 +6,17 @@ const { logo, dates, role, company, description } = Astro.props;
   <div
     class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-surface border rounded-full w-14 h-14 border-border dark:border-border-dark"
   >
-    <img src={logo} alt={company} class="w-8 max-h-8" />
+    {/* Decorative: {company} is rendered as text just below. Explicit
+        dimensions matter here because this repeats 11x down /resume. */}
+    <img
+      src={logo}
+      alt=""
+      width="32"
+      height="32"
+      loading="lazy"
+      decoding="async"
+      class="w-8 max-h-8"
+    />
   </div>
 
   <p

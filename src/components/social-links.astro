@@ -7,13 +7,20 @@ interface Props {
 
 const { size = "md" } = Astro.props;
 const sizeClass = size === "sm" ? "w-[15px] h-[15px]" : "w-4 h-4";
+
+// mailto: and the CV download open in place; everything else is a real outbound
+// profile link. rel="me" backs the schema.org sameAs identity graph, and
+// noopener is the security half that was missing entirely.
+const isOutbound = (social: (typeof socials)[number]) =>
+	!social.url.startsWith("mailto:") && !social.download;
 ---
 
 {
   socials.map((social) => (
     <a
       href={social.url}
-      target={social.url.startsWith("mailto:") || social.download ? undefined : "_blank"}
+      target={isOutbound(social) ? "_blank" : undefined}
+      rel={isOutbound(social) ? "me noopener noreferrer" : undefined}
       download={social.download ? "" : undefined}
       class="text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
       aria-label={social.label}

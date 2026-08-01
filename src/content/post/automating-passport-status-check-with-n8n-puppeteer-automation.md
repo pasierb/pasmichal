@@ -1,8 +1,9 @@
 ---
 title: Automating Passport Status Check with n8n and Puppeteer
-description: Learn how I set up a script to periodically check the Polish Embassy website and send Telegram notifications when my passport is ready. Save time and skip manual checks!
-dateFormatted: "May 14, 2025"
-heroImage: "/assets/images/posts/n8n-puppeteer.png"
+description: "How I wired n8n and Puppeteer to poll the Polish Embassy site and ping me on Telegram the moment my passport was ready. No more daily manual checks."
+pubDate: "2025-05-14"
+heroImage: "../../assets/images/posts/n8n-puppeteer.webp"
+heroImageAlt: "The n8n workflow canvas, with a Puppeteer node feeding a Telegram notification step"
 ---
 
 
@@ -63,7 +64,7 @@ volumes:
 
 ### The Automation Workflow
 
-![n8n passport check workflow](../../assets/images/passport-check-workflow.png)
+![n8n passport check workflow](../../assets/images/passport-check-workflow.webp)
 
 The workflow follows these steps:
 
@@ -133,5 +134,5 @@ With this automation in place, I no longer need to manually check the passport s
 As I had to travel to Bern and on the way back stopped in Lucerne, I took some pics.
 Switzerland is truly beautiful and unique!
 
-![Bern](../../assets/images/bern.jpg)
-![Lucerne](../../assets/images/lucerne.jpg)
+![Bern](../../assets/images/bern.webp)
+![Lucerne](../../assets/images/lucerne.webp)

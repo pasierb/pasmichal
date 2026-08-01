@@ -1,9 +1,9 @@
 ---
-layout: ../../layouts/post.astro
 title: "How to Pass Data from a Function Tool to State in ADK (Agent Development Kit)"
-description: "Discover key limitations of Cloudflare Workers KV from real production experience: unavailability in China market, cold cache latency issues of up to 500ms, and practical workarounds learned during migration from DynamoDB at EF Education First."
-dateFormatted: "April 21, 2025"
-heroImage: /assets/images/posts/adk-function-to-state.png
+seoTitle: "ADK: Pass Function Tool Data into Session State"
+description: "Add a tool_context argument to your ADK tool function and Google's Agent Development Kit injects ToolContext, giving you direct access to session state."
+pubDate: "2025-04-21"
+heroImage: "../../assets/images/posts/adk-function-to-state.webp"
 ---
 
 ## What is ADK?

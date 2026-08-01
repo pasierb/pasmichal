@@ -9,6 +9,13 @@ import SocialLinks from "../components/social-links.astro";
       <span>&copy; {new Date().getFullYear()}</span>
     </div>
     <div class="flex items-center gap-4">
+      <!-- Autodiscovery alone loses most would-be subscribers. -->
+      <a
+        href="/rss.xml"
+        class="text-sm text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+      >
+        RSS
+      </a>
       <SocialLinks />
     </div>
   </div>

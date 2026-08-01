@@ -1,0 +1,28 @@
+# Deliberately no [build] block: the site builds from Netlify UI settings, and
+# a [build] section here would silently override them.
+
+[[redirects]]
+  from = "https://pasmichal.com/*"
+  to = "https://www.pasmichal.com/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+# The CV PDF has no <head>, so a header is the only way to keep it out of the
+# SERPs where it would compete with /resume and /about.
+[[headers]]
+  for = "/michal_pasierbski_cv.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Content-Type = "application/rss+xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"

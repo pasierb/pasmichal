@@ -1,12 +1,15 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import { featuredProjects, projects } from "../collections/projects";
 import Layout from "../layouts/main.astro";
 
 const otherProjects = projects.filter((p) => !p.featured);
 ---
 
-<Layout title="Projects | Michał Pasierbski">
+<Layout
+  title="Projects — Startups, Side Projects & Open Source"
+  description="Things I've built: SaaS startups, AI tools, family game-dev experiments and open source. Some still running, some exited, some quietly discontinued."
+>
   <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
     <!-- Page header -->
@@ -39,12 +42,18 @@ const otherProjects = projects.filter((p) => !p.featured);
               >
                 {project.imageAsset && (
                   <div class="relative overflow-hidden rounded-md bg-gray-100 dark:bg-gray-800 aspect-[16/10] mb-4">
-                    <Picture
+                    {/* <Picture> without an explicit `width` generated
+                        full-resolution PNG fallbacks (~2.1 MB across this
+                        page). A single WebP with a real width is enough. */}
+                    <Image
                       src={project.imageAsset}
                       alt={project.name}
-                      widths={[320, 480, 640, 960]}
-                      sizes="(min-width: 640px) 320px, 100vw"
-                      formats={["avif", "webp"]}
+                      layout="constrained"
+                      width={320}
+                      widths={[320, 640]}
+                      sizes="(min-width: 640px) 320px, calc(100vw - 3.5rem)"
+                      format="webp"
+                      quality={80}
                       loading="lazy"
                       decoding="async"
                       class="w-full h-full object-cover"

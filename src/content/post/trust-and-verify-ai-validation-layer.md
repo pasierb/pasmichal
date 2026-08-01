@@ -1,8 +1,8 @@
 ---
 title: "Trust and Verify: Every AI Generation Needs a Validation Layer"
 description: "LLMs are confidently wrong. Trust takes years to build and seconds to break — here's why every AI generation at Delta Labs goes through a validation layer."
-dateFormatted: "August 1, 2026"
-heroImage: "/assets/images/posts/trust-and-verify.jpg"
+pubDate: "2026-08-01"
+heroImage: "../../assets/images/posts/trust-and-verify.jpg"
 ---
 
 ## Confidently wrong

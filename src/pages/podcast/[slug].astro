@@ -1,75 +1,80 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
+import { getCollection, render } from "astro:content";
+import JsonLd from "../../components/json-ld.astro";
 import Layout from "../../layouts/post.astro";
+import { breadcrumbs, graph, videoObject } from "../../lib/schema";
+import {
+	youTubeEmbedUrl,
+	youTubeId,
+	youTubeThumbnail,
+} from "../../lib/youtube";
 
 export async function getStaticPaths() {
-	const postEntries = await getCollection("podcast");
-	return postEntries.map((entry) => ({
+	const entries = await getCollection("podcast");
+	return entries.map((entry) => ({
 		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
 
-const entry = await getEntry("podcast", Astro.params.slug);
-const { Content } = await render(entry!);
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 
-const getYouTubeEmbedUrl = (link: string) => {
-	const url = new URL(link);
-	const videoId = [...url.pathname.split("/")].pop();
-	const si = url.searchParams.get("si");
-	const t = url.searchParams.get("t");
-
-	const resultUrl = new URL(`https://www.youtube.com/embed/${videoId}`);
-
-	if (si) {
-		resultUrl.searchParams.set("si", si);
-	}
-
-	let result = resultUrl.href;
-
-	if (t) {
-		result += `&amp;start=${t}`;
-	}
-
-	return result;
-};
+const pathname = `/podcast/${entry.id}`;
+const embedUrl = youTubeEmbedUrl(entry.data.link);
+// These pages have no hero image of their own, so the YouTube thumbnail gives
+// them a real og:image for free.
+const thumbnail = youTubeThumbnail(entry.data.link);
 ---
 
-<Layout frontmatter={entry!.data}>
-  <Fragment slot="before-content">
-    <div class="w-full max-w-2xl mx-auto dark:prose-invert">
-      <a
-        href="/podcasts"
-        class="inline-flex items-center gap-2 text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="m15 18-6-6 6-6"></path>
-        </svg>
-        Back to podcasts
-      </a>
-    </div>
+<Layout
+  frontmatter={entry.data}
+  backHref="/podcasts"
+  backLabel="Back to podcasts"
+  type="website"
+  ogImage={thumbnail}
+  ogImageWidth={1280}
+  ogImageHeight={720}
+>
+  <Fragment slot="meta-tags">
+    {/* VideoObject rather than PodcastEpisode: the latter needs a
+        PodcastSeries and a feed that do not exist, and the content really is
+        a YouTube video. */}
+    <JsonLd
+      data={graph(
+        videoObject({
+          name: entry.data.title,
+          description: entry.data.description,
+          videoId: youTubeId(entry.data.link),
+          embedUrl,
+          thumbnailUrl: thumbnail,
+          uploadDate: entry.data.pubDate,
+          pathname,
+          duration: entry.data.duration,
+          inLanguage: entry.data.lang,
+        }),
+        breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: "Podcasts", path: "/podcasts" },
+          { name: entry.data.title },
+        ]),
+      )}
+    />
   </Fragment>
 
   <Content />
 
   {
-    entry!.data.type === "youtube" && (
+    entry.data.type === "youtube" && (
       <iframe
-        src={getYouTubeEmbedUrl(entry!.data.link)}
+        src={embedUrl}
+        title={`${entry.data.title} — video`}
         width="560"
         height="315"
-        class="w-full"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        class="w-full aspect-video h-auto rounded-md"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       />
     )
