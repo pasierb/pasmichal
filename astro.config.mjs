@@ -1,7 +1,6 @@
 // @ts-check
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
-import remarkToc from "remark-toc";
 
 import netlify from "@astrojs/netlify";
 
@@ -26,10 +25,9 @@ export default defineConfig({
 		},
 	],
 
-	markdown: {
-		remarkPlugins: [[remarkToc, { heading: "On this page", maxDepth: 3 }]],
-	},
-
 	site: "https://www.pasmichal.com",
-	adapter: netlify(),
+	// imageCDN defaults to true, which routes every image through Netlify's
+	// runtime /.netlify/images endpoint instead of optimizing at build time.
+	// This site is fully static, so keep the pre-optimized build output.
+	adapter: netlify({ imageCDN: false }),
 });

@@ -1,8 +1,9 @@
 ---
 import { Picture } from "astro:assets";
 import profilePic from "../assets/images/profile_pic.png";
+import TableOfContents from "../components/table-of-contents.astro";
 import Layout from "./main.astro";
-const { frontmatter } = Astro.props;
+const { frontmatter, headings = [] } = Astro.props;
 ---
 
 <Layout title={frontmatter.title + " | Michał Pasierbski"}>
@@ -99,6 +100,8 @@ const { frontmatter } = Astro.props;
         </figure>
       )
     }
+
+    {frontmatter.toc && <TableOfContents headings={headings} />}
 
     <div class="prose prose-sm lg:prose-lg dark:prose-invert">
       <slot />

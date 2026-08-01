@@ -1,6 +1,6 @@
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
-import { defineCollection } from "astro:content";
 
 const postCollection = defineCollection({
 	loader: glob({
@@ -13,6 +13,7 @@ const postCollection = defineCollection({
 		dateFormatted: z.string(),
 		heroImage: z.string().optional(),
 		externalUrl: z.url().optional(),
+		toc: z.boolean().optional(),
 	}),
 });
 
