@@ -2,6 +2,7 @@
 import { Font } from "astro:assets";
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
+import "../assets/css/main.css";
 const { title, noFooter = false, noHeader = false } = Astro.props;
 ---
 
@@ -24,8 +25,8 @@ const { title, noFooter = false, noHeader = false } = Astro.props;
       }
     </script>
 
-    <Font cssVariable="--font-serif" preload />
-    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-serif-family" preload />
+    <Font cssVariable="--font-sans-family" preload />
 
     <style>
       .prose img {
@@ -36,7 +37,6 @@ const { title, noFooter = false, noHeader = false } = Astro.props;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-    <script src="../assets/css/main.css"></script>
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
 
     <slot name="meta-tags" />

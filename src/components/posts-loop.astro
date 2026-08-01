@@ -40,7 +40,7 @@ const monthFormat = new Intl.DateTimeFormat("en-US", {
         class="flex items-baseline gap-8 py-5 group transition-colors"
         {...(post.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
-        <span class="text-sm text-muted dark:text-muted-dark w-24 flex-shrink-0">
+        <span class="text-sm text-muted dark:text-muted-dark w-24 shrink-0">
           {monthFormat.format(post.date)}
         </span>
         <span class="text-base text-primary dark:text-primary-dark group-hover:text-secondary dark:group-hover:text-secondary-dark transition-colors">
