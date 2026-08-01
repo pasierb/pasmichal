@@ -1,22 +1,15 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import profilePic from "../assets/images/profile_pic.png";
+import profilePic from "../assets/images/profile_pic.webp";
+import JsonLd from "../components/json-ld.astro";
 import Layout from "../layouts/main.astro";
+import { formatMonth } from "../lib/date";
+import { graph, person, website } from "../lib/schema";
 
-const allPosts = await getCollection("post");
-
-function parseDate(dateStr: string) {
-	const [month, day, year] = dateStr.split(" ");
-	return new Date(`${month} ${Number.parseInt(day)}, ${year}`);
-}
-
-const sortedPosts = allPosts
-	.map((post) => ({
-		...post,
-		date: parseDate(post.data.dateFormatted),
-	}))
-	.sort((a, b) => b.date.getTime() - a.date.getTime());
+const sortedPosts = (
+	await getCollection("post", ({ data }) => !data.draft)
+).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const featured = sortedPosts[0];
 const recent = sortedPosts.slice(1, 6);
@@ -28,32 +21,41 @@ function postHref(post: (typeof sortedPosts)[number]) {
 function isExternal(post: (typeof sortedPosts)[number]) {
 	return !!post.data.externalUrl;
 }
-
-const monthFormat = new Intl.DateTimeFormat("en-US", {
-	month: "short",
-	year: "numeric",
-});
 ---
 
-<Layout title="Michał Pasierbski">
+<Layout
+  title="Michał Pasierbski — AI Engineer & Consultant, Zurich"
+  rawTitle
+  type="profile"
+>
+  {/* The entity anchor: sameAs + a single @id is what consolidates
+      "Michał Pasierbski" into one entity across X, LinkedIn and GitHub. */}
+  <Fragment slot="meta-tags">
+    <JsonLd data={graph(person(profilePic.src), website())} />
+  </Fragment>
+
   <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
     <!-- Identity strip -->
     <header class="flex items-center gap-4 mb-12 md:mb-16">
-      <Picture
+      {/* Decorative: the name is rendered as the adjacent h1. */}
+      <Image
         src={profilePic}
-        alt="Michał Pasierbski"
-        widths={[128, 192]}
-        sizes="64px"
-        formats={["avif", "webp"]}
+        alt=""
+        width={64}
+        height={64}
+        densities={[1, 2]}
+        format="webp"
+        quality={82}
         loading="eager"
+        decoding="async"
         class="w-16 h-16 rounded-full object-cover shrink-0"
       />
       <div class="flex flex-col leading-tight">
         <div class="flex items-center gap-2">
-          <span class="font-serif text-lg text-primary dark:text-primary-dark">
+          <h1 class="font-serif text-lg text-primary dark:text-primary-dark">
             Michał Pasierbski
-          </span>
+          </h1>
           <button
             id="pronounce-btn"
             type="button"
@@ -84,13 +86,23 @@ const monthFormat = new Intl.DateTimeFormat("en-US", {
           </span>{isExternal(featured) && <span class="font-sans text-base text-muted ml-2 align-middle">↗</span>}
         </h2>
         <p class="font-sans text-sm uppercase tracking-wide text-secondary dark:text-secondary-dark mt-4">
-          {monthFormat.format(featured.date)}
+          <time datetime={featured.data.pubDate.toISOString()}>
+            {formatMonth(featured.data.pubDate)}
+          </time>
         </p>
         {featured.data.heroImage && (
           <figure class="mt-6">
-            <img
+            {/* Homepage LCP element. */}
+            <Image
               src={featured.data.heroImage}
-              alt={featured.data.title}
+              alt={featured.data.heroImageAlt ?? ""}
+              layout="constrained"
+              width={672}
+              widths={[672, 1008, 1344]}
+              sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
+              format="webp"
+              quality={80}
+              priority
               class="w-full rounded-md"
             />
           </figure>
@@ -117,9 +129,12 @@ const monthFormat = new Intl.DateTimeFormat("en-US", {
               {...(isExternal(post) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-3 group"
             >
-              <span class="font-sans text-sm text-muted dark:text-muted-dark self-baseline">
-                {monthFormat.format(post.date)}
-              </span>
+              <time
+                datetime={post.data.pubDate.toISOString()}
+                class="font-sans text-sm text-muted dark:text-muted-dark self-baseline"
+              >
+                {formatMonth(post.data.pubDate)}
+              </time>
               <span class="font-sans text-base text-primary dark:text-primary-dark self-baseline">
                 <span class="marker-link">
                   {post.data.title}

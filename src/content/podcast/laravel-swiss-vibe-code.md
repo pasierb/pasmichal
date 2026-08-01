@@ -1,8 +1,10 @@
 ---
 author: "Swiss Laravel Association"
 title: "Architecting the vibe: Why Laravel is the most vibe-codable framework with Michal Pasierbski"
+seoTitle: "Why Laravel is the most vibe-codable framework"
+description: "My Swiss Laravel Association talk on why Laravel is the most vibe-codable framework — with an AI agent building a working app live on stage."
 link: "https://youtu.be/ZBJqXHFpHzw?si=gDEbgpLwJwbchbrx"
-date: "2025-06-28"
+pubDate: "2025-06-28"
 type: "youtube"
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: "Employee, You're Just a Resource in a Spreadsheet"
 description: "My LinkedIn feed is a graveyard of corporate loyalty. After 15 years, here's how I stopped taking layoffs personally — and stopped being a hostage to a job."
-dateFormatted: "May 14, 2026"
-heroImage: "/assets/images/posts/layoffs-q1-2026.jpeg"
+pubDate: "2026-05-14"
+heroImage: "../../assets/images/posts/layoffs-q1-2026.jpeg"
 ---
 
 A few years back, a layoff felt like a freak event — the kind of thing you read about, not something that happened to you. That's over. Since mid-2022 it hasn't stopped. Q1 2026 brought the biggest spike since the peak in Q1 2023.

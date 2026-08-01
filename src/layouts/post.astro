@@ -1,81 +1,98 @@
 ---
-import { Picture } from "astro:assets";
-import profilePic from "../assets/images/profile_pic.png";
+import { Image } from "astro:assets";
+import profilePic from "../assets/images/profile_pic.webp";
 import TableOfContents from "../components/table-of-contents.astro";
+import { SITE } from "../consts";
+import { formatDate } from "../lib/date";
 import Layout from "./main.astro";
-const { frontmatter, headings = [] } = Astro.props;
+
+interface Props {
+	// biome-ignore lint/suspicious/noExplicitAny: post and podcast entries share this layout
+	frontmatter: any;
+	headings?: { depth: number; slug: string; text: string }[];
+	/** Back-link target. Podcast pages pass /podcasts. */
+	backHref?: string;
+	backLabel?: string;
+	type?: "article" | "website";
+	lang?: string;
+	/**
+	 * Absolute-path social card. Derived by the caller so the same URL feeds
+	 * og:image and the JSON-LD without deriving the crop twice. Omit to fall
+	 * through to the shared card in seo.astro.
+	 */
+	ogImage?: string;
+	ogImageWidth?: number;
+	ogImageHeight?: number;
+}
+
+const {
+	frontmatter,
+	headings = [],
+	backHref = "/posts",
+	backLabel = "Back to writing",
+	type = "article",
+	lang = "en",
+	ogImage,
+	ogImageWidth,
+	ogImageHeight,
+} = Astro.props;
 ---
 
-<Layout title={frontmatter.title + " | Michał Pasierbski"}>
-  <Fragment slot="meta-tags">
-    <!-- Primary Meta Tags -->
-    <meta name="title" content={frontmatter.title} />
-    <meta name="description" content={frontmatter.description} />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content={new URL(Astro.url.pathname, Astro.url).href}
-    />
-    <meta property="og:title" content={frontmatter.title} />
-    <meta property="og:description" content={frontmatter.description} />
-    {
-      frontmatter.heroImage && (
-        <meta
-          property="og:image"
-          content={new URL(frontmatter.heroImage, Astro.url).href}
-        />
-      )
-    }
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:url"
-      content={new URL(Astro.url.pathname, Astro.url).href}
-    />
-    <meta property="twitter:title" content={frontmatter.title} />
-    <meta property="twitter:description" content={frontmatter.description} />
-    {
-      frontmatter.heroImage && (
-        <meta
-          property="twitter:image"
-          content={new URL(frontmatter.heroImage, Astro.url).href}
-        />
-      )
-    }
-  </Fragment>
+<Layout
+  title={frontmatter.seoTitle ?? frontmatter.title}
+  description={frontmatter.seoDescription ?? frontmatter.description}
+  image={ogImage}
+  imageWidth={ogImageWidth}
+  imageHeight={ogImageHeight}
+  imageAlt={frontmatter.heroImageAlt ?? frontmatter.title}
+  canonical={frontmatter.canonicalUrl}
+  noindex={frontmatter.noindex}
+  type={type}
+  publishedTime={frontmatter.pubDate}
+  modifiedTime={frontmatter.updatedDate}
+  lang={frontmatter.lang ?? lang}
+>
+  <slot name="meta-tags" slot="meta-tags" />
 
   <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
     <!-- Back link -->
     <p class="mb-12">
       <a
-        href="/posts"
+        href={backHref}
         class="font-sans text-sm text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
       >
-        ← Back to writing
+        ← {backLabel}
       </a>
     </p>
 
     <!-- Byline -->
     <div class="flex items-center gap-4 mb-8">
-      <Picture
+      {/* densities + explicit width/height, and deliberately no `layout`:
+          the two are mutually exclusive, and a fixed-size avatar wants
+          1x/2x rather than a responsive srcset. */}
+      <Image
         src={profilePic}
-        alt="Michał Pasierbski"
-        widths={[112, 168]}
-        sizes="56px"
-        formats={["avif", "webp"]}
+        alt=""
+        width={56}
+        height={56}
+        densities={[1, 2]}
+        format="webp"
+        quality={82}
+        loading="eager"
+        decoding="async"
         class="w-14 h-14 rounded-full object-cover shrink-0"
       />
       <div class="flex flex-col leading-tight">
         <span class="font-sans text-base text-primary dark:text-primary-dark">
-          Michał Pasierbski
+          {SITE.name}
         </span>
-        <span class="font-sans text-sm text-muted dark:text-muted-dark mt-1">
-          {frontmatter.dateFormatted}
-        </span>
+        <time
+          datetime={frontmatter.pubDate.toISOString()}
+          class="font-sans text-sm text-muted dark:text-muted-dark mt-1"
+        >
+          {formatDate(frontmatter.pubDate)}
+        </time>
       </div>
     </div>
 
@@ -92,9 +109,20 @@ const { frontmatter, headings = [] } = Astro.props;
     {
       frontmatter.heroImage && (
         <figure class="mb-12">
-          <img
+          {/* `priority` sets loading=eager + decoding=sync + fetchpriority=high.
+              width + layout="constrained" derive height from the source aspect
+              ratio, so the <img> ships real dimensions and CLS goes to zero.
+              The container is max-w-2xl px-7 md:px-0 -> 672px from `md:`. */}
+          <Image
             src={frontmatter.heroImage}
-            alt={frontmatter.title}
+            alt={frontmatter.heroImageAlt ?? ""}
+            layout="constrained"
+            width={672}
+            widths={[672, 1008, 1344]}
+            sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
+            format="webp"
+            quality={80}
+            priority
             class="w-full rounded-md"
           />
         </figure>

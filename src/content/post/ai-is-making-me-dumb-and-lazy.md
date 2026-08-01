@@ -1,7 +1,7 @@
 ---
 title: AI is making me dumb and lazy
-description: "New slop skill unlocked: I wasted couple hours trying to make AI do something instead of learning about it first."
-dateFormatted: "August 4, 2025"
+description: "New slop skill unlocked: I burned hours making AI configure a Bazel monorepo instead of learning it myself. On the quiet cost of outsourcing your thinking."
+pubDate: "2025-08-04"
 ---
 
 _Disclaimer: this essay is NOT about simple landing pages or one-of web apps. I'm talking about production systems that are meant to be maintained_

@@ -1,9 +1,9 @@
 ---
 title: "How I Tackle Complex Projects Without Getting Stuck"
-description: "Learn effective strategies for managing complex projects, breaking them down into manageable pieces, and maintaining momentum throughout the development process."
-dateFormatted: "May 10, 2025"
+description: "How I break big projects into subproblems, rank them by difficulty, and attack the hardest first — the routine that keeps me out of analysis paralysis."
+pubDate: "2025-05-10"
 toc: true
-heroImage: "/assets/images/posts/how-i-tackle-complex-projects.png"
+heroImage: "../../assets/images/posts/how-i-tackle-complex-projects.png"
 --- 
 
 Tackling complex projects can feel overwhelming. I’ve found that breaking down the problem into manageable parts while staying mindful of potential challenges is the best way to approach it. Here’s how I do it.

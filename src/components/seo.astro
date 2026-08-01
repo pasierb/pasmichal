@@ -1,0 +1,119 @@
+---
+import { SITE } from "../consts";
+import { deriveOgImage } from "../lib/og";
+import { canonicalFor, clampDescription, toAbsolute } from "../lib/seo";
+
+export interface Props {
+	/** Page-specific title WITHOUT the brand suffix. */
+	title: string;
+	description?: string;
+	/** Site-absolute path ("/assets/...") or a full URL. */
+	image?: string;
+	imageAlt?: string;
+	imageWidth?: number;
+	imageHeight?: number;
+	type?: "website" | "article" | "profile";
+	publishedTime?: Date;
+	modifiedTime?: Date;
+	/** Override for content that lives canonically elsewhere. */
+	canonical?: string;
+	noindex?: boolean;
+	/** Skip the brand suffix entirely (the homepage title already carries it). */
+	rawTitle?: boolean;
+}
+
+const {
+	title,
+	description = SITE.description,
+	image,
+	imageAlt,
+	imageWidth,
+	imageHeight,
+	type = "website",
+	publishedTime,
+	modifiedTime,
+	canonical,
+	noindex = false,
+	rawTitle = false,
+} = Astro.props;
+
+const suffix = ` | ${SITE.name}`;
+// Append the brand only when the result still fits Google's ~60 char window.
+// Most post titles overflow, and a truncated brand is worse than no brand.
+const documentTitle =
+	rawTitle || title.includes(SITE.name) || title.length + suffix.length > 60
+		? title
+		: title + suffix;
+
+const metaDescription = clampDescription(description);
+const canonicalHref = canonical
+	? toAbsolute(canonical)
+	: canonicalFor(Astro.url.pathname);
+
+// Pages that pass no image share one derived card; deriveOgImage() falls back
+// to cover.jpg, so `image` is always defined by the time it is used.
+const fallback = await deriveOgImage();
+const ogImage = toAbsolute(image ?? fallback.src);
+const ogWidth = imageWidth ?? fallback.width;
+const ogHeight = imageHeight ?? fallback.height;
+---
+
+<title>{documentTitle}</title>
+<meta name="description" content={metaDescription} />
+<link rel="canonical" href={canonicalHref} />
+<meta
+  name="robots"
+  content={noindex
+    ? "noindex, follow"
+    : "index, follow, max-image-preview:large, max-snippet:-1"}
+/>
+<meta name="author" content={SITE.name} />
+
+<!-- Open Graph. og:title omits the brand on purpose: og:site_name carries it. -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:url" content={canonicalHref} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={imageAlt ?? title} />
+{ogWidth && <meta property="og:image:width" content={String(ogWidth)} />}
+{ogHeight && <meta property="og:image:height" content={String(ogHeight)} />}
+{
+  type === "article" && publishedTime && (
+    <meta
+      property="article:published_time"
+      content={publishedTime.toISOString()}
+    />
+  )
+}
+{
+  type === "article" && modifiedTime && (
+    <meta
+      property="article:modified_time"
+      content={modifiedTime.toISOString()}
+    />
+  )
+}
+{
+  type === "article" && (
+    <meta property="article:author" content={`${SITE.url}/about`} />
+  )
+}
+
+<!-- Twitter uses name=, not property=. The old property= tags were ignored. -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={SITE.twitterHandle} />
+<meta name="twitter:creator" content={SITE.twitterHandle} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={imageAlt ?? title} />
+
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${SITE.name} — Writing`}
+  href={`${SITE.url}/rss.xml`}
+/>

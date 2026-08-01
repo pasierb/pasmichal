@@ -1,9 +1,22 @@
 ---
+import { Image } from "astro:assets";
+import famPhoto from "../assets/images/fam.webp";
+import profilePic from "../assets/images/profile_pic.webp";
 import experiences from "../collections/experiences.json";
+import JsonLd from "../components/json-ld.astro";
 import Layout from "../layouts/main.astro";
+import { graph, person, profilePage } from "../lib/schema";
 ---
 
-<Layout title="About | Michał Pasierbski">
+<Layout
+  title="About Michał Pasierbski — Engineer in Zurich"
+  description="15+ years building software across startups, scale-ups and big tech — Google, AWS, EF Education First. Now in Zurich, building AI products at Delta Labs."
+  type="profile"
+>
+  <Fragment slot="meta-tags">
+    <JsonLd data={graph(profilePage(), person(profilePic.src))} />
+  </Fragment>
+
   <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
     <!-- Page header -->
@@ -21,9 +34,16 @@ import Layout from "../layouts/main.astro";
 
     <!-- Family photo -->
     <figure class="mb-16">
-      <img
-        src="/assets/images/fam.jpg"
-        alt="Family photo"
+      <Image
+        src={famPhoto}
+        alt="Michał Pasierbski with his family"
+        layout="constrained"
+        width={672}
+        widths={[672, 1008, 1344]}
+        sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
+        format="webp"
+        quality={80}
+        priority
         class="w-full rounded-md"
       />
     </figure>

@@ -1,20 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/main.astro";
+import { formatMonth } from "../lib/date";
 
-const allPosts = await getCollection("post");
-
-function parseDate(dateStr: string) {
-	const [month, day, year] = dateStr.split(" ");
-	return new Date(`${month} ${Number.parseInt(day)}, ${year}`);
-}
-
-const sortedPosts = allPosts
-	.map((post) => ({
-		...post,
-		date: parseDate(post.data.dateFormatted),
-	}))
-	.sort((a, b) => b.date.getTime() - a.date.getTime());
+const sortedPosts = (
+	await getCollection("post", ({ data }) => !data.draft)
+).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 function postHref(post: (typeof sortedPosts)[number]) {
 	return post.data.externalUrl ?? `/post/${post.id}`;
@@ -24,15 +15,11 @@ function isExternal(post: (typeof sortedPosts)[number]) {
 	return !!post.data.externalUrl;
 }
 
-const monthFormat = new Intl.DateTimeFormat("en-US", {
-	month: "short",
-	year: "numeric",
-});
-
 const postsByYear = sortedPosts.reduce<Record<number, typeof sortedPosts>>(
 	(acc, post) => {
-		const year = post.date.getFullYear();
-		(acc[year] ??= []).push(post);
+		const year = post.data.pubDate.getUTCFullYear();
+		acc[year] ??= [];
+		acc[year].push(post);
 		return acc;
 	},
 	{},
@@ -43,7 +30,10 @@ const years = Object.keys(postsByYear)
 	.sort((a, b) => b - a);
 ---
 
-<Layout title="Writing | Michał Pasierbski">
+<Layout
+  title="Writing on AI, Engineering & Products"
+  description="Essays on AI agents, software engineering and shipping products, written from 15+ years across startups and big tech. Pragmatic, opinionated, no fluff."
+>
   <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
     <!-- Page header -->
@@ -72,13 +62,21 @@ const years = Object.keys(postsByYear)
                 {...(isExternal(post) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-3 group"
               >
-                <span class="font-sans text-sm text-muted dark:text-muted-dark self-baseline">
-                  {monthFormat.format(post.date)}
-                </span>
+                <time
+                  datetime={post.data.pubDate.toISOString()}
+                  class="font-sans text-sm text-muted dark:text-muted-dark self-baseline"
+                >
+                  {formatMonth(post.data.pubDate)}
+                </time>
                 <span class="font-sans text-base text-primary dark:text-primary-dark self-baseline">
                   <span class="marker-link">
                     {post.data.title}
                   </span>
+                  {post.data.source && (
+                    <span class="font-sans text-xs uppercase tracking-wide text-muted dark:text-muted-dark ml-2">
+                      {post.data.source}
+                    </span>
+                  )}
                   {isExternal(post) && <span class="font-sans text-xs text-muted ml-1.5 align-middle">↗</span>}
                 </span>
               </a>

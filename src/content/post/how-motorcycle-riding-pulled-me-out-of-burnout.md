@@ -1,8 +1,9 @@
 ---
 title: "How Motorcycle Riding Pulled Me Out of Burnout"
 description: "Motorcycle riding is the ultimate digital detox. Read how the physical demands and screen-free freedom of riding can help you beat burnout and stay present."
-dateFormatted: "May 8, 2026"
-heroImage: "/assets/images/posts/my_yamaha.jpg"
+pubDate: "2026-05-08"
+heroImage: "../../assets/images/posts/my_yamaha.jpg"
+heroImageAlt: "My Yamaha parked on a Swiss mountain pass"
 ---
 
 If you ask a random person what they think about motorcycles, they’ll likely tell you it’s a dangerous hobby. While that is objectively true—you are traveling at high speeds with essentially zero protection—there is a profound therapeutic aspect to it that non-riders often miss.

@@ -1,8 +1,11 @@
 ---
 author: "Just Join IT"
 title: "[PL] Polscy Programiści na Świecie #16 | Michał Pasierbski, AWS, BERLIN"
+seoTitle: "Polscy Programiści na Świecie #16 — Michał Pasierbski"
+description: "A Polish-language conversation with Just Join IT about going from self-taught developer to engineer at Amazon and Google, and life as a dev abroad."
 link: "https://www.youtube.com/live/9PPn1qGJFqM?si=wLJjcacP0VScuTxU"
-date: "2021-09-06"
+pubDate: "2021-09-06"
+lang: "pl"
 type: "youtube"
 ---
 

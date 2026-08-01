@@ -1,7 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import vibeIssue1 from "../assets/images/vibefix/vibe_issue_1.png";
+import JsonLd from "../components/json-ld.astro";
 import Layout from "../layouts/main.astro";
+import { graph, service } from "../lib/schema";
 
 const services = [
 	{
@@ -32,7 +34,14 @@ const services = [
 ];
 ---
 
-<Layout title="Fix the Vibe — services | Michał Pasierbski">
+<Layout
+  title="Fix the Vibe — Vibe-Code Cleanup & Code Audits"
+  description="AI-generated code that shipped fast and broke faster? I audit security, infrastructure and code quality, then hand your team a plan they can actually execute."
+>
+  <Fragment slot="meta-tags">
+    <JsonLd data={graph(service(services))} />
+  </Fragment>
+
   <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
 
     <!-- Page header -->
@@ -60,6 +69,14 @@ const services = [
         <Image
           src={vibeIssue1}
           alt="Tweet showing vibe coding gone wrong"
+          layout="constrained"
+          width={672}
+          widths={[672, 1008]}
+          sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
+          format="webp"
+          quality={80}
+          loading="lazy"
+          decoding="async"
           class="w-full rounded-md"
         />
         <figcaption class="font-sans text-xs uppercase tracking-wide text-muted dark:text-muted-dark mt-3">

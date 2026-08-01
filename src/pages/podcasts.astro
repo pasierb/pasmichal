@@ -1,8 +1,54 @@
 ---
-import PodcastListing from "../components/home/podcasts.astro";
-import Layout from "../layouts/content.astro";
+import { getCollection } from "astro:content";
+import Layout from "../layouts/main.astro";
+import { formatMonth } from "../lib/date";
+
+const appearances = (await getCollection("podcast")).sort(
+	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
 ---
 
-<Layout title="Podcasts">
-  <PodcastListing />
-</Layout> 
+<Layout
+  title="Podcasts & Talks — Michał Pasierbski"
+  description="Conference talks and podcast appearances on AI-assisted coding, big-tech interviews, Laravel, and going from self-taught developer to Google engineer."
+>
+  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
+
+    <!-- Page header -->
+    <header class="mb-16">
+      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+        Podcasts
+      </p>
+      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+        Podcasts &amp; talks.
+      </h1>
+      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+        Conversations and conference talks on AI, engineering, and building things.
+      </p>
+    </header>
+
+    <section class="border-t border-border dark:border-border-dark pt-10">
+      <ul class="divide-y divide-border dark:divide-border-dark">
+        {appearances.map((appearance) => (
+          <li>
+            <a
+              href={`/podcast/${appearance.id}`}
+              class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-3 group"
+            >
+              <time
+                datetime={appearance.data.pubDate.toISOString()}
+                class="font-sans text-sm text-muted dark:text-muted-dark self-baseline"
+              >
+                {formatMonth(appearance.data.pubDate)}
+              </time>
+              <span class="font-sans text-base text-primary dark:text-primary-dark self-baseline">
+                <span class="marker-link">{appearance.data.title}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+  </article>
+</Layout>
