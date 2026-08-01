@@ -30,7 +30,10 @@ function link(name: string, url: string, notes: string[]): string {
  */
 const PAGES: Array<[path: string, notes: string]> = [
 	["/", "Homepage: bio, featured writing and projects"],
-	["/about", "Background, career history and how to get in touch"],
+	[
+		"/about",
+		"Background, engineering leadership career history and how to get in touch",
+	],
 	["/services", "Consulting: AI engineering and shipping-velocity work"],
 	["/posts", "Full writing archive, grouped by year"],
 	["/podcasts", "Podcast and conference appearances"],

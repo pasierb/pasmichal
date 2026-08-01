@@ -31,6 +31,8 @@ export const person = (image: string) => ({
 		addressCountry: "CH",
 	},
 	knowsAbout: [
+		"Engineering leadership",
+		"Technical leadership",
 		"AI agents",
 		"Large language models",
 		"Google Agent Development Kit",

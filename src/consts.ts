@@ -10,7 +10,7 @@ export const SITE = {
 	alternateName: "Michal Pasierbski",
 	email: "mpasierbski@gmail.com",
 	twitterHandle: "@pasmichal_",
-	jobTitle: "Staff Software Engineer",
+	jobTitle: "Engineering Lead",
 	employer: { name: "Delta Labs AG", url: "https://delta-labs.ch" },
 	locale: "en_US",
 	/**
@@ -21,7 +21,7 @@ export const SITE = {
 	ogWidth: 1200,
 	ogHeight: 630,
 	description:
-		"Michał Pasierbski — senior software engineer and AI consultant in Zurich. 15+ years shipping products at Google, AWS and startups. Essays on AI engineering.",
+		"Michał Pasierbski — engineering leader and AI consultant in Zurich. 15+ years shipping products at Google, AWS and startups. Essays on AI engineering.",
 	sameAs: [
 		"https://x.com/pasmichal_",
 		"https://www.linkedin.com/in/mpasierbski",
