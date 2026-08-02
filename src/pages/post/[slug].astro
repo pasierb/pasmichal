@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import JsonLd from "../../components/json-ld.astro";
+import Mermaid from "../../components/mermaid.astro";
 import Layout from "../../layouts/post.astro";
 import { deriveOgImage } from "../../lib/og";
 import { blogPosting, breadcrumbs, graph } from "../../lib/schema";
@@ -53,4 +54,5 @@ const og = await deriveOgImage(entry.data.heroImage);
 		/>
 	</Fragment>
 	<Content />
+	<Mermaid />
 </Layout>

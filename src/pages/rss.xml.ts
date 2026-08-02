@@ -65,9 +65,13 @@ export async function GET(context: APIContext) {
 
 			return {
 				// Tell subscribers up front when an item lives on another site.
-				title: post.data.source
-					? `${post.data.title} (${post.data.source})`
-					: post.data.title,
+				// Keyed off externalUrl, not source: an imported post also names a
+				// source, but its body is inlined below and its link is local, so
+				// the suffix would only mislead.
+				title:
+					post.data.externalUrl && post.data.source
+						? `${post.data.title} (${post.data.source})`
+						: post.data.title,
 				// @astrojs/rss passes absolute links through untouched, so the
 				// cross-posted stubs keep pointing at the real article — and those
 				// URLs become stable GUIDs.

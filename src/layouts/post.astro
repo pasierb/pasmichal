@@ -104,6 +104,25 @@ const {
       <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
         {frontmatter.description}
       </p>
+
+      {/* Imported posts credit where they ran first. Both fields are required:
+          this layout is shared with podcasts, which carry neither. */}
+      {
+        frontmatter.originalUrl && frontmatter.source && (
+          <p class="font-sans text-sm text-muted dark:text-muted-dark mt-5">
+            Originally published on{" "}
+            <a
+              href={frontmatter.originalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-primary dark:hover:text-primary-dark transition-colors"
+            >
+              {frontmatter.source}
+            </a>
+            <span class="ml-1 align-middle text-xs">↗</span>
+          </p>
+        )
+      }
     </header>
 
     {

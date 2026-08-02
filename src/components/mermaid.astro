@@ -1,0 +1,78 @@
+---
+/**
+ * Renders ```mermaid fences as diagrams.
+ *
+ * Sätteri has no mermaid support (there is no remark/rehype pipeline), so it
+ * hands the fence to Shiki and emits an ordinary highlighted code block. This
+ * finds those blocks client-side and swaps in rendered SVG.
+ *
+ * mermaid is pulled in with a dynamic import behind a length check, so the
+ * (large) chunk is only fetched on pages that actually contain a diagram.
+ */
+---
+
+<script>
+	const blocks = Array.from(
+		document.querySelectorAll<HTMLPreElement>('pre[data-language="mermaid"]'),
+	);
+
+	if (blocks.length > 0) {
+		const { default: mermaid } = await import("mermaid");
+
+		// Replace each <pre> up front: the source text has to be read before the
+		// node is detached, and re-rendering later needs a stable host element.
+		const diagrams = blocks.map((pre, index) => {
+			const source = pre.textContent ?? "";
+			const host = document.createElement("figure");
+			host.className = "not-prose my-8 overflow-x-auto text-center";
+			pre.replaceWith(host);
+			return { index, source, host };
+		});
+
+		const isDark = () => document.documentElement.classList.contains("dark");
+
+		// Bumped per render pass so mermaid never sees a duplicate id.
+		let pass = 0;
+
+		async function renderAll() {
+			pass += 1;
+			mermaid.initialize({
+				startOnLoad: false,
+				theme: isDark() ? "dark" : "default",
+				fontFamily: "inherit",
+			});
+
+			for (const diagram of diagrams) {
+				try {
+					const { svg } = await mermaid.render(
+						`mermaid-${diagram.index}-${pass}`,
+						diagram.source,
+					);
+					diagram.host.innerHTML = svg;
+				} catch (error) {
+					// A malformed diagram should cost the diagram, not the page — fall
+					// back to showing the source it failed on.
+					console.error("mermaid: render failed", error);
+					const fallback = document.createElement("pre");
+					fallback.textContent = diagram.source;
+					diagram.host.replaceChildren(fallback);
+				}
+			}
+		}
+
+		await renderAll();
+
+		// The dark-mode toggle in main.js mutates the class on <html> directly and
+		// fires no event, so watch the attribute instead of listening for one.
+		let wasDark = isDark();
+		new MutationObserver(() => {
+			if (isDark() !== wasDark) {
+				wasDark = isDark();
+				renderAll();
+			}
+		}).observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
+	}
+</script>

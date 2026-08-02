@@ -10,31 +10,44 @@ const postCollection = defineCollection({
 	// The function form is required by the image() helper, which resolves paths
 	// relative to the markdown file and returns ImageMetadata.
 	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			/** Shorter title for <title>/og:title when `title` overflows ~55 chars. */
-			seoTitle: z.string().max(60).optional(),
-			/**
-			 * Visible lede rendered under the h1. Any length — clampDescription()
-			 * trims it for <meta name="description">. Use seoDescription when the
-			 * automatic cut reads badly.
-			 */
-			description: z.string(),
-			seoDescription: z.string().min(120).max(165).optional(),
-			pubDate: z.coerce.date(),
-			updatedDate: z.coerce.date().optional(),
-			heroImage: image().optional(),
-			heroImageAlt: z.string().optional(),
-			externalUrl: z.url().optional(),
-			/** Publication brand for cross-posted stubs, e.g. "Practically Agents". */
-			source: z.string().optional(),
-			/** Canonical target when this post was first published elsewhere. */
-			canonicalUrl: z.url().optional(),
-			tags: z.array(z.string()).default([]),
-			draft: z.boolean().default(false),
-			noindex: z.boolean().default(false),
-			toc: z.boolean().optional(),
-		}),
+		z
+			.object({
+				title: z.string(),
+				/** Shorter title for <title>/og:title when `title` overflows ~55 chars. */
+				seoTitle: z.string().max(60).optional(),
+				/**
+				 * Visible lede rendered under the h1. Any length — clampDescription()
+				 * trims it for <meta name="description">. Use seoDescription when the
+				 * automatic cut reads badly.
+				 */
+				description: z.string(),
+				seoDescription: z.string().min(120).max(165).optional(),
+				pubDate: z.coerce.date(),
+				updatedDate: z.coerce.date().optional(),
+				heroImage: image().optional(),
+				heroImageAlt: z.string().optional(),
+				externalUrl: z.url().optional(),
+				/** Publication brand for cross-posted stubs, e.g. "Practically Agents". */
+				source: z.string().optional(),
+				/** Canonical target when this post was first published elsewhere. */
+				canonicalUrl: z.url().optional(),
+				/**
+				 * Where an imported post first appeared, for the visible credit line.
+				 * Unlike canonicalUrl it does not touch <link rel="canonical"> — a post
+				 * hosted here canonicalises to itself even when it debuted elsewhere.
+				 */
+				originalUrl: z.url().optional(),
+				tags: z.array(z.string()).default([]),
+				draft: z.boolean().default(false),
+				noindex: z.boolean().default(false),
+				toc: z.boolean().optional(),
+			})
+			// externalUrl means "no page of its own", so there is nowhere to render
+			// a credit line. Importing a stub means swapping one for the other.
+			.refine((data) => !(data.externalUrl && data.originalUrl), {
+				message: "externalUrl and originalUrl are mutually exclusive",
+				path: ["originalUrl"],
+			}),
 });
 
 const podcastCollection = defineCollection({
