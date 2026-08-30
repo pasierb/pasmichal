@@ -17,105 +17,112 @@ import { graph, person, profilePage } from "../lib/schema";
     <JsonLd data={graph(profilePage(), person(profilePic.src))} />
   </Fragment>
 
-  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
+  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-12 md:py-20 flex flex-col gap-12 md:gap-16">
 
     <!-- Page header -->
-    <header class="mb-16">
-      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+    <header class="flex flex-col gap-2">
+      <span class="font-label-mono text-label-mono text-primary dark:text-primary-dark uppercase border border-border-main dark:border-border-main-dark px-2 py-1 self-start inline-block">
         About
-      </p>
-      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+      </span>
+      <h1 class="font-headline-xl-mobile md:font-headline-xl text-primary dark:text-primary-dark mt-2">
         Hi, I'm Michał.
       </h1>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+      <p class="font-body-lg text-secondary dark:text-secondary-dark max-w-3xl mt-2">
         15+ years building software — startups, scale-ups, big tech. These days I lead engineering teams and still write the code with them. Currently in Zurich.
       </p>
     </header>
 
     <!-- Family photo -->
-    <figure class="mb-16">
+    <figure class="border border-border-main dark:border-border-main-dark overflow-hidden">
       <Image
         src={famPhoto}
         alt="Michał Pasierbski with his family"
         layout="constrained"
-        width={672}
+        width={1008}
         widths={[672, 1008, 1344]}
-        sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
+        sizes="(min-width: 1200px) 1008px, 100vw"
         format="webp"
-        quality={80}
+        quality={85}
         priority
-        class="w-full rounded-md"
+        class="w-full h-auto object-cover filter contrast-[1.05]"
       />
     </figure>
 
     <!-- Short bio -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
-        Short bio
-      </h2>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark">
-        I'm passionate about solving real problems in elegant ways. Over the years, I've learned that simple is hard — it takes experience and discipline to resist complexity and find the straightforward solution. I believe the best approach is often to solve problems without writing code at all, since every line brings maintenance burden and potential for bugs. My focus is on pragmatic solutions that deliver value while remaining maintainable for the long term.
-      </p>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
-        Leading a team hasn't taken me out of the codebase. I set the technical direction and I'm accountable for what we deliver, but I'm also in the pull requests, shipping features alongside the people I lead. I think that's the only way to lead credibly — you can't ask a team to resist complexity if you're not the one living with the consequences.
-      </p>
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Short bio
+        </h2>
+      </div>
+      <div class="flex flex-col gap-4 font-body-md text-secondary dark:text-secondary-dark max-w-3xl">
+        <p>
+          I'm passionate about solving real problems in elegant ways. Over the years, I've learned that simple is hard — it takes experience and discipline to resist complexity and find the straightforward solution. I believe the best approach is often to solve problems without writing code at all, since every line brings maintenance burden and potential for bugs. My focus is on pragmatic solutions that deliver value while remaining maintainable for the long term.
+        </p>
+        <p>
+          Leading a team hasn't taken me out of the codebase. I set the technical direction and I'm accountable for what we deliver, but I'm also in the pull requests, shipping features alongside the people I lead. I think that's the only way to lead credibly — you can't ask a team to resist complexity if you're not the one living with the consequences.
+        </p>
+      </div>
     </section>
 
     <!-- Experience -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-8">
-        Experience
-      </h2>
-      <ol class="space-y-10">
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Experience
+        </h2>
+      </div>
+      <ol class="flex flex-col gap-10">
         {experiences.map((experience) => (
-          <li>
-            <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-2">
+          <li class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+            <span class="font-label-mono text-label-mono text-secondary dark:text-secondary-dark w-40 shrink-0">
               {experience.dates}
-            </p>
-            <h3 class="font-serif text-xl leading-tight text-primary dark:text-primary-dark">
-              {experience.role}
-            </h3>
-            <p class="font-sans text-sm text-secondary dark:text-secondary-dark mt-1">
-              {experience.company}
-            </p>
-            {Array.isArray(experience.description) ? (
-              <ul class="mt-3 space-y-1.5">
-                {experience.description.map((item) => (
-                  <li class="font-sans text-sm leading-relaxed text-secondary dark:text-secondary-dark pl-4 -indent-4 before:content-['—'] before:mr-2 before:text-muted">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p class="font-sans text-sm leading-relaxed text-secondary dark:text-secondary-dark mt-3">
-                {experience.description}
-              </p>
-            )}
+            </span>
+            <div class="flex flex-col gap-1 flex-grow max-w-3xl">
+              <h3 class="font-body-lg text-lg font-medium text-primary dark:text-primary-dark">
+                {experience.role} <span class="text-secondary dark:text-secondary-dark font-normal">· {experience.company}</span>
+              </h3>
+              {Array.isArray(experience.description) ? (
+                <ul class="mt-2 space-y-1.5 font-body-md text-secondary dark:text-secondary-dark">
+                  {experience.description.map((item) => (
+                    <li class="pl-4 -indent-4 before:content-['—'] before:mr-2 before:text-primary dark:before:text-primary-dark">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="font-body-md text-secondary dark:text-secondary-dark mt-2">
+                  {experience.description}
+                </p>
+              )}
+            </div>
           </li>
         ))}
       </ol>
     </section>
 
     <!-- Elsewhere -->
-    <section class="border-t border-border dark:border-border-dark pt-10">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-5">
-        Elsewhere
-      </h2>
-      <ul class="space-y-2">
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Elsewhere
+        </h2>
+      </div>
+      <ul class="flex flex-col gap-3 font-body-md text-body-md">
         <li>
           <a
             href="https://x.com/pasmichal_"
             target="_blank"
             rel="noopener noreferrer"
-            class="font-sans text-base text-primary dark:text-primary-dark marker-link"
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark text-primary dark:text-primary-dark"
           >
-            Follow me on Twitter <span class="font-sans text-xs text-muted ml-1 align-middle">↗</span>
+            Follow me on Twitter <span class="font-mono text-xs ml-1 align-middle">↗</span>
           </a>
         </li>
         <li>
           <a
             href="mailto:mpasierbski@gmail.com"
-            class="font-sans text-base text-primary dark:text-primary-dark marker-link"
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark text-primary dark:text-primary-dark"
           >
             Send me an email
           </a>
@@ -124,7 +131,7 @@ import { graph, person, profilePage } from "../lib/schema";
           <a
             href="/michal_pasierbski_cv.pdf"
             download
-            class="font-sans text-base text-primary dark:text-primary-dark marker-link"
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark text-primary dark:text-primary-dark"
           >
             Download my CV
           </a>
@@ -132,5 +139,5 @@ import { graph, person, profilePage } from "../lib/schema";
       </ul>
     </section>
 
-  </article>
+  </div>
 </Layout>

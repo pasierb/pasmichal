@@ -24,7 +24,7 @@ function isExternal(post: (typeof sortedPosts)[number]) {
 ---
 
 <Layout
-  title="Michał Pasierbski — Engineering Leader & AI Consultant, Zurich"
+  title="Michał Pasierbski | AI Product Engineering"
   rawTitle
   type="profile"
 >
@@ -34,155 +34,174 @@ function isExternal(post: (typeof sortedPosts)[number]) {
     <JsonLd data={graph(person(profilePic.src), website())} />
   </Fragment>
 
-  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
+  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-12 md:py-20 flex flex-col gap-12 md:gap-16">
 
-    <!-- Identity strip -->
-    <header class="flex items-center gap-4 mb-12 md:mb-16">
-      {/* Decorative: the name is rendered as the adjacent h1. */}
-      <Image
-        src={profilePic}
-        alt=""
-        width={64}
-        height={64}
-        densities={[1, 2]}
-        format="webp"
-        quality={82}
-        loading="eager"
-        decoding="async"
-        class="w-16 h-16 rounded-full object-cover shrink-0"
-      />
-      <div class="flex flex-col leading-tight">
-        <div class="flex items-center gap-2">
-          <h1 class="font-serif text-lg text-primary dark:text-primary-dark">
+    <!-- Hero Section -->
+    <section class="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8">
+      <div class="w-20 h-20 md:w-24 md:h-24 shrink-0 border border-border-main dark:border-border-main-dark overflow-hidden">
+        <Image
+          src={profilePic}
+          alt="Michał Pasierbski"
+          width={96}
+          height={96}
+          densities={[1, 2]}
+          format="webp"
+          quality={85}
+          loading="eager"
+          decoding="async"
+          class="w-full h-full object-cover filter contrast-105"
+        />
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-3">
+          <h1 class="font-headline-xl-mobile md:font-headline-xl text-primary dark:text-primary-dark">
             Michał Pasierbski
           </h1>
           <button
             id="pronounce-btn"
             type="button"
             aria-label="Hear my name pronounced"
-            class="inline-flex items-center justify-center w-6 h-6 text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+            class="inline-flex items-center justify-center w-7 h-7 text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors cursor-pointer"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
               <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
             </svg>
           </button>
         </div>
-        <span class="font-sans text-sm text-secondary dark:text-secondary-dark">
+        <p class="font-body-lg text-body-lg text-secondary dark:text-secondary-dark">
           Leading AI product engineering · Zurich
-        </span>
+        </p>
       </div>
-    </header>
-
-    <!-- Featured post -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <a href={postHref(featured)} {...(isExternal(featured) ? { target: "_blank", rel: "noopener noreferrer" } : {})} class="group block">
-        <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
-          Latest essay
-        </p>
-        <h2 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
-          <span class="marker-link">
-            {featured.data.title}
-          </span>{isExternal(featured) && <span class="font-sans text-base text-muted ml-2 align-middle">↗</span>}
-        </h2>
-        <p class="font-sans text-sm uppercase tracking-wide text-secondary dark:text-secondary-dark mt-4">
-          <time datetime={featured.data.pubDate.toISOString()}>
-            {formatMonth(featured.data.pubDate)}
-          </time>
-        </p>
-        {featured.data.heroImage && (
-          <figure class="mt-6">
-            {/* Homepage LCP element. */}
-            <Image
-              src={featured.data.heroImage}
-              alt={featured.data.heroImageAlt ?? ""}
-              layout="constrained"
-              width={672}
-              widths={[672, 1008, 1344]}
-              sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
-              format="webp"
-              quality={80}
-              priority
-              class="w-full rounded-md"
-            />
-          </figure>
-        )}
-        <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
-          {featured.data.description}
-        </p>
-        <span class="font-sans text-sm text-primary dark:text-primary-dark mt-6 inline-block marker-link">
-          Read on →
-        </span>
-      </a>
     </section>
 
-    <!-- Recent writing -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <h3 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
-        Recent writing
-      </h3>
-      <ul class="divide-y divide-border dark:divide-border-dark">
+    <!-- Latest Essay Callout -->
+    {featured && (
+      <section>
+        <a
+          href={postHref(featured)}
+          {...(isExternal(featured) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          class="border border-border-main dark:border-border-main-dark p-6 md:p-8 hover:bg-surface-container-low dark:hover:bg-surface-container-low-dark transition-colors duration-200 group cursor-pointer flex flex-col md:flex-row gap-8 items-start block"
+        >
+          <div class="flex-grow flex flex-col gap-4">
+            <span class="font-label-mono text-label-mono text-primary dark:text-primary-dark uppercase border border-border-main dark:border-border-main-dark px-2 py-1 self-start inline-block">
+              Latest essay
+            </span>
+            <h2 class="font-headline-lg text-headline-lg text-primary dark:text-primary-dark group-hover:underline decoration-2 underline-offset-4">
+              {featured.data.title}
+              {isExternal(featured) && <span class="font-mono text-base text-muted dark:text-muted-dark ml-2">↗</span>}
+            </h2>
+            <div class="font-label-mono text-label-mono text-secondary dark:text-secondary-dark">
+              <time datetime={featured.data.pubDate.toISOString()}>
+                {formatMonth(featured.data.pubDate)}
+              </time>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant-dark max-w-2xl">
+              {featured.data.description}
+            </p>
+            <div class="font-label-mono-bold text-label-mono-bold text-primary dark:text-primary-dark mt-4 flex items-center gap-1 group-hover:gap-2 transition-all">
+              Read on <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </div>
+          </div>
+          {featured.data.heroImage && (
+            <div class="w-full md:w-[320px] shrink-0 border border-border-main dark:border-border-main-dark overflow-hidden hidden md:block aspect-[4/3]">
+              <Image
+                src={featured.data.heroImage}
+                alt={featured.data.heroImageAlt ?? ""}
+                layout="constrained"
+                width={320}
+                widths={[320, 640]}
+                sizes="(min-width: 768px) 320px, 100vw"
+                format="webp"
+                quality={80}
+                priority
+                class="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+          )}
+        </a>
+      </section>
+    )}
+
+    <!-- Recent Writing -->
+    <section class="flex flex-col gap-6 md:gap-8">
+      <div class="flex justify-between items-end border-b border-border-main dark:border-border-main-dark pb-4">
+        <h3 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Recent writing
+        </h3>
+        <a
+          class="font-label-mono text-label-mono text-primary dark:text-primary-dark hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark px-2 py-1 transition-colors"
+          href="/posts"
+        >
+          View all writings →
+        </a>
+      </div>
+      <ul class="flex flex-col gap-5 md:gap-6">
         {recent.map((post) => (
-          <li>
+          <li class="group">
             <a
               href={postHref(post)}
               {...(isExternal(post) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-3 group"
+              class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-8"
             >
               <time
                 datetime={post.data.pubDate.toISOString()}
-                class="font-sans text-sm text-muted dark:text-muted-dark self-baseline"
+                class="font-label-mono text-label-mono text-secondary dark:text-secondary-dark w-32 shrink-0"
               >
                 {formatMonth(post.data.pubDate)}
               </time>
-              <span class="font-sans text-base text-primary dark:text-primary-dark self-baseline">
-                <span class="marker-link">
-                  {post.data.title}
-                </span>
-                {isExternal(post) && <span class="font-sans text-xs text-muted ml-1.5 align-middle">↗</span>}
+              <span class="font-body-lg text-body-lg text-primary dark:text-primary-dark group-hover:underline decoration-1 underline-offset-4">
+                {post.data.title}
+                {isExternal(post) && <span class="font-mono text-xs text-muted dark:text-muted-dark ml-1.5 align-middle">↗</span>}
               </span>
             </a>
           </li>
         ))}
       </ul>
-      <a
-        href="/posts"
-        class="font-sans text-sm text-primary dark:text-primary-dark mt-6 inline-block marker-link"
-      >
-        View all writings →
-      </a>
     </section>
 
-    <!-- Also -->
-    <section class="border-t border-border dark:border-border-dark pt-10">
-      <h3 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-5">
+    <!-- Also Section -->
+    <section class="flex flex-col gap-6 md:gap-8">
+      <h3 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark border-b border-border-main dark:border-border-main-dark pb-4">
         Also
       </h3>
-      <ul class="space-y-2">
+      <ul class="flex flex-col gap-3 font-body-md text-body-md">
         <li>
-          <a href="/projects" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
-            I build things <span class="text-secondary dark:text-secondary-dark">→ projects</span>
+          <a
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
+            href="/projects"
+          >
+            I build things → projects
           </a>
         </li>
         <li>
-          <a href="/podcasts" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
-            I appear on podcasts &amp; talks <span class="text-secondary dark:text-secondary-dark">→ podcasts</span>
+          <a
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
+            href="/podcasts"
+          >
+            I appear on podcasts &amp; talks → podcasts
           </a>
         </li>
         <li>
-          <a href="/services" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
-            Available for consulting <span class="text-secondary dark:text-secondary-dark">→ services</span>
+          <a
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
+            href="/services"
+          >
+            Available for consulting → services
           </a>
         </li>
         <li>
-          <a href="/about" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
-            More about me <span class="text-secondary dark:text-secondary-dark">→ about</span>
+          <a
+            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
+            href="/about"
+          >
+            More about me → about
           </a>
         </li>
       </ul>
     </section>
 
-  </article>
+  </div>
 </Layout>
 
 <script>

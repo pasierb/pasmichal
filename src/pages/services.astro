@@ -42,68 +42,72 @@ const services = [
     <JsonLd data={graph(service(services))} />
   </Fragment>
 
-  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
+  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-12 md:py-20 flex flex-col gap-12 md:gap-16">
 
     <!-- Page header -->
-    <header class="mb-16">
-      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+    <header class="flex flex-col gap-2">
+      <span class="font-label-mono text-label-mono text-primary dark:text-primary-dark uppercase border border-border-main dark:border-border-main-dark px-2 py-1 self-start inline-block">
         Services
-      </p>
-      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+      </span>
+      <h1 class="font-headline-xl-mobile md:font-headline-xl text-primary dark:text-primary-dark mt-2">
         Fix the Vibe.
       </h1>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+      <p class="font-body-lg text-secondary dark:text-secondary-dark max-w-2xl mt-2">
         Comprehensive application optimization to elevate the quality, security, and efficiency of what you've built.
       </p>
     </header>
 
     <!-- When the vibe goes wrong -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
-        When the vibe goes wrong
-      </h2>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mb-8">
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          When the vibe goes wrong
+        </h2>
+      </div>
+      <p class="font-body-md text-secondary dark:text-secondary-dark max-w-3xl">
         When the vibe in your codebase goes wrong, it affects everything — from development speed to team morale. Sound familiar?
       </p>
-      <figure>
+      <figure class="border border-border-main dark:border-border-main-dark overflow-hidden max-w-3xl">
         <Image
           src={vibeIssue1}
           alt="Tweet showing vibe coding gone wrong"
           layout="constrained"
           width={672}
           widths={[672, 1008]}
-          sizes="(min-width: 768px) 672px, calc(100vw - 3.5rem)"
+          sizes="(min-width: 768px) 672px, 100vw"
           format="webp"
           quality={80}
           loading="lazy"
           decoding="async"
-          class="w-full rounded-md"
+          class="w-full h-auto"
         />
-        <figcaption class="font-sans text-xs uppercase tracking-wide text-muted dark:text-muted-dark mt-3">
+        <figcaption class="font-label-mono text-xs uppercase tracking-wider text-secondary dark:text-secondary-dark p-3 border-t border-border-main dark:border-border-main-dark bg-surface-container-low dark:bg-surface-container-low-dark">
           Exhibit A.
         </figcaption>
       </figure>
     </section>
 
     <!-- The offer -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
-        The offer
-      </h2>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mb-10">
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          The offer
+        </h2>
+      </div>
+      <p class="font-body-md text-secondary dark:text-secondary-dark max-w-3xl">
         A suite of engagements designed to elevate the quality, security, and efficiency of your application:
       </p>
-      <ol class="space-y-8">
+      <ol class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {services.map((service, index) => (
-          <li class="grid grid-cols-[3rem_1fr] gap-4">
-            <span class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark pt-1.5">
-              {String(index + 1).padStart(2, "0")}
-            </span>
+          <li class="border border-border-main dark:border-border-main-dark p-6 flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-xl leading-tight text-primary dark:text-primary-dark">
+              <span class="font-label-mono text-xs uppercase tracking-widest border border-border-main dark:border-border-main-dark px-2 py-0.5 inline-block mb-3">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 class="font-headline-lg text-xl text-primary dark:text-primary-dark font-medium">
                 {service.title}
               </h3>
-              <p class="font-sans text-sm md:text-base leading-relaxed text-secondary dark:text-secondary-dark mt-2">
+              <p class="font-body-md text-sm text-secondary dark:text-secondary-dark mt-2">
                 {service.description}
               </p>
             </div>
@@ -113,39 +117,47 @@ const services = [
     </section>
 
     <!-- Get started -->
-    <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
-        Get started
-      </h2>
-      <p class="font-serif text-2xl md:text-3xl leading-tight text-primary dark:text-primary-dark mb-3">
-        Ready to fix the vibe?
-      </p>
-      <p class="font-sans text-base leading-relaxed text-secondary dark:text-secondary-dark mb-2">
-        Let's optimize your application and enhance your development workflow.
-      </p>
-      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-8">
-        Only 7 spots left.
-      </p>
-      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      <stripe-buy-button
-        buy-button-id="buy_btn_1RgiH6LfFQVYhtFJA066934i"
-        publishable-key="pk_live_51Rgh1OLfFQVYhtFJlN9t8nlNXGg7t7KpOP0XUBYF6jueosXcoTWe7PDeOe2Zr541whbR8GxmcRBPE1SLTm0G2e4U00fCUpaj8B"
-      >
-      </stripe-buy-button>
+    <section class="border border-border-main dark:border-border-main-dark p-8 md:p-12 flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <span class="font-label-mono text-xs uppercase tracking-widest text-secondary dark:text-secondary-dark">
+          Only 7 spots left
+        </span>
+        <h2 class="font-headline-lg text-2xl md:text-3xl text-primary dark:text-primary-dark">
+          Ready to fix the vibe?
+        </h2>
+        <p class="font-body-md text-secondary dark:text-secondary-dark max-w-xl">
+          Let's optimize your application and enhance your development workflow.
+        </p>
+      </div>
+      <div class="pt-2">
+        <script is:inline async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1RgiH6LfFQVYhtFJA066934i"
+          publishable-key="pk_live_51Rgh1OLfFQVYhtFJlN9t8nlNXGg7t7KpOP0XUBYF6jueosXcoTWe7PDeOe2Zr541whbR8GxmcRBPE1SLTm0G2e4U00fCUpaj8B"
+        >
+        </stripe-buy-button>
+      </div>
     </section>
 
     <!-- Your expert -->
-    <section class="border-t border-border dark:border-border-dark pt-10">
-      <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-5">
-        Your expert
-      </h2>
-      <p class="font-sans text-base leading-relaxed text-secondary dark:text-secondary-dark mb-4">
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Your expert
+        </h2>
+      </div>
+      <p class="font-body-md text-secondary dark:text-secondary-dark max-w-2xl">
         15+ years building software — startups, corporations, big tech.
       </p>
-      <a href="/about" class="font-sans text-base text-primary dark:text-primary-dark marker-link">
-        More about me <span class="text-secondary dark:text-secondary-dark">→ about</span>
-      </a>
+      <div>
+        <a
+          href="/about"
+          class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark font-body-md text-primary dark:text-primary-dark"
+        >
+          More about me → about
+        </a>
+      </div>
     </section>
 
-  </article>
+  </div>
 </Layout>

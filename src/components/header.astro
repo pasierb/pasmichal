@@ -5,14 +5,16 @@ import Logo from "../components/logo.astro";
 const pathname = Astro.url.pathname;
 ---
 
-<header id="header" class="w-full h-16 relative z-50">
+<nav class="bg-background dark:bg-background-dark border-b border-border-main dark:border-border-main-dark w-full sticky top-0 z-50">
   <div
-    class="flex items-center justify-between h-full max-w-4xl px-7 mx-auto border-b border-border dark:border-border-dark"
+    class="flex justify-between items-center w-full px-6 md:px-12 lg:px-24 py-5 md:py-6 max-w-[1200px] mx-auto"
   >
-    <!-- Left: Logo | nav -->
+    <!-- Left: Logo -->
+    <Logo />
+
+    <!-- Right: Nav links & Controls -->
     <div class="flex items-center gap-6">
-      <Logo />
-      <nav class="hidden sm:flex items-center gap-1">
+      <nav class="hidden md:flex items-center gap-6 font-label-mono text-label-mono">
         {
           menus.map((menu) => {
             const isActive = pathname === menu.url || pathname.startsWith(`${menu.url}/`);
@@ -20,10 +22,10 @@ const pathname = Astro.url.pathname;
               <a
                 href={menu.url}
                 class:list={[
-                  "px-3 py-1.5 text-sm transition-colors duration-200",
+                  "transition-colors duration-100 px-2 py-1",
                   isActive
-                    ? "text-primary dark:text-primary-dark font-medium"
-                    : "text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark",
+                    ? "bg-primary text-on-primary dark:bg-primary-dark dark:text-on-primary-dark font-label-mono-bold"
+                    : "text-on-surface-variant dark:text-on-surface-variant-dark hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark",
                 ]}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -33,16 +35,16 @@ const pathname = Astro.url.pathname;
           })
         }
       </nav>
-    </div>
 
-    <!-- Right: dark mode -->
-    <div class="flex items-center gap-4">
-      <div
+      <!-- Dark mode toggle -->
+      <button
         id="darkToggle"
-        class="flex items-center justify-center w-8 h-8 cursor-pointer text-muted dark:text-muted-dark hover:text-primary dark:hover:text-primary-dark transition-colors"
+        type="button"
+        aria-label="Toggle theme"
+        class="flex items-center justify-center p-1.5 text-primary dark:text-primary-dark hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors duration-100 cursor-pointer"
       >
         <svg
-          class="w-[15px] h-[15px] transition duration-700 transform ease"
+          class="w-4 h-4 transition duration-500 transform ease"
           id="sun"
           fill="none"
           stroke-linecap="round"
@@ -54,7 +56,7 @@ const pathname = Astro.url.pathname;
           <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
         </svg>
         <svg
-          class="hidden w-[15px] h-[15px] transition duration-700 transform ease"
+          class="hidden w-4 h-4 transition duration-500 transform ease"
           id="moon"
           fill="none"
           stroke-linecap="round"
@@ -69,20 +71,16 @@ const pathname = Astro.url.pathname;
           <span id="dayText">Day mode</span>
           <span id="nightText" class="hidden">Night mode</span>
         </span>
-      </div>
+      </button>
 
       <!-- Mobile menu button -->
       <button
         id="mobileMenuBtn"
-        class="sm:hidden flex items-center justify-center w-8 h-8 text-secondary dark:text-secondary-dark"
+        type="button"
+        class="md:hidden text-primary dark:text-primary-dark font-label-mono text-label-mono border border-border-main dark:border-border-main-dark px-3 py-1 hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors duration-100"
         aria-label="Toggle menu"
       >
-        <svg id="menuIconOpen" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"></path>
-        </svg>
-        <svg id="menuIconClose" class="hidden w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+        Menu
       </button>
     </div>
   </div>
@@ -90,7 +88,7 @@ const pathname = Astro.url.pathname;
   <!-- Mobile menu -->
   <nav
     id="mobileMenu"
-    class="sm:hidden bg-surface dark:bg-surface-dark border-t border-border dark:border-border-dark px-7 shadow-lg overflow-hidden transition-all duration-150 ease-in-out max-h-0 opacity-0 pt-0 pb-0"
+    class="md:hidden bg-background dark:bg-background-dark border-t border-border-main dark:border-border-main-dark px-6 md:px-12 font-label-mono text-label-mono overflow-hidden transition-all duration-150 ease-in-out max-h-0 opacity-0 pt-0 pb-0"
   >
     {
       menus.map((menu) => {
@@ -99,10 +97,10 @@ const pathname = Astro.url.pathname;
           <a
             href={menu.url}
             class:list={[
-              "block py-2 text-sm",
+              "block py-2 my-1 px-2 transition-colors duration-100",
               isActive
-                ? "text-primary dark:text-primary-dark font-medium"
-                : "text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark",
+                ? "bg-primary text-on-primary dark:bg-primary-dark dark:text-on-primary-dark font-label-mono-bold"
+                : "text-on-surface-variant dark:text-on-surface-variant-dark hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark",
             ]}
             aria-current={isActive ? "page" : undefined}
           >
@@ -112,24 +110,22 @@ const pathname = Astro.url.pathname;
       })
     }
   </nav>
-</header>
+</nav>
 
 <script is:inline>
   document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
     const menu = document.getElementById('mobileMenu');
-    const iconOpen = document.getElementById('menuIconOpen');
-    const iconClose = document.getElementById('menuIconClose');
+    const btn = document.getElementById('mobileMenuBtn');
     const isOpen = menu?.classList.contains('max-h-0');
 
     if (isOpen) {
       menu?.classList.remove('max-h-0', 'opacity-0', 'pt-0', 'pb-0');
       menu?.classList.add('max-h-96', 'opacity-100', 'pt-2', 'pb-4');
+      if (btn) btn.textContent = 'Close';
     } else {
       menu?.classList.remove('max-h-96', 'opacity-100', 'pt-2', 'pb-4');
       menu?.classList.add('max-h-0', 'opacity-0', 'pt-0', 'pb-0');
+      if (btn) btn.textContent = 'Menu';
     }
-
-    iconOpen?.classList.toggle('hidden');
-    iconClose?.classList.toggle('hidden');
   });
 </script>

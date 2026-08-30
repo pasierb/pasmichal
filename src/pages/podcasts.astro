@@ -12,37 +12,42 @@ const appearances = (await getCollection("podcast")).sort(
   title="Podcasts & Talks — Michał Pasierbski"
   description="Conference talks and podcast appearances on AI-assisted coding, big-tech interviews, Laravel, and going from self-taught developer to Google engineer."
 >
-  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
+  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-12 md:py-20 flex flex-col gap-12 md:gap-16">
 
     <!-- Page header -->
-    <header class="mb-16">
-      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+    <header class="flex flex-col gap-2">
+      <span class="font-label-mono text-label-mono text-primary dark:text-primary-dark uppercase border border-border-main dark:border-border-main-dark px-2 py-1 self-start inline-block">
         Podcasts
-      </p>
-      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+      </span>
+      <h1 class="font-headline-xl-mobile md:font-headline-xl text-primary dark:text-primary-dark mt-2">
         Podcasts &amp; talks.
       </h1>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+      <p class="font-body-lg text-secondary dark:text-secondary-dark max-w-2xl mt-2">
         Conversations and conference talks on AI, engineering, and building things.
       </p>
     </header>
 
-    <section class="border-t border-border dark:border-border-dark pt-10">
-      <ul class="divide-y divide-border dark:divide-border-dark">
+    <section class="flex flex-col gap-6">
+      <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Appearances
+        </h2>
+      </div>
+      <ul class="flex flex-col gap-4 md:gap-5">
         {appearances.map((appearance) => (
-          <li>
+          <li class="group">
             <a
               href={`/podcast/${appearance.id}`}
-              class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-3 group"
+              class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-8"
             >
               <time
                 datetime={appearance.data.pubDate.toISOString()}
-                class="font-sans text-sm text-muted dark:text-muted-dark self-baseline"
+                class="font-label-mono text-label-mono text-secondary dark:text-secondary-dark w-32 shrink-0"
               >
                 {formatMonth(appearance.data.pubDate)}
               </time>
-              <span class="font-sans text-base text-primary dark:text-primary-dark self-baseline">
-                <span class="marker-link">{appearance.data.title}</span>
+              <span class="font-body-lg text-body-lg text-primary dark:text-primary-dark group-hover:underline decoration-1 underline-offset-4">
+                {appearance.data.title}
               </span>
             </a>
           </li>
@@ -50,5 +55,5 @@ const appearances = (await getCollection("podcast")).sort(
       </ul>
     </section>
 
-  </article>
+  </div>
 </Layout>
