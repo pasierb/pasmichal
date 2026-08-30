@@ -38,15 +38,15 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.google(),
-			name: "Source Serif 4",
-			cssVariable: "--font-serif-family",
-			weights: ["400", "600", "700"],
+			name: "Inter",
+			cssVariable: "--font-sans-family",
+			weights: ["400", "500", "600", "700"],
 		},
 		{
 			provider: fontProviders.google(),
-			name: "Inter Tight",
-			cssVariable: "--font-sans-family",
-			weights: ["400", "500", "600"],
+			name: "JetBrains Mono",
+			cssVariable: "--font-mono-family",
+			weights: ["400", "500", "700"],
 		},
 	],
 

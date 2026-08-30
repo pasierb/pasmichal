@@ -10,73 +10,71 @@ const otherProjects = projects.filter((p) => !p.featured);
   title="Projects — Startups, Side Projects & Open Source"
   description="Things I've built: SaaS startups, AI tools, family game-dev experiments and open source. Some still running, some exited, some quietly discontinued."
 >
-  <article class="max-w-2xl mx-auto px-7 md:px-0 pt-12 md:pt-16 pb-24">
+  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-12 md:py-20 flex flex-col gap-12 md:gap-16">
 
     <!-- Page header -->
-    <header class="mb-16">
-      <p class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-4">
+    <header class="flex flex-col gap-2">
+      <span class="font-label-mono text-label-mono text-primary dark:text-primary-dark uppercase border border-border-main dark:border-border-main-dark px-2 py-1 self-start inline-block">
         Projects
-      </p>
-      <h1 class="font-serif text-3xl md:text-5xl leading-[1.1] text-primary dark:text-primary-dark">
+      </span>
+      <h1 class="font-headline-xl-mobile md:font-headline-xl text-primary dark:text-primary-dark mt-2">
         Things I've built.
       </h1>
-      <p class="font-sans text-base md:text-lg leading-relaxed text-secondary dark:text-secondary-dark mt-5">
+      <p class="font-body-lg text-secondary dark:text-secondary-dark max-w-2xl mt-2">
         Startups, side projects, open source, family experiments. Some still alive, some retired.
       </p>
     </header>
 
     <!-- Featured -->
     {featuredProjects.length > 0 && (
-      <section class="border-t border-border dark:border-border-dark pt-10 mb-16">
-        <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-8">
-          Featured
-        </h2>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+      <section class="flex flex-col gap-6">
+        <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+          <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+            Featured
+          </h2>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featuredProjects.map((project) => (
             <li>
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="group block"
+                class="border border-border-main dark:border-border-main-dark p-6 hover:bg-surface-container-low dark:hover:bg-surface-container-low-dark transition-colors duration-200 group block h-full flex flex-col"
               >
                 {project.imageAsset && (
-                  <div class="relative overflow-hidden rounded-md bg-gray-100 dark:bg-gray-800 aspect-[16/10] mb-4">
-                    {/* <Picture> without an explicit `width` generated
-                        full-resolution PNG fallbacks (~2.1 MB across this
-                        page). A single WebP with a real width is enough. */}
+                  <div class="border border-border-main dark:border-border-main-dark overflow-hidden aspect-[16/10] mb-5">
                     <Image
                       src={project.imageAsset}
                       alt={project.name}
                       layout="constrained"
-                      width={320}
-                      widths={[320, 640]}
-                      sizes="(min-width: 640px) 320px, calc(100vw - 3.5rem)"
+                      width={540}
+                      widths={[320, 540, 800]}
+                      sizes="(min-width: 768px) 540px, 100vw"
                       format="webp"
                       quality={80}
                       loading="lazy"
                       decoding="async"
-                      class="w-full h-full object-cover"
+                      class="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
                 )}
-                <h3 class="font-serif text-xl leading-tight text-primary dark:text-primary-dark">
-                  <span class="marker-link">{project.name}</span>
-                  {project.status !== "active" && (
-                    <span class="font-sans text-xs uppercase tracking-wide text-muted dark:text-muted-dark ml-2">
-                      ({project.status})
-                    </span>
+                <div class="flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 class="font-headline-lg text-2xl text-primary dark:text-primary-dark group-hover:underline decoration-2 underline-offset-4 flex items-center justify-between">
+                      <span>{project.name}</span>
+                      <span class="font-mono text-base text-muted dark:text-muted-dark">↗</span>
+                    </h3>
+                    <p class="font-body-md text-secondary dark:text-secondary-dark mt-2">
+                      {project.description}
+                    </p>
+                  </div>
+                  {project.techStack.length > 0 && (
+                    <div class="font-label-mono text-xs text-muted dark:text-muted-dark uppercase tracking-wider mt-5 pt-3 border-t border-border dark:border-border-dark">
+                      {project.techStack.join(" · ")}
+                    </div>
                   )}
-                  <span class="font-sans text-xs text-muted ml-1 align-middle">↗</span>
-                </h3>
-                <p class="font-sans text-sm leading-relaxed text-secondary dark:text-secondary-dark mt-2">
-                  {project.description}
-                </p>
-                {project.techStack.length > 0 && (
-                  <p class="font-sans text-xs uppercase tracking-wide text-muted dark:text-muted-dark mt-3">
-                    {project.techStack.join(" · ")}
-                  </p>
-                )}
+                </div>
               </a>
             </li>
           ))}
@@ -86,28 +84,29 @@ const otherProjects = projects.filter((p) => !p.featured);
 
     <!-- More projects -->
     {otherProjects.length > 0 && (
-      <section class="border-t border-border dark:border-border-dark pt-10">
-        <h2 class="font-sans text-xs uppercase tracking-widest text-muted dark:text-muted-dark mb-6">
-          More projects
-        </h2>
-        <ul class="divide-y divide-border dark:divide-border-dark">
+      <section class="flex flex-col gap-6">
+        <div class="border-b border-border-main dark:border-border-main-dark pb-3">
+          <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+            More projects
+          </h2>
+        </div>
+        <ul class="flex flex-col gap-4">
           {otherProjects.map((project) => (
-            <li>
+            <li class="group">
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="grid grid-cols-[5rem_1fr] md:grid-cols-[6rem_1fr] gap-4 py-4 group"
+                class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-8 py-2"
               >
-                <span class="font-sans text-xs uppercase tracking-wide text-muted dark:text-muted-dark self-baseline pt-1">
-                  {project.status}
+                <span class="font-label-mono text-xs uppercase tracking-wider text-secondary dark:text-secondary-dark w-28 shrink-0">
+                  [{project.status}]
                 </span>
-                <div>
-                  <span class="font-sans text-base text-primary dark:text-primary-dark">
-                    <span class="marker-link">{project.name}</span>
-                    <span class="font-sans text-xs text-muted ml-1 align-middle">↗</span>
+                <div class="flex-grow">
+                  <span class="font-body-lg text-primary dark:text-primary-dark group-hover:underline decoration-1 underline-offset-4">
+                    {project.name} <span class="font-mono text-xs text-muted dark:text-muted-dark ml-1">↗</span>
                   </span>
-                  <p class="font-sans text-sm leading-relaxed text-secondary dark:text-secondary-dark mt-1">
+                  <p class="font-body-md text-secondary dark:text-secondary-dark mt-0.5">
                     {project.description}
                   </p>
                 </div>
@@ -118,5 +117,5 @@ const otherProjects = projects.filter((p) => !p.featured);
       </section>
     )}
 
-  </article>
+  </div>
 </Layout>
