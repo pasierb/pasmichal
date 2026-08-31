@@ -1,74 +1,60 @@
-import { spawn } from "node:child_process";
-import { copyFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { execSync } from "node:child_process";
+import { copyFileSync, createReadStream, existsSync, statSync } from "node:fs";
+import http from "node:http";
+import { extname, join, resolve } from "node:path";
 import { chromium } from "playwright";
 
-const PORTS = [4321, 4322, 3000];
 const ROOT_DIR = resolve(".");
+const DIST_DIR = resolve(ROOT_DIR, "dist");
 const PUBLIC_OUTPUT = resolve(ROOT_DIR, "public/michal_pasierbski_cv.pdf");
 const DIST_OUTPUT = resolve(ROOT_DIR, "dist/michal_pasierbski_cv.pdf");
 
-async function checkUrl(url) {
-	try {
-		const res = await fetch(url, { signal: AbortSignal.timeout(1000) });
-		return res.ok;
-	} catch {
-		return false;
-	}
-}
+const MIME_TYPES = {
+	".html": "text/html",
+	".css": "text/css",
+	".js": "application/javascript",
+	".webp": "image/webp",
+	".jpeg": "image/jpeg",
+	".jpg": "image/jpeg",
+	".png": "image/png",
+	".svg": "image/svg+xml",
+	".woff2": "font/woff2",
+	".woff": "font/woff",
+	".ttf": "font/ttf",
+	".pdf": "application/pdf",
+};
 
-async function findRunningServerUrl() {
-	for (const port of PORTS) {
-		for (const host of ["localhost", "127.0.0.1", "[::1]"]) {
-			const url = `http://${host}:${port}/resume`;
-			if (await checkUrl(url)) {
-				return url;
-			}
+function createStaticServer() {
+	return http.createServer((req, res) => {
+		let reqPath = (req.url || "/").split("?")[0];
+		if (reqPath === "/resume" || reqPath === "/resume/") {
+			reqPath = "/resume/index.html";
 		}
-	}
-	return null;
-}
 
-async function waitForServer(url, timeoutMs = 15000) {
-	const start = Date.now();
-	while (Date.now() - start < timeoutMs) {
-		if (await checkUrl(url)) return true;
-		await new Promise((r) => setTimeout(r, 250));
-	}
-	return false;
+		const filePath = join(DIST_DIR, reqPath);
+		if (existsSync(filePath) && statSync(filePath).isFile()) {
+			const ext = extname(filePath).toLowerCase();
+			res.writeHead(200, {
+				"Content-Type": MIME_TYPES[ext] || "application/octet-stream",
+			});
+			createReadStream(filePath).pipe(res);
+		} else {
+			res.writeHead(404);
+			res.end("Not found");
+		}
+	});
 }
 
 async function main() {
-	let targetUrl = await findRunningServerUrl();
-	let serverProcess = null;
+	console.log("📦 Building static site to ensure fresh assets...");
+	execSync("pnpm astro build", { cwd: ROOT_DIR, stdio: "inherit" });
 
-	if (targetUrl) {
-		console.log(`✓ Detected running dev server at ${targetUrl}`);
-	} else {
-		const port = 4321;
-		targetUrl = `http://localhost:${port}/resume`;
-		console.log(`🚀 Starting Astro server at ${targetUrl}...`);
+	const server = createStaticServer();
+	await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+	const port = server.address().port;
+	const targetUrl = `http://127.0.0.1:${port}/resume`;
 
-		serverProcess = spawn(
-			"pnpm",
-			["astro", "dev", "--port", String(port), "--host", "0.0.0.0"],
-			{
-				cwd: ROOT_DIR,
-				stdio: "ignore",
-				env: { ...process.env, NODE_ENV: "production" },
-			},
-		);
-
-		const ready = await waitForServer(targetUrl, 12000);
-		if (!ready) {
-			targetUrl = await findRunningServerUrl();
-			if (!targetUrl) {
-				if (serverProcess) serverProcess.kill("SIGTERM");
-				throw new Error("Could not connect to Astro server.");
-			}
-		}
-		console.log(`✓ Server ready at ${targetUrl}`);
-	}
+	console.log(`✓ Static server listening at ${targetUrl}`);
 
 	try {
 		console.log("📄 Launching Chromium...");
@@ -85,9 +71,30 @@ async function main() {
 		const page = await browser.newPage();
 		await page.goto(targetUrl, { waitUntil: "networkidle" });
 
-		// Ensure web fonts are fully loaded
+		// Ensure web fonts and all images are fully loaded and decoded
 		await page.evaluate(async () => {
 			await document.fonts.ready;
+			const images = Array.from(document.querySelectorAll("img"));
+			await Promise.all(
+				images.map((img) => {
+					if (img.complete && img.naturalHeight !== 0) {
+						return img.decode
+							? img.decode().catch(() => {})
+							: Promise.resolve();
+					}
+					return new Promise((resolve) => {
+						img.addEventListener("load", () => {
+							if (img.decode)
+								img
+									.decode()
+									.catch(() => {})
+									.then(resolve);
+							else resolve();
+						});
+						img.addEventListener("error", resolve);
+					});
+				}),
+			);
 		});
 
 		// Emulate print media so print stylesheets apply
@@ -105,14 +112,12 @@ async function main() {
 		await browser.close();
 		console.log(`✅ CV PDF generated at: ${PUBLIC_OUTPUT}`);
 
-		if (existsSync(resolve(ROOT_DIR, "dist"))) {
+		if (existsSync(DIST_DIR)) {
 			copyFileSync(PUBLIC_OUTPUT, DIST_OUTPUT);
 			console.log(`✅ Synced to dist: ${DIST_OUTPUT}`);
 		}
 	} finally {
-		if (serverProcess) {
-			serverProcess.kill("SIGTERM");
-		}
+		server.close();
 	}
 }
 

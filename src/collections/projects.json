@@ -18,6 +18,15 @@
 		"featured": true
 	},
 	{
+		"name": "Sr. Jr. Games",
+		"description": "A father-son game studio crafting fun games and sharing practical resources and tutorials on developing games with kids.",
+		"image": "srjrgames.png",
+		"url": "https://srjrgames.com/",
+		"status": "active",
+		"techStack": ["Astro", "Unity", "C#"],
+		"featured": true
+	},
+	{
 		"name": "Notamify",
 		"description": "AI-powered platform that transforms complex NOTAM data into clear, actionable briefings, streamlining pre-flight preparations for aviation professionals.",
 		"image": "notamify.png",
@@ -82,14 +91,6 @@
 		"url": "https://github.com/awslabs/wdio-aws-device-farm-service",
 		"status": "active",
 		"techStack": ["TypeScript", "WebdriverIO", "AWS Device Farm", "Vite"]
-	},
-	{
-		"name": "Sr. Jr. Games",
-		"description": "A father-son game development studio creating fun games and sharing tutorials on developing games with kids.",
-		"image": "srjrgames.png",
-		"url": "https://srjrgames.com/",
-		"status": "active",
-		"techStack": ["Astro", "Unity", "C#", "Godot"]
 	},
 	{
 		"name": "Pigeon Revenge",
