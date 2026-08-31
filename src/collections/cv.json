@@ -6,11 +6,13 @@
 	"phone": "(+41) 76 295 38 84",
 	"website": "https://www.pasmichal.com",
 	"websiteDisplay": "pasmichal.com",
+	"publication": "https://practicallyagents.com",
+	"publicationDisplay": "practicallyagents.com",
 	"linkedin": "https://linkedin.com/in/mpasierbski",
 	"linkedinDisplay": "linkedin.com/in/mpasierbski",
 	"github": "https://github.com/pasierb",
 	"githubDisplay": "github.com/pasierb",
-	"summary": "Engineering Lead and Senior Software Engineer with over 15 years of experience architecting distributed systems, cloud infrastructure, and AI-driven platforms. Proven track record at Google and AWS driving ecosystem connectivity, platform reliability, and high-scale traffic management. Hands-on technical leader combining deep systems design with pragmatic product execution.",
+	"summary": "Engineering Lead and Senior Software Engineer with over 15 years of experience architecting distributed systems, cloud infrastructure, and AI-driven platforms. Proven track record at Google and AWS driving ecosystem connectivity, platform reliability, and high-scale traffic management. Active AI thought leader (Practically Agents) and builder combining deep multi-agent systems architecture with pragmatic 0-to-1 product execution.",
 	"skills": {
 		"AI & Agentic Systems": [
 			"LangChain",
@@ -102,9 +104,8 @@
 			"company": "EF Education First",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Traffic Management: Designed architecture and migration path for Cloudflare Workers handling 100% of EF product page traffic (~13M requests/day). Served as primary technical contact with Cloudflare.",
-				"Team Leadership: Led 4-person platform infrastructure team dedicated to serving product teams, focusing on CI/CD pipelines and deployment automation.",
-				"Design System: Partnered with EF Global Creative Studio to implement a React component library, establishing a design system adopted company-wide."
+				"Traffic Management: Designed architecture and migration path for Cloudflare Workers handling 100% of EF product page traffic (~13M req/day); served as primary technical contact with Cloudflare.",
+				"Team Leadership & Design System: Led 4-person platform infrastructure team for CI/CD automation and co-developed company-wide React component library with EF Global Creative Studio."
 			],
 			"tech": "TypeScript, Go, AWS, Terraform, Cloudflare Workers, React, GraphQL",
 			"logo": "/assets/images/experiences/EF_logo.svg"
@@ -115,9 +116,7 @@
 			"company": "R3PI",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Frontend Guild Lead: Served as primary SME for frontend engineering, making foundational technical decisions and leading 3-person team developing a CRM client application.",
-				"R&D & Prototyping: Spearheaded R&D initiatives, handling cross-platform mobile development for an Augmented Reality (AR) navigation app prototype.",
-				"Performance & Architecture: Optimized production builds, reducing bundle size by 25%, and enhanced GraphQL middleware with DataLoader caching to eliminate redundant external roundtrips."
+				"Frontend Lead & Prototyping: Led 3-person team developing CRM client app and built AR navigation prototypes. Optimized production builds by 25% and eliminated redundant roundtrips with DataLoader caching."
 			],
 			"tech": "TypeScript, JavaScript, Node.js, React, GraphQL, SASS",
 			"logo": "/assets/images/experiences/r3pi.jpeg"
@@ -128,8 +127,7 @@
 			"company": "EF Education First",
 			"location": "Lucerne, Switzerland",
 			"highlights": [
-				"Led front-end development for a greenfield e-commerce project replacing legacy monolith with JAMstack architecture.",
-				"DevOps & Quality: Standardized team environments with Docker and set standards for Jest unit and Puppeteer integration testing suites."
+				"Led front-end development for greenfield e-commerce JAMstack migration; standardized team Docker environments and Jest/Puppeteer test suites."
 			],
 			"tech": "JavaScript, Vue.js, Node.js, Docker, SASS, PostgreSQL",
 			"logo": "/assets/images/experiences/EF_logo.svg"
@@ -140,10 +138,9 @@
 			"company": "IS Engineering",
 			"location": "Zug, Switzerland",
 			"highlights": [
-				"Designed and implemented distributed Industry 4.0 factory productivity tracking and analytics system for multi-factory glass plants.",
-				"Personally oversaw deployment, provisioning, and commissioning of the system to 10+ factory locations worldwide (Ukraine, Brazil, Turkey, Germany, France)."
+				"Designed and implemented distributed Industry 4.0 factory tracking & analytics system; oversaw commissioning across 10+ glass plants globally."
 			],
-			"tech": "Ruby on Rails, Ruby, PostgreSQL, MongoDB, Docker, Vue.js, Highcharts, Node.js",
+			"tech": "Ruby on Rails, PostgreSQL, MongoDB, Docker, Vue.js, Node.js",
 			"logo": "/assets/images/experiences/ise.png"
 		},
 		{
@@ -152,10 +149,47 @@
 			"company": "Early Career Roles (PGS Software · sharewise · CMS Mirage)",
 			"location": "Wrocław, Poland",
 			"highlights": [
-				"Delivered web applications and services across multiple client and product environments, including real-time WebSocket push systems, distributed fleet management reporting, and frontend application development."
+				"Delivered web applications and services including real-time WebSocket push systems, fleet management reporting, and frontend user interfaces."
 			],
-			"tech": "Ruby on Rails, Java, JavaScript, Node.js, Backbone.js, jQuery, PostgreSQL, Git",
+			"tech": "Ruby on Rails, Java, JavaScript, Node.js, PostgreSQL, Git",
 			"logo": null
+		}
+	],
+	"projects": [
+		{
+			"name": "Practically Agents",
+			"role": "Founder & Technical Author",
+			"dates": "2025 – Present",
+			"url": "https://practicallyagents.com",
+			"urlDisplay": "practicallyagents.com",
+			"highlights": [
+				"AI Engineering Publication: Author in-depth architectural teardowns and production blueprints on multi-agent orchestration (LangGraph, Google ADK), evals, and agentic UI.",
+				"Hands-on Prototypes: Design and open-source experimental multi-agent workflows exploring state machines, tool synthesis, and agent communication protocols."
+			],
+			"tech": "LangChain, LangGraph, Google ADK, Astro, TypeScript, Python"
+		},
+		{
+			"name": "Notamify",
+			"role": "Co-Founder & CTO",
+			"dates": "2023 – 2024 (Exited)",
+			"url": "https://notamify.com",
+			"urlDisplay": "notamify.com",
+			"highlights": [
+				"Aviation Intelligence SaaS: Built an AI platform converting raw, cryptic NOTAM notices into clear, structured pre-flight briefings for pilots and aviation professionals.",
+				"Architecture & Exit: Designed automated data ingestion, semantic LLM parsing pipeline, and backend services on GCP with PostgreSQL. Successfully exited."
+			],
+			"tech": "Python, FastAPI, PostgreSQL, GCP, Docker, OpenAI"
+		},
+		{
+			"name": "Sr. Jr. Games",
+			"role": "Co-Creator & Developer",
+			"dates": "2025 – Present",
+			"url": "https://srjrgames.com",
+			"urlDisplay": "srjrgames.com",
+			"highlights": [
+				"Game Studio & AI Asset Workflows: Co-founded indie family game dev studio; published Pigeon Revenge and technical guides on AI-driven sprite animation generation and Cursor for Unity."
+			],
+			"tech": "Unity, C#, Astro, Generative AI"
 		}
 	],
 	"education": [
