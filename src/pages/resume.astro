@@ -1,136 +1,299 @@
 ---
 import { Image } from "astro:assets";
-import profilePhoto from "../assets/images/pasmichal-pfp.webp";
-import experiences from "../collections/experiences.json";
-import AboutExperience from "../components/about-experience.astro";
+import cvPhoto from "../assets/images/michal_cv_photo.jpeg";
+import cv from "../collections/cv.json";
 import Layout from "../layouts/main.astro";
 ---
 
 <Layout
-  title="Résumé — Michał Pasierbski, Engineering Lead"
-  description="Michał Pasierbski's resume: 15+ years in software at Google, AWS and EF Education First, now leading engineering at Delta Labs. Full role history and stack."
+  title={`Résumé — ${cv.name}, ${cv.title}`}
+  description={`${cv.name}'s résumé: 15+ years building software across Google, AWS, EF Education First, now leading engineering at Delta Labs.`}
   noindex
   noHeader
   noFooter
 >
-  <section class="max-w-2xl mx-auto flex gap-8 pt-12">
-    <Image
-      src={profilePhoto}
-      alt=""
-      width={192}
-      height={192}
-      densities={[1, 2]}
-      format="webp"
-      quality={82}
-      loading="eager"
-      decoding="async"
-      class="w-48 h-48 rounded-lg print:w-32 print:h-32"
-    />
-    <div class="flex flex-col gap-2">
-      <h1 class="text-3xl font-bold">Michał Pasierbski</h1>
-      <ul class="mt-4 print:mt-0">
-        <li>
-          <a href="mailto:mpasierbski@gmail.com" class="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="inline-block w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              ></path>
-            </svg>
-            mpasierbski@gmail.com
-          </a>
-        </li>
-        <li>
-          <a href="https://www.pasmichal.com" class="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="inline-block w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-              ></path>
-            </svg>
-            pasmichal.com
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/pasierb" class="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="inline-block w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              ></path>
-            </svg>
-            github.com/pasierb</a>
-        </li>
-        <li>
-          <a
-            href="https://linkedin.com/in/mpasierbski"
-            class="flex items-center gap-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="inline-block w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21h-4v-6.75c0-1.06-1.19-1.94-2.25-1.94S13 13.19 13 14.25V21H9V9h4v2c.66-1.07 2.36-1.76 3.5-1.76 2.5 0 4.5 2.04 4.5 4.51V21zm-14 0H3V9h4v12zM5 7a2 2 0 100-4 2 2 0 000 4z"
-              ></path>
-            </svg>
-            linkedin.com/in/mpasierbski</a
-          >
-        </li>
-      </ul>
+  <div class="resume-wrapper max-w-3xl mx-auto px-6 py-10 md:py-16 text-primary dark:text-primary-dark print:p-0 print:max-w-none print:text-black">
+    
+    <!-- Top Web Controls (Hidden in Print / PDF) -->
+    <div class="no-print mb-8 flex items-center justify-between border-b border-border dark:border-border-dark pb-4">
+      <a
+        href="/"
+        class="font-label-mono text-xs uppercase tracking-widest text-secondary hover:text-primary dark:text-secondary-dark dark:hover:text-primary-dark transition-colors inline-flex items-center gap-1.5"
+      >
+        <span>←</span> Back to pasmichal.com
+      </a>
+      <div class="flex items-center gap-3">
+        <a
+          href="/michal_pasierbski_cv.pdf"
+          download
+          class="font-label-mono text-xs uppercase tracking-widest px-3.5 py-2 bg-primary text-on-primary dark:bg-primary-dark dark:text-on-primary-dark hover:opacity-85 transition-opacity inline-flex items-center gap-2 border border-border-main dark:border-border-main-dark"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Download PDF
+        </a>
+      </div>
     </div>
-  </section>
-  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
-    <h2
-      class="text-2xl font-bold mb-12 border-b border-border dark:border-border-dark"
-    >
-      Experience
-    </h2>
 
-    {
-      experiences.map((experience) => {
-        return (
-          <article class="pb-10 border-l border-border last:border-l-0 dark:border-border-dark">
-            <AboutExperience
-              dates={experience.dates}
-              role={experience.role}
-              company={experience.company}
-              description={experience.description}
-              logo={experience.logo}
-            />
+    <!-- Header / Contact Info -->
+    <header class="resume-header pb-6 border-b border-border dark:border-border-dark print:border-neutral-300 print:pb-3">
+      <div class="flex items-start sm:items-center gap-5 sm:gap-6 print:gap-4">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 print:w-[74px] print:h-[74px] aspect-square shrink-0 border border-border dark:border-border-dark print:border-neutral-300 overflow-hidden rounded-sm">
+          <Image
+            src={cvPhoto}
+            alt={cv.name}
+            width={192}
+            height={192}
+            densities={[1, 2]}
+            format="webp"
+            quality={90}
+            loading="eager"
+            decoding="async"
+            class="w-full h-full object-cover filter contrast-105"
+          />
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-between py-0.5 print:py-0">
+          <div>
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between print:flex-row print:items-baseline print:justify-between gap-1.5 print:gap-1">
+              <div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-primary dark:text-primary-dark print:text-black print:text-[22pt] print:leading-tight">
+                  {cv.name}
+                </h1>
+                <p class="text-xs sm:text-sm font-medium text-secondary dark:text-secondary-dark print:text-neutral-700 mt-1 uppercase tracking-wider print:text-[9.5pt]">
+                  {cv.title}
+                </p>
+              </div>
+              <div class="text-xs text-secondary dark:text-secondary-dark print:text-neutral-600 md:text-right print:text-right print:text-[8.5pt] shrink-0 flex items-center md:justify-end gap-1.5">
+                <svg class="w-3.5 h-3.5 shrink-0 opacity-70 print:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>{cv.location}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Links Grid -->
+          <div class="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-secondary dark:text-secondary-dark print:text-neutral-700 print:text-[8.5pt] print:gap-x-4 print:gap-y-0.5 print:mt-1.5">
+            <a href={`mailto:${cv.email}`} class="hover:underline flex items-center gap-1.5 hover:text-primary dark:hover:text-primary-dark transition-colors">
+              <svg class="w-3.5 h-3.5 shrink-0 opacity-70 print:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>{cv.email}</span>
+            </a>
+            <a href={cv.website} target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1.5 hover:text-primary dark:hover:text-primary-dark transition-colors">
+              <svg class="w-3.5 h-3.5 shrink-0 opacity-70 print:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+              <span>{cv.websiteDisplay}</span>
+            </a>
+            <a href={cv.linkedin} target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1.5 hover:text-primary dark:hover:text-primary-dark transition-colors">
+              <svg class="w-3.5 h-3.5 shrink-0 opacity-70 print:opacity-100" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+              </svg>
+              <span>{cv.linkedinDisplay}</span>
+            </a>
+            <a href={cv.github} target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1.5 hover:text-primary dark:hover:text-primary-dark transition-colors">
+              <svg class="w-3.5 h-3.5 shrink-0 opacity-70 print:opacity-100" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+              </svg>
+              <span>{cv.githubDisplay}</span>
+            </a>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0 opacity-70 print:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>{cv.phone}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="resume-section py-5 print:py-2.5 border-b border-border dark:border-border-dark print:border-neutral-200 break-inside-avoid">
+      <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-primary dark:text-primary-dark print:text-black print:text-[11pt] mb-2 print:mb-1.5">
+        Professional Summary
+      </h2>
+      <p class="font-body-md text-secondary dark:text-secondary-dark print:text-neutral-800 leading-relaxed text-sm md:text-[14.5px] print:text-[9pt] print:leading-[1.45]">
+        {cv.summary}
+      </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="resume-section py-5 print:py-2.5 border-b border-border dark:border-border-dark print:border-neutral-200 break-inside-avoid">
+      <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-primary dark:text-primary-dark print:text-black print:text-[11pt] mb-2.5 print:mb-1.5">
+        Technical Skills & Competencies
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5 font-sans text-xs print:grid-cols-2 print:gap-x-6 print:gap-y-1.5">
+        {Object.entries(cv.skills).map(([category, skillsList]) => (
+          <div class="flex flex-col gap-0.5">
+            <span class="text-xs font-semibold text-primary dark:text-primary-dark print:text-neutral-900 uppercase tracking-wide print:text-[8.5pt]">
+              {category}
+            </span>
+            <p class="text-secondary dark:text-secondary-dark print:text-neutral-700 text-xs sm:text-[13px] print:text-[8.5pt] leading-normal">
+              {skillsList.join(" · ")}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="resume-section py-6 print:py-3 border-b border-border dark:border-border-dark print:border-neutral-200">
+      <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-primary dark:text-primary-dark print:text-black print:text-[11pt] mb-3.5 print:mb-2">
+        Professional Experience
+      </h2>
+
+      <div class="space-y-7 print:space-y-3.5">
+        {cv.experiences.map((exp) => (
+          <article class="job-item break-inside-avoid">
+            <!-- Header for Desktop & Print -->
+            <div class="mb-1 print:mb-0.5 hidden sm:block print:block">
+              <div class="flex items-baseline justify-between gap-2">
+                <h3 class="text-base sm:text-[17px] font-bold text-primary dark:text-primary-dark print:text-black print:text-[11pt]">
+                  {exp.company}
+                </h3>
+                <span class="text-xs sm:text-sm font-medium text-secondary dark:text-secondary-dark print:text-neutral-600 shrink-0 print:text-[9pt]">
+                  {exp.dates}
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between gap-2 mt-0.5 print:mt-0">
+                <h4 class="text-sm sm:text-[14.5px] font-semibold text-secondary dark:text-secondary-dark print:text-neutral-800 print:text-[9.5pt]">
+                  {exp.role}
+                </h4>
+                {exp.location && (
+                  <span class="text-xs sm:text-sm text-secondary/80 dark:text-secondary-dark/80 print:text-neutral-500 shrink-0 print:text-[8.5pt]">
+                    {exp.location}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <!-- Header for Mobile (< sm, hidden in print) -->
+            <div class="mb-1.5 sm:hidden print:hidden flex flex-col gap-0.5">
+              <h3 class="text-base font-bold text-primary dark:text-primary-dark">
+                {exp.company}
+              </h3>
+              <h4 class="text-sm font-semibold text-secondary dark:text-secondary-dark">
+                {exp.role}
+              </h4>
+              <div class="text-xs text-secondary/80 dark:text-secondary-dark/80">
+                <span>{exp.dates}</span>
+                {exp.location && <span> · {exp.location}</span>}
+              </div>
+            </div>
+
+            {exp.highlights && exp.highlights.length > 0 && (
+              <ul class="mt-1.5 space-y-1 text-xs sm:text-[13.5px] text-secondary dark:text-secondary-dark print:text-neutral-800 print:text-[8.5pt] print:leading-[1.4] print:space-y-0.5 print:mt-0.5">
+                {exp.highlights.map((item) => {
+                  const colonIdx = item.indexOf(":");
+                  const hasPrefix = colonIdx > 0 && colonIdx < 40;
+                  return (
+                    <li class="pl-3.5 -indent-3.5 leading-relaxed print:leading-[1.4] before:content-['•'] before:mr-1.5 before:font-bold before:text-primary dark:before:text-primary-dark print:before:text-black">
+                      {hasPrefix ? (
+                        <>
+                          <strong class="font-semibold text-primary dark:text-primary-dark print:text-black">
+                            {item.slice(0, colonIdx + 1)}
+                          </strong>
+                          {item.slice(colonIdx + 1)}
+                        </>
+                      ) : (
+                        item
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+
+            {exp.tech && (
+              <div class="mt-2 text-xs text-secondary dark:text-secondary-dark print:text-neutral-600 print:text-[8pt] flex flex-wrap items-baseline gap-1.5 print:mt-0.5">
+                <span class="font-bold text-primary dark:text-primary-dark print:text-neutral-900 uppercase tracking-wider text-[11px] print:text-[7.5pt]">
+                  Tech:
+                </span>
+                <span>{exp.tech}</span>
+              </div>
+            )}
           </article>
-        );
-      })
-    }
-  </section>
+        ))}
+      </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-6 print:py-3 print:grid-cols-2 print:gap-8 break-inside-avoid">
+      
+      <!-- Education -->
+      <section class="resume-section">
+        <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-primary dark:text-primary-dark print:text-black print:text-[11pt] mb-2.5 print:mb-1.5">
+          Education
+        </h2>
+        <div class="space-y-3 print:space-y-1.5">
+          {cv.education.map((edu) => (
+            <div class="text-xs sm:text-sm print:text-[8.5pt]">
+              <p class="font-bold text-primary dark:text-primary-dark print:text-black">
+                {edu.institution}
+              </p>
+              <p class="text-secondary dark:text-secondary-dark print:text-neutral-800">
+                {edu.degree}
+              </p>
+              <p class="text-xs text-secondary/80 dark:text-secondary-dark/80 print:text-neutral-500 print:text-[8pt] mt-0.5">
+                {edu.dates} {edu.location && `· ${edu.location}`}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="resume-section">
+        <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-primary dark:text-primary-dark print:text-black print:text-[11pt] mb-2.5 print:mb-1.5">
+          Certifications
+        </h2>
+        <div class="space-y-3 print:space-y-1.5">
+          {cv.certifications.map((cert) => (
+            <div class="text-xs sm:text-sm print:text-[8.5pt]">
+              <p class="font-bold text-primary dark:text-primary-dark print:text-black">
+                {cert.name}
+              </p>
+              <p class="text-secondary dark:text-secondary-dark print:text-neutral-800">
+                {cert.issuer}
+              </p>
+              <p class="text-xs text-secondary/80 dark:text-secondary-dark/80 print:text-neutral-500 print:text-[8pt] mt-0.5">
+                {cert.date}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+
+  </div>
 </Layout>
+
+<style>
+  @media print {
+    :global(body) {
+      background-color: #ffffff !important;
+      color: #111111 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .no-print {
+      display: none !important;
+    }
+    .break-inside-avoid {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
+    @page {
+      size: A4;
+      margin: 8mm 11mm;
+    }
+  }
+</style>

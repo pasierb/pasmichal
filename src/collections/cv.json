@@ -1,0 +1,187 @@
+{
+	"name": "Michał Pasierbski",
+	"title": "Engineering Lead · Senior Software Engineer",
+	"location": "Zurich Area, Switzerland",
+	"email": "mpasierbski@gmail.com",
+	"phone": "(+41) 76 295 38 84",
+	"website": "https://www.pasmichal.com",
+	"websiteDisplay": "pasmichal.com",
+	"linkedin": "https://linkedin.com/in/mpasierbski",
+	"linkedinDisplay": "linkedin.com/in/mpasierbski",
+	"github": "https://github.com/pasierb",
+	"githubDisplay": "github.com/pasierb",
+	"summary": "Engineering Lead and Senior Software Engineer with over 15 years of experience architecting distributed systems, cloud infrastructure, and AI-driven platforms. Proven track record at Google and AWS driving ecosystem connectivity, platform reliability, and high-scale traffic management. Hands-on technical leader combining deep systems design with pragmatic product execution.",
+	"skills": {
+		"AI & Agentic Systems": [
+			"LangChain",
+			"LangGraph",
+			"ADK (Agent Development Kit)",
+			"LLM Orchestration",
+			"Multi-Agent Architectures",
+			"Evals & Benchmarking"
+		],
+		"Architecture & Cloud": [
+			"AWS (Lambda, DynamoDB, CDK, S3)",
+			"GCP",
+			"Cloudflare Workers",
+			"Terraform",
+			"Docker",
+			"CI/CD Pipelines"
+		],
+		"Languages": [
+			"TypeScript",
+			"JavaScript",
+			"Python",
+			"Go",
+			"Java",
+			"Dart",
+			"Kotlin",
+			"Ruby"
+		],
+		"Web & Full-Stack": [
+			"Next.js",
+			"React",
+			"Angular",
+			"FastAPI",
+			"Node.js",
+			"Vue.js",
+			"Tailwind CSS",
+			"REST & GraphQL"
+		],
+		"Databases & Storage": [
+			"PostgreSQL",
+			"Redis",
+			"MongoDB",
+			"Vector Databases"
+		]
+	},
+	"experiences": [
+		{
+			"dates": "06.2026 – Present",
+			"role": "Staff Software Engineer, Engineering Lead",
+			"company": "Delta Labs AG",
+			"location": "Zurich, Switzerland",
+			"highlights": [
+				"Leading engineering on Elaiia, an AI powered market research platform.",
+				"Own technical direction, multi-agent architecture, and delivery - hands-on in the codebase alongside the engineering team.",
+				"Architected multi-agent simulation workflows with LangGraph, FastAPI, and Next.js, optimizing LLM cost efficiency."
+			],
+			"tech": "LangChain, LangGraph, Next.js, FastAPI, Python, TypeScript, PostgreSQL",
+			"logo": null
+		},
+		{
+			"dates": "11.2021 – 05.2026",
+			"role": "Software Engineer",
+			"company": "Google",
+			"location": "Zurich, Switzerland",
+			"highlights": [
+				"Merchant Center Next: Developed the Product Diagnostics frontend for the revamped Merchant Center Next, delivering critical insight tools for merchants to monitor catalog health at Google scale.",
+				"Business Manager: Led technical design and implementation of user management (Authentication & Authorization) for Business Manager, a central hub allowing merchants to manage 1st- and 3rd-party applications (launched to >300k MAU).",
+				"Ecosystem Integrations: Led UI/features team implementing first-party linking between Merchant Identity and major platforms (Shopify, YouTube Shopping, Google Ads, Google Business Profile).",
+				"AI Support Agent (20% Project): Designed and developed an AI-powered agent to assist G-Tech support teams, automating >70% of responses to technical customer inquiries."
+			],
+			"tech": "Java, Dart, Angular, Kotlin, SASS, ADK, Bazel",
+			"logo": "/assets/images/experiences/google.svg"
+		},
+		{
+			"dates": "08.2020 – 10.2021",
+			"role": "Software Development Engineer II",
+			"company": "Amazon Web Services (AWS)",
+			"location": "Berlin, Germany",
+			"highlights": [
+				"Testing Infrastructure (AWS CX): Led initiative within central AWS Customer Experience (CX) team to simplify end-to-end testing (functional, canary, integration) for AWS Console product pages.",
+				"Plug-n-Play Framework: Delivered plug-and-play testing solution based on Webdriver protocol, enabling partner teams to seamlessly adopt automated testing for their specific console applications.",
+				"Internal Tooling: Contributed to development of centralized feature flagging solution, empowering internal teams to manage feature rollouts and experiments effectively."
+			],
+			"tech": "JavaScript, TypeScript, React, WebdriverIO, AWS Services",
+			"logo": "/assets/images/experiences/aws.svg"
+		},
+		{
+			"dates": "07.2019 – 07.2020",
+			"role": "Lead Software Engineer",
+			"company": "EF Education First",
+			"location": "Zurich, Switzerland",
+			"highlights": [
+				"Traffic Management: Designed architecture and migration path for Cloudflare Workers handling 100% of EF product page traffic (~13M requests/day). Served as primary technical contact with Cloudflare.",
+				"Team Leadership: Led 4-person platform infrastructure team dedicated to serving product teams, focusing on CI/CD pipelines and deployment automation.",
+				"Design System: Partnered with EF Global Creative Studio to implement a React component library, establishing a design system adopted company-wide."
+			],
+			"tech": "TypeScript, Go, AWS, Terraform, Cloudflare Workers, React, GraphQL",
+			"logo": "/assets/images/experiences/EF_logo.svg"
+		},
+		{
+			"dates": "09.2018 – 04.2019",
+			"role": "Software Development Engineer / Front-end Lead",
+			"company": "R3PI",
+			"location": "Zurich, Switzerland",
+			"highlights": [
+				"Frontend Guild Lead: Served as primary SME for frontend engineering, making foundational technical decisions and leading 3-person team developing a CRM client application.",
+				"R&D & Prototyping: Spearheaded R&D initiatives, handling cross-platform mobile development for an Augmented Reality (AR) navigation app prototype.",
+				"Performance & Architecture: Optimized production builds, reducing bundle size by 25%, and enhanced GraphQL middleware with DataLoader caching to eliminate redundant external roundtrips."
+			],
+			"tech": "TypeScript, JavaScript, Node.js, React, GraphQL, SASS",
+			"logo": "/assets/images/experiences/r3pi.jpeg"
+		},
+		{
+			"dates": "12.2017 – 08.2018",
+			"role": "Senior Front-end Engineer",
+			"company": "EF Education First",
+			"location": "Lucerne, Switzerland",
+			"highlights": [
+				"Led front-end development for a greenfield e-commerce project replacing legacy monolith with JAMstack architecture.",
+				"DevOps & Quality: Standardized team environments with Docker and set standards for Jest unit and Puppeteer integration testing suites."
+			],
+			"tech": "JavaScript, Vue.js, Node.js, Docker, SASS, PostgreSQL",
+			"logo": "/assets/images/experiences/EF_logo.svg"
+		},
+		{
+			"dates": "01.2014 – 12.2017",
+			"role": "Chief Software Architect",
+			"company": "IS Engineering",
+			"location": "Zug, Switzerland",
+			"highlights": [
+				"Designed and implemented distributed Industry 4.0 factory productivity tracking and analytics system for multi-factory glass plants.",
+				"Personally oversaw deployment, provisioning, and commissioning of the system to 10+ factory locations worldwide (Ukraine, Brazil, Turkey, Germany, France)."
+			],
+			"tech": "Ruby on Rails, Ruby, PostgreSQL, MongoDB, Docker, Vue.js, Highcharts, Node.js",
+			"logo": "/assets/images/experiences/ise.png"
+		},
+		{
+			"dates": "05.2009 – 12.2013",
+			"role": "Software Developer (Full-Stack / Frontend / Backend)",
+			"company": "Early Career Roles (PGS Software · sharewise · CMS Mirage)",
+			"location": "Wrocław, Poland",
+			"highlights": [
+				"Delivered web applications and services across multiple client and product environments, including real-time WebSocket push systems, distributed fleet management reporting, and frontend application development."
+			],
+			"tech": "Ruby on Rails, Java, JavaScript, Node.js, Backbone.js, jQuery, PostgreSQL, Git",
+			"logo": null
+		}
+	],
+	"education": [
+		{
+			"institution": "Higher School of Information Technology and Management \"COPERNICUS\"",
+			"degree": "Computer Science",
+			"dates": "2007 – 2009",
+			"location": "Wrocław, Poland"
+		},
+		{
+			"institution": "University of Wroclaw",
+			"degree": "Archeology",
+			"dates": "2001 – 2003",
+			"location": "Wrocław, Poland"
+		}
+	],
+	"certifications": [
+		{
+			"name": "AWS Certified Solutions Architect – Associate",
+			"issuer": "Amazon Web Services (AWS)",
+			"date": "Issued 12.2019"
+		},
+		{
+			"name": "Mobile Web Specialist",
+			"issuer": "Google Developers",
+			"date": "Issued 01.2019"
+		}
+	]
+}
