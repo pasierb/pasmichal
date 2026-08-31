@@ -2,7 +2,7 @@
 import socials from "../collections/socials.json";
 
 const isOutbound = (social: (typeof socials)[number]) =>
-	!social.url.startsWith("mailto:") && !social.download;
+	!social.url.startsWith("mailto:") && !social.url.startsWith("/");
 ---
 
 <footer class="bg-background dark:bg-background-dark border-t border-border-main dark:border-border-main-dark w-full mt-auto">
@@ -27,7 +27,6 @@ const isOutbound = (social: (typeof socials)[number]) =>
           href={social.url}
           target={isOutbound(social) ? "_blank" : undefined}
           rel={isOutbound(social) ? "me noopener noreferrer" : undefined}
-          download={social.download ? "" : undefined}
           class="text-text-muted dark:text-text-muted-dark hover:underline decoration-1 underline-offset-4 transition-colors hover:text-primary dark:hover:text-primary-dark"
         >
           {social.label.replace(" (Twitter)", "")}

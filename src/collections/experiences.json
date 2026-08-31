@@ -5,8 +5,9 @@
 		"company": "Delta Labs AG, Zurich, Switzerland",
 		"description": [
 			"Leading engineering on Elaiia, an AI customer simulation platform that predicts how customer segments respond to product, pricing, and messaging decisions",
-			"Own technical direction, architecture and delivery — hands-on in the codebase alongside the team",
-			"Tech: LangChain, LangGraph, Next.js, FastAPI"
+			"Own technical direction, multi-agent architecture, and delivery — hands-on in the codebase alongside the engineering team",
+			"Architected multi-agent simulation workflows with LangGraph, FastAPI, and Next.js, optimizing latency, caching, and LLM cost efficiency",
+			"Tech: LangChain, LangGraph, Next.js, FastAPI, Python, TypeScript, PostgreSQL"
 		]
 	},
 	{
@@ -14,19 +15,23 @@
 		"role": "Software Engineer",
 		"company": "Google, Zurich, Switzerland",
 		"description": [
-			"Migrated legacy Merchant Center product issues debugging UI to new Merchant Center UI version",
-			"Led UI/features team in implementing first-party linking between Merchant Identity and other Google products (Ads, Analytics, YouTube, etc.)",
-			"Tech: Dart, Java, Bazel, Angular"
+			"Merchant Center Next: Developed the Product Diagnostics frontend for the revamped Merchant Center Next, delivering critical insight tools for merchants to monitor catalog health at Google scale",
+			"Business Manager: Led technical design and implementation of user management (Authentication & Authorization) for Business Manager, a central hub allowing merchants to manage 1st- and 3rd-party applications (launched to >300k MAU)",
+			"Ecosystem Integrations: Led UI/features team implementing first-party linking between Merchant Identity and major platforms (Shopify, YouTube Shopping, Google Ads, Google Business Profile)",
+			"AI Support Agent (20% Project): Designed and developed an AI-powered agent to assist G-Tech support teams, automating >70% of responses to technical customer inquiries",
+			"Tech: Java, Dart, Angular, Kotlin, SASS, ADK, Bazel"
 		],
 		"logo": "/assets/images/experiences/google.svg"
 	},
 	{
 		"dates": "August 2020 · October 2021",
-		"role": "Software Engineer",
+		"role": "Software Engineer (SDE II)",
 		"company": "Amazon AWS, Berlin, Germany",
 		"description": [
-			"Implemented internal testing solution for AWS Console teams covering functional, integration and canary testing verticals. (WebdriverIO, Typescript, AWS Device Farm)",
-			"Tech: WebdriverIO, Typescript, AWS serverless stack"
+			"Testing Infrastructure (AWS CX): Led initiative within central AWS Customer Experience (CX) team to simplify end-to-end testing (functional, canary, integration) for AWS Console product pages",
+			"Plug-n-Play Framework: Delivered plug-and-play testing solution based on Webdriver protocol, enabling partner teams to seamlessly adopt automated testing for their specific console applications",
+			"Internal Tooling: Contributed to development of centralized feature flagging solution, empowering internal teams to manage feature rollouts and experiments effectively",
+			"Tech: JavaScript, TypeScript, React, WebdriverIO, AWS Services"
 		],
 		"logo": "/assets/images/experiences/aws.svg"
 	},
@@ -35,10 +40,10 @@
 		"role": "Lead Software Engineer",
 		"company": "EF Education First, Zurich, Switzerland",
 		"description": [
-			"Led front-end infrastructure team",
-			"Designed and led the implementation of Cloudflare workers handling all of EF product pages traffic",
-			"Created React version of EF design system, adopted by multiple teams and later taken over by central team.",
-			"Tech: TypeScript, React, Cloudflare Workers, Go, AWS serverless stack"
+			"Traffic Management: Designed architecture and migration path for Cloudflare Workers handling 100% of EF product page traffic (~13M requests/day). Served as primary technical contact with Cloudflare",
+			"Team Leadership: Led 4-person platform infrastructure team dedicated to serving product teams, focusing on CI/CD pipelines and deployment automation",
+			"Design System: Partnered with EF Global Creative Studio to implement a React component library, establishing a design system adopted company-wide",
+			"Tech: TypeScript, Go, AWS, Terraform, Cloudflare Workers, React, GraphQL"
 		],
 		"logo": "/assets/images/experiences/EF_logo.svg"
 	},
@@ -47,9 +52,10 @@
 		"role": "Software Development Engineer / Front-end Lead",
 		"company": "R3PI, Zurich, Switzerland",
 		"description": [
-			"Led 3-man front-end team",
-			"Introduced and enforced best practices in code quality and consistency, especially around GraphQL and data-loaders",
-			"Tech: TypeScript, React, NodeJS, GraphQL"
+			"Frontend Guild Lead: Served as primary SME for frontend engineering, making foundational technical decisions and leading 3-person team developing a CRM client application",
+			"R&D & Prototyping: Spearheaded R&D initiatives, handling cross-platform mobile development for an Augmented Reality (AR) navigation app prototype",
+			"Performance & Architecture: Optimized production builds, reducing bundle size by 25%, and enhanced GraphQL middleware with DataLoader caching to eliminate redundant external roundtrips",
+			"Tech: TypeScript, JavaScript, Node.js, React, GraphQL, SASS"
 		],
 		"logo": "/assets/images/experiences/r3pi.jpeg"
 	},
@@ -58,30 +64,30 @@
 		"role": "Senior Front-end Engineer",
 		"company": "EF Education First, Luzern, Switzerland",
 		"description": [
-			"Led front-end development for a greenfield project to replace legacy monolith with JAM stack",
-			"Tech: JavaScript, VueJS, NodeJS, PostgreSQL"
+			"Led front-end development for a greenfield e-commerce project replacing legacy monolith with JAMstack architecture",
+			"DevOps & Quality: Standardized team environments with Docker and set standards for Jest unit and Puppeteer integration testing suites",
+			"Tech: JavaScript, Vue.js, Node.js, Docker, SASS, PostgreSQL"
 		],
 		"logo": "/assets/images/experiences/EF_logo.svg"
 	},
 	{
 		"dates": "January 2014 · December 2017",
 		"role": "Chief Software Architect",
-		"company": "IS Engineering",
+		"company": "IS Engineering, Zug, Switzerland",
 		"description": [
-			"Designed and implemented distributed analytics system for glass plants, a.k.a. Industry 4.0",
-			"Personally overseen deployment of the system to 10+ locations worldwide",
-			"Tech: Ruby on Rails, JavaScript, NodeJS, VueJS, PostgreSQL, Docker"
+			"Designed and implemented distributed Industry 4.0 factory productivity tracking and analytics system for multi-factory glass plants",
+			"Personally oversaw deployment, provisioning, and commissioning of the system to 10+ factory locations worldwide (Ukraine, Brazil, Turkey, Germany, France)",
+			"Tech: Ruby on Rails, Ruby, PostgreSQL, MongoDB, Docker, Vue.js, Highcharts, Node.js"
 		],
 		"logo": "/assets/images/experiences/ise.png"
 	},
 	{
 		"dates": "September 2013 · December 2013",
 		"role": "JavaScript Developer",
-		"company": "PGS Software",
+		"company": "PGS Software, Wrocław, Poland",
 		"description": [
-			"Facilitated migration from SVN to Git",
-			"Played key role in defining workflow process for the team (trunk based development)",
-			"Tech: JavaScript, BackboneJS, Git, SVN"
+			"Facilitated migration from SVN to Git; defined team workflow processes for trunk-based development",
+			"Tech: JavaScript, Backbone.js, Git, SVN"
 		],
 		"logo": "/assets/images/experiences/pgs.jpg"
 	},
@@ -90,9 +96,8 @@
 		"role": "Ruby on Rails / JavaScript Developer",
 		"company": "sharewise GmbH, Wroclaw, Poland",
 		"description": [
-			"Designed & implemented WebSocket push service used across all apps to deliver real-time updates (mostly stock prices)",
-			"Led mobile site development",
-			"Tech: Ruby on Rails, JavaScript, NodeJS, jQuery, AngularJS, PostgreSQL"
+			"Designed and implemented WebSocket push service delivering real-time updates (stock prices) across apps. Led mobile site development",
+			"Tech: Ruby on Rails, JavaScript, Node.js, jQuery, AngularJS, PostgreSQL"
 		],
 		"logo": "/assets/images/experiences/sw.png"
 	},
@@ -101,7 +106,7 @@
 		"role": "Java Developer",
 		"company": "CMS Mirage, Wroclaw, Poland",
 		"description": [
-			"Maintained a fleet management system",
+			"Maintained a distributed fleet management and reporting system",
 			"Tech: Java, XLSX, jQuery, PostgreSQL"
 		],
 		"logo": "/assets/images/experiences/start.svg"
