@@ -1,6 +1,6 @@
 {
 	"name": "Michał Pasierbski",
-	"title": "Engineering Lead · Senior Software Engineer",
+	"title": "Staff Software Engineer · Engineering Lead",
 	"location": "Zurich Area, Switzerland",
 	"email": "mpasierbski@gmail.com",
 	"phone": "(+41) 76 295 38 84",
@@ -12,7 +12,7 @@
 	"linkedinDisplay": "linkedin.com/in/mpasierbski",
 	"github": "https://github.com/pasierb",
 	"githubDisplay": "github.com/pasierb",
-	"summary": "Engineering Lead and Senior Software Engineer with over 15 years of experience architecting distributed systems, cloud infrastructure, and AI-driven platforms. Proven track record at Google and AWS driving ecosystem connectivity, platform reliability, and high-scale traffic management. Active AI thought leader (Practically Agents) and builder combining deep multi-agent systems architecture with pragmatic 0-to-1 product execution.",
+	"summary": "Staff Software Engineer and Engineering Lead with over 15 years of experience architecting distributed systems, cloud infrastructure, and AI-driven platforms. Proven track record at Google and AWS driving ecosystem connectivity, platform reliability, and high-scale traffic management. Active AI thought leader (Practically Agents) and builder combining deep multi-agent systems architecture with pragmatic 0-to-1 product execution.",
 	"skills": {
 		"AI & Agentic Systems": [
 			"LangChain",
@@ -64,11 +64,12 @@
 			"company": "Delta Labs AG",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Leading engineering on Elaiia, an AI powered market research platform.",
-				"Own technical direction, multi-agent architecture, and delivery - hands-on in the codebase alongside the engineering team.",
-				"Architected multi-agent simulation workflows with LangGraph, FastAPI, and Next.js, optimizing LLM cost efficiency."
+				"Multi-Agent Architecture: Lead engineering for Elaiia (AI market research platform); architected distributed simulation pipelines with LangGraph, FastAPI, and Next.js, optimizing orchestration latency, caching, and LLM inference costs.",
+				"AI Validation & Quality: Established production AI inference testing standards; engineered multi-stage validation layer combining deterministic schema/semantic guardrails with an LLM-as-a-judge review mechanism to eliminate hallucinations.",
+				"AI Observability & Evals: Implemented Langfuse for end-to-end LLM tracing and latency/cost monitoring; designed an experimentation framework enabling research teams to rapidly benchmark models and iterate on prompt strategies.",
+				"Product Telemetry & Retention: Built centralized Grafana BI dashboards connecting production data sources to steer CEO/CPO strategic roadmap decisions; configured automated inactive-client alert pipelines to proactively prevent churn."
 			],
-			"tech": "LangChain, LangGraph, Next.js, FastAPI, Python, TypeScript, PostgreSQL",
+			"tech": "LangGraph, LangChain, Langfuse, Grafana, FastAPI, Python, TypeScript, Next.js, PostgreSQL",
 			"logo": null
 		},
 		{

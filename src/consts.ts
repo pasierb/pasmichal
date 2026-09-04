@@ -10,7 +10,7 @@ export const SITE = {
 	alternateName: "Michal Pasierbski",
 	email: "mpasierbski@gmail.com",
 	twitterHandle: "@pasmichal_",
-	jobTitle: "Engineering Lead",
+	jobTitle: "Staff Software Engineer, Engineering Lead",
 	employer: { name: "Delta Labs AG", url: "https://delta-labs.ch" },
 	locale: "en_US",
 	/**

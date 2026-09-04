@@ -83,12 +83,25 @@ import { graph, person, profilePage } from "../lib/schema";
                 {experience.role} <span class="text-secondary dark:text-secondary-dark font-normal">· {experience.company}</span>
               </h3>
               {Array.isArray(experience.description) ? (
-                <ul class="mt-2 space-y-1.5 font-body-md text-secondary dark:text-secondary-dark">
-                  {experience.description.map((item) => (
-                    <li class="pl-4 -indent-4 before:content-['—'] before:mr-2 before:text-primary dark:before:text-primary-dark">
-                      {item}
-                    </li>
-                  ))}
+                <ul class="mt-2 space-y-1.5 font-body-md text-secondary dark:text-secondary-dark list-disc pl-5">
+                  {experience.description.map((item) => {
+                    const colonIdx = item.indexOf(":");
+                    const hasPrefix = colonIdx > 0 && colonIdx < 40;
+                    return (
+                      <li class="leading-relaxed">
+                        {hasPrefix ? (
+                          <>
+                            <strong class="font-medium text-primary dark:text-primary-dark">
+                              {item.slice(0, colonIdx + 1)}
+                            </strong>
+                            {item.slice(colonIdx + 1)}
+                          </>
+                        ) : (
+                          item
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : (
                 <p class="font-body-md text-secondary dark:text-secondary-dark mt-2">

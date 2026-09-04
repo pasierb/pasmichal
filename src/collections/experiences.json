@@ -1,13 +1,14 @@
 [
 	{
 		"dates": "June 2026 · Present",
-		"role": "Engineering Lead",
+		"role": "Staff Software Engineer, Engineering Lead",
 		"company": "Delta Labs AG, Zurich, Switzerland",
 		"description": [
-			"Leading engineering on Elaiia, an AI customer simulation platform that predicts how customer segments respond to product, pricing, and messaging decisions",
-			"Own technical direction, multi-agent architecture, and delivery — hands-on in the codebase alongside the engineering team",
-			"Architected multi-agent simulation workflows with LangGraph, FastAPI, and Next.js, optimizing latency, caching, and LLM cost efficiency",
-			"Tech: LangChain, LangGraph, Next.js, FastAPI, Python, TypeScript, PostgreSQL"
+			"Multi-Agent Architecture: Lead engineering for Elaiia (AI market research platform); architected distributed simulation pipelines with LangGraph, FastAPI, and Next.js, optimizing orchestration latency, caching, and LLM inference costs",
+			"AI Validation & Quality: Established production AI inference testing standards; engineered multi-stage validation layer combining deterministic schema/semantic guardrails with an LLM-as-a-judge review mechanism to eliminate hallucinations",
+			"AI Observability & Evals: Implemented Langfuse for end-to-end LLM tracing and latency/cost monitoring; designed an experimentation framework enabling research teams to rapidly benchmark models and iterate on prompt strategies",
+			"Product Telemetry & Retention: Built centralized Grafana BI dashboards connecting production data sources to steer CEO/CPO strategic roadmap decisions; configured automated inactive-client alert pipelines to proactively prevent churn",
+			"Tech: LangGraph, LangChain, Langfuse, Grafana, FastAPI, Python, TypeScript, Next.js, PostgreSQL"
 		]
 	},
 	{
