@@ -7,18 +7,15 @@ import Layout from "../layouts/main.astro";
 import { formatMonth } from "../lib/date";
 import { graph, person, website } from "../lib/schema";
 
-const sortedPosts = (
-	await getCollection("post", ({ data }) => !data.draft)
-).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const articles = (await getCollection("post", ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
 
-const featured = sortedPosts[0];
-const recent = sortedPosts.slice(1, 6);
-
-function postHref(post: (typeof sortedPosts)[number]) {
+function postHref(post: (typeof articles)[number]) {
 	return post.data.externalUrl ?? `/post/${post.id}`;
 }
 
-function isExternal(post: (typeof sortedPosts)[number]) {
+function isExternal(post: (typeof articles)[number]) {
 	return !!post.data.externalUrl;
 }
 ---
@@ -75,69 +72,15 @@ function isExternal(post: (typeof sortedPosts)[number]) {
       </div>
     </section>
 
-    <!-- Latest Essay Callout -->
-    {featured && (
-      <section>
-        <a
-          href={postHref(featured)}
-          {...(isExternal(featured) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          class="border border-border-main dark:border-border-main-dark p-6 md:p-8 hover:bg-surface-container-low dark:hover:bg-surface-container-low-dark transition-colors duration-200 group cursor-pointer flex flex-col md:flex-row gap-8 items-start block"
-        >
-          <div class="flex-grow flex flex-col gap-4">
-            <span class="font-label-mono text-label-mono text-primary dark:text-primary-dark uppercase border border-border-main dark:border-border-main-dark px-2 py-1 self-start inline-block">
-              Latest essay
-            </span>
-            <h2 class="font-headline-lg text-headline-lg text-primary dark:text-primary-dark group-hover:underline decoration-2 underline-offset-4">
-              {featured.data.title}
-              {isExternal(featured) && <span class="font-mono text-base text-muted dark:text-muted-dark ml-2">↗</span>}
-            </h2>
-            <div class="font-label-mono text-label-mono text-secondary dark:text-secondary-dark">
-              <time datetime={featured.data.pubDate.toISOString()}>
-                {formatMonth(featured.data.pubDate)}
-              </time>
-            </div>
-            <p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant-dark max-w-2xl">
-              {featured.data.description}
-            </p>
-            <div class="font-label-mono-bold text-label-mono-bold text-primary dark:text-primary-dark mt-4 flex items-center gap-1 group-hover:gap-2 transition-all">
-              Read on <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </div>
-          </div>
-          {featured.data.heroImage && (
-            <div class="w-full md:w-[320px] shrink-0 border border-border-main dark:border-border-main-dark overflow-hidden hidden md:block aspect-[4/3]">
-              <Image
-                src={featured.data.heroImage}
-                alt={featured.data.heroImageAlt ?? ""}
-                layout="constrained"
-                width={320}
-                widths={[320, 640]}
-                sizes="(min-width: 768px) 320px, 100vw"
-                format="webp"
-                quality={80}
-                priority
-                class="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
-          )}
-        </a>
-      </section>
-    )}
-
-    <!-- Recent Writing -->
+    <!-- Articles Section -->
     <section class="flex flex-col gap-6 md:gap-8">
-      <div class="flex justify-between items-end border-b border-border-main dark:border-border-main-dark pb-4">
-        <h3 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
-          Recent writing
-        </h3>
-        <a
-          class="font-label-mono text-label-mono text-primary dark:text-primary-dark hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark px-2 py-1 transition-colors"
-          href="/posts"
-        >
-          View all writings →
-        </a>
+      <div class="border-b border-border-main dark:border-border-main-dark pb-4">
+        <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
+          Articles
+        </h2>
       </div>
       <ul class="flex flex-col gap-5 md:gap-6">
-        {recent.map((post) => (
+        {articles.map((post) => (
           <li class="group">
             <a
               href={postHref(post)}
@@ -152,6 +95,11 @@ function isExternal(post: (typeof sortedPosts)[number]) {
               </time>
               <span class="font-body-lg text-body-lg text-primary dark:text-primary-dark group-hover:underline decoration-1 underline-offset-4">
                 {post.data.title}
+                {post.data.source && (
+                  <span class="font-label-mono text-[11px] uppercase tracking-wider border border-border dark:border-border-dark px-1.5 py-0.5 text-secondary dark:text-secondary-dark ml-2">
+                    {post.data.source}
+                  </span>
+                )}
                 {isExternal(post) && <span class="font-mono text-xs text-muted dark:text-muted-dark ml-1.5 align-middle">↗</span>}
               </span>
             </a>
