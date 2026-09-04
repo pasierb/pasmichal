@@ -38,13 +38,13 @@ import Layout from "../layouts/main.astro";
 
     <!-- Header / Contact Info -->
     <header class="resume-header pb-5 border-b border-border dark:border-border-dark print:border-neutral-300 print:pb-2.5">
-      <div class="flex items-start gap-5 sm:gap-6 print:gap-3.5">
-        <div class="w-20 h-20 sm:w-24 sm:h-24 print:w-[70px] print:h-[70px] aspect-square shrink-0 border border-border dark:border-border-dark print:border-neutral-300 overflow-hidden rounded-sm">
+      <div class="flex items-start gap-5 sm:gap-6 print:gap-4">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 print:w-[110px] print:h-[110px] aspect-square shrink-0 border border-border dark:border-border-dark print:border-neutral-300 overflow-hidden rounded-sm">
           <Image
             src={cvPhoto}
             alt={cv.name}
-            width={192}
-            height={192}
+            width={240}
+            height={240}
             densities={[1, 2]}
             format="webp"
             quality={90}
