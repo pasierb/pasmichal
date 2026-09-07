@@ -27,6 +27,12 @@
     X-Robots-Tag = "noindex"
 
 [[headers]]
+  for = "/michal_pasierbski_cv.docx"
+  [headers.values]
+    Content-Type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    X-Robots-Tag = "noindex"
+
+[[headers]]
   for = "/rss.xml"
   [headers.values]
     Content-Type = "application/rss+xml; charset=utf-8"
