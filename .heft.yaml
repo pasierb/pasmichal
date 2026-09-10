@@ -1,0 +1,8 @@
+worktrees_dir: .worktrees
+base_branch: main
+workspace_prefix: pasmichal
+tabs:
+    - name: codex
+      command: codex --yolo
+      agent: true
+    - name: shell
