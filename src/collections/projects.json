@@ -1,5 +1,14 @@
 [
 	{
+		"name": "heft",
+		"description": "A CLI that gives each coding task its own Git worktree and agent. Herdr provides the terminal infrastructure; heft creates the workspace and hands off the prompt while your current task stays open.",
+		"image": "heft-concept.jpg",
+		"url": "https://github.com/pasierb/heft",
+		"status": "active",
+		"techStack": ["Go", "Git worktrees", "Herdr"],
+		"featured": true
+	},
+	{
 		"name": "Elaiia",
 		"description": "AI customer simulation platform by Delta Labs. Simulates how customer segments react to product concepts, pricing, and messaging so teams can test decisions before committing.",
 		"image": "elaiia-banner.jpg",
