@@ -24,6 +24,15 @@ const { noFooter = false, noHeader = false, lang = "en", ...seo } = Astro.props;
 
     <Seo {...seo} />
 
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-C8TGGKR2VF"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C8TGGKR2VF');
+    </script>
+
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script is:inline>
       if (typeof Storage !== "undefined") {
