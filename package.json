@@ -6,6 +6,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro check && astro build",
+		"indexnow": "node scripts/indexnow.mjs",
 		"cv:pdf": "node scripts/generate-cv-pdf.mjs",
 		"cv:docx": "node scripts/generate-cv-docx.mjs",
 		"cv:all": "pnpm cv:pdf && pnpm cv:docx",

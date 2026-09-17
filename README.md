@@ -11,3 +11,11 @@ You can install this theme with the [Astro](https://astro.build) command like so
 ```js
 npm create astro@latest -- --template ccbikai/astro-aria
 ```
+
+## IndexNow
+
+Deploy the site first so the public IndexNow key file is available, then run
+`pnpm indexnow` to submit every page in the production sitemap. This uses the
+sitemap's existing exclusions (including the résumé and 404 page).
+
+Run the submission checks without contacting IndexNow: `node --test scripts/indexnow.test.mjs`.
