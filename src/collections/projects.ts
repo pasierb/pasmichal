@@ -19,7 +19,7 @@ const projectSchema = z.object({
 	description: z.string(),
 	image: z.string(),
 	url: z.url(),
-	status: z.enum(["active", "exited", "discontinued"]),
+	status: z.enum(["active", "stepped down", "discontinued"]),
 	techStack: z.array(z.string()),
 	featured: z.boolean().optional().default(false),
 });

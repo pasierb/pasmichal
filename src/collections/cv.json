@@ -172,12 +172,12 @@
 		{
 			"name": "Notamify",
 			"role": "Co-Founder & CTO",
-			"dates": "2023 – 2024 (Exited)",
+			"dates": "2023 – 2024 (Stepped down)",
 			"url": "https://notamify.com",
 			"urlDisplay": "notamify.com",
 			"highlights": [
 				"Aviation Intelligence SaaS: Built an AI platform converting raw, cryptic NOTAM notices into clear, structured pre-flight briefings for pilots and aviation professionals.",
-				"Architecture & Exit: Designed automated data ingestion, semantic LLM parsing pipeline, and backend services on GCP with PostgreSQL. Successfully exited."
+				"Architecture: Designed automated data ingestion, semantic LLM parsing pipeline, and backend services on GCP with PostgreSQL. Parted ways amicably with my co-founder in 2024."
 			],
 			"tech": "Python, FastAPI, PostgreSQL, GCP, Docker, OpenAI"
 		},

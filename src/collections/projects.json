@@ -37,10 +37,10 @@
 	},
 	{
 		"name": "Notamify",
-		"description": "AI-powered platform that transforms complex NOTAM data into clear, actionable briefings, streamlining pre-flight preparations for aviation professionals.",
+		"description": "AI-powered platform that transforms complex NOTAM data into clear, actionable briefings, streamlining pre-flight preparations for aviation professionals. I stepped down in 2024, parting ways amicably with my co-founder.",
 		"image": "notamify.png",
 		"url": "https://notamify.com",
-		"status": "exited",
+		"status": "stepped down",
 		"techStack": [
 			"Python",
 			"PostgreSQL",
