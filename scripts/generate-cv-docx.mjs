@@ -16,6 +16,9 @@ const DIST_OUTPUT = resolve(ROOT_DIR, "dist/michal_pasierbski_cv.docx");
 const cv = JSON.parse(
 	readFileSync(resolve(ROOT_DIR, "src/collections/cv.json"), "utf8"),
 );
+const summaryParts = cv.summary.split(
+	/(Google and AWS|customer-facing Gen AI simulation platform|co-founded and shipped Notamify)/g,
+);
 
 const MONTHS = [
 	"January",
@@ -43,7 +46,7 @@ function sectionHeading(text) {
 	return new Paragraph({
 		text,
 		heading: HeadingLevel.HEADING_2,
-		spacing: { before: 220, after: 80 },
+		spacing: { before: 130, after: 70 },
 		keepNext: true,
 	});
 }
@@ -71,7 +74,7 @@ function descriptionBullet(text) {
 	return new Paragraph({
 		children,
 		bullet: { level: 0 },
-		spacing: { after: 55 },
+		spacing: { after: 20 },
 	});
 }
 
@@ -80,7 +83,7 @@ function experience(entry) {
 		new Paragraph({
 			text: entry.company,
 			heading: HeadingLevel.HEADING_3,
-			spacing: { before: 150, after: 30 },
+			spacing: { before: 80, after: 30 },
 			keepNext: true,
 		}),
 		new Paragraph({
@@ -115,7 +118,7 @@ function project(entry) {
 		new Paragraph({
 			text: entry.name,
 			heading: HeadingLevel.HEADING_3,
-			spacing: { before: 150, after: 30 },
+			spacing: { before: 100, after: 30 },
 			keepNext: true,
 		}),
 		new Paragraph({
@@ -193,11 +196,12 @@ const children = [
 		spacing: { after: 130 },
 	}),
 	sectionHeading("Professional Summary"),
-	new Paragraph({ text: cv.summary, spacing: { after: 80 } }),
-	sectionHeading("Technical Skills and Competencies"),
-	...Object.entries(cv.skills).map(([category, skills]) =>
-		labelAndValue(category, skills.join(", ")),
-	),
+	new Paragraph({
+		children: summaryParts.map(
+			(part, index) => new TextRun({ text: part, bold: index % 2 === 1 }),
+		),
+		spacing: { after: 80 },
+	}),
 	sectionHeading("Professional Experience"),
 	...cv.experiences.flatMap(experience),
 	...(cv.projects?.length
@@ -206,6 +210,10 @@ const children = [
 				...cv.projects.flatMap(project),
 			]
 		: []),
+	sectionHeading("Technical Skills and Competencies"),
+	...Object.entries(cv.skills).map(([category, skills]) =>
+		labelAndValue(category, skills.join(", ")),
+	),
 	sectionHeading("Education"),
 	...cv.education.flatMap((entry) => [
 		new Paragraph({
@@ -229,7 +237,16 @@ const children = [
 	sectionHeading("Certifications"),
 	...cv.certifications.flatMap((entry) => [
 		new Paragraph({
-			text: entry.name,
+			...(entry.url
+				? {
+						children: [
+							new ExternalHyperlink({
+								link: entry.url,
+								children: [new TextRun({ text: entry.name, style: "Hyperlink" })],
+							}),
+						],
+					}
+				: { text: entry.name }),
 			heading: HeadingLevel.HEADING_3,
 			spacing: { before: 100, after: 25 },
 			keepNext: true,
@@ -250,8 +267,8 @@ const document = new Document({
 	styles: {
 		default: {
 			document: {
-				run: { font: "Arial", size: 20, color: "222222" },
-				paragraph: { spacing: { line: 240 } },
+				run: { font: "Arial", size: 18, color: "222222" },
+				paragraph: { spacing: { line: 210 } },
 			},
 			heading1: { run: { font: "Arial" } },
 			heading2: {

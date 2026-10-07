@@ -1,6 +1,6 @@
 {
 	"name": "Michał Pasierbski",
-	"title": "Staff Software Engineer · Engineering Lead",
+	"title": "Staff Software Engineer | Applied AI",
 	"location": "Zurich Area, Switzerland",
 	"email": "mpasierbski@gmail.com",
 	"phone": "(+41) 76 295 38 84",
@@ -12,15 +12,17 @@
 	"linkedinDisplay": "linkedin.com/in/mpasierbski",
 	"github": "https://github.com/pasierb",
 	"githubDisplay": "github.com/pasierb",
-	"summary": "Staff Software Engineer and Engineering Lead with over 15 years of experience architecting distributed systems, cloud infrastructure, and AI-driven platforms. Proven track record at Google and AWS driving ecosystem connectivity, platform reliability, and high-scale traffic management. Active AI thought leader (Practically Agents) and builder combining deep multi-agent systems architecture with pragmatic 0-to-1 product execution.",
+	"summary": "Staff Software Engineer and Engineering Lead with 15+ years building software, including at Google and AWS. I now lead engineering for Elaiia, a customer-facing Gen AI simulation platform, where I've shipped multi-agent workflows and the validation, tracing, evals, and cost controls they need in production. I also co-founded and shipped Notamify, an AI pre-flight briefing product.",
 	"skills": {
-		"AI & Agentic Systems": [
-			"LangChain",
+		"Production Gen AI": [
+			"LLM orchestration",
+			"Multi-agent workflows",
+			"Output validation",
+			"Evals & benchmarking",
+			"Tracing & observability",
 			"LangGraph",
-			"ADK (Agent Development Kit)",
-			"LLM Orchestration",
-			"Multi-Agent Architectures",
-			"Evals & Benchmarking"
+			"LangChain",
+			"Google ADK"
 		],
 		"Architecture & Cloud": [
 			"AWS (Lambda, DynamoDB, CDK, S3)",
@@ -64,10 +66,11 @@
 			"company": "Delta Labs AG",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Multi-Agent Architecture: Lead engineering for Elaiia (AI market research platform); architected distributed simulation pipelines with LangGraph, FastAPI, and Next.js, optimizing orchestration latency, caching, and LLM inference costs.",
-				"AI Validation & Quality: Established production AI inference testing standards; engineered multi-stage validation layer combining deterministic schema/semantic guardrails with an LLM-as-a-judge review mechanism to eliminate hallucinations.",
-				"AI Observability & Evals: Implemented Langfuse for end-to-end LLM tracing and latency/cost monitoring; designed an experimentation framework enabling research teams to rapidly benchmark models and iterate on prompt strategies.",
-				"Product Telemetry & Retention: Built centralized Grafana BI dashboards connecting production data sources to steer CEO/CPO strategic roadmap decisions; configured automated inactive-client alert pipelines to proactively prevent churn."
+				"Digital twin studies: Lead engineering for Elaiia, where customers run studies with digital AI twins as respondents, ask follow-up questions, and use the resulting reports to guide business decisions. Built its multi-agent simulation pipelines with LangGraph, FastAPI, and Next.js.",
+				"AI quality: Set production inference testing standards and built a multi-stage validation layer with deterministic schema and semantic checks plus an LLM-as-a-judge review for generated reports.",
+				"Observability & evals: Added end-to-end Langfuse tracing for output quality, latency, and cost. Built a framework for research teams to compare models and prompts.",
+				"Production performance: Improved orchestration and caching to manage latency and LLM inference costs.",
+				"Product telemetry: Built Grafana dashboards from production data for CEO/CPO roadmap decisions and automated alerts for inactive clients to support retention work."
 			],
 			"tech": "LangGraph, LangChain, Langfuse, Grafana, FastAPI, Python, TypeScript, Next.js, PostgreSQL",
 			"logo": null
@@ -78,10 +81,10 @@
 			"company": "Google",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Merchant Center Next: Developed the Product Diagnostics frontend for the revamped Merchant Center Next, delivering critical insight tools for merchants to monitor catalog health at Google scale.",
-				"Business Manager: Led technical design and implementation of user management (Authentication & Authorization) for Business Manager, a central hub allowing merchants to manage 1st- and 3rd-party applications (launched to >300k MAU).",
-				"Ecosystem Integrations: Led UI/features team implementing first-party linking between Merchant Identity and major platforms (Shopify, YouTube Shopping, Google Ads, Google Business Profile).",
-				"AI Support Agent (20% Project): Designed and developed an AI-powered agent to assist G-Tech support teams, automating >70% of responses to technical customer inquiries."
+				"Built Product Diagnostics for Merchant Center Next so merchants could monitor problems with their product catalogs.",
+				"Product launch: Led the design and implementation of authentication and access management for Business Manager, a hub for first- and third-party merchant apps that launched to more than 300,000 monthly active users.",
+				"Worked on UI integrations connecting Merchant Identity with Shopify, YouTube Shopping, Google Ads, and Google Business Profile.",
+				"AI Support Agent (20% project): Built an internal prototype for G-Tech support teams that automated about 70% of responses to technical customer inquiries. It gained traction and visibility and was prioritized to become a core part of a user-facing AI support agent."
 			],
 			"tech": "Java, Dart, Angular, Kotlin, SASS, ADK, Bazel",
 			"logo": "/assets/images/experiences/google.svg"
@@ -92,21 +95,22 @@
 			"company": "Amazon Web Services (AWS)",
 			"location": "Berlin, Germany",
 			"highlights": [
-				"Testing Infrastructure (AWS CX): Led initiative within central AWS Customer Experience (CX) team to simplify end-to-end testing (functional, canary, integration) for AWS Console product pages.",
-				"Plug-n-Play Framework: Delivered plug-and-play testing solution based on Webdriver protocol, enabling partner teams to seamlessly adopt automated testing for their specific console applications.",
-				"Internal Tooling: Contributed to development of centralized feature flagging solution, empowering internal teams to manage feature rollouts and experiments effectively."
+				"Led work in the AWS Customer Experience team to simplify end-to-end, canary, and integration testing for AWS Console pages.",
+				"Built a WebDriver testing framework that partner teams could use with their own console apps.",
+				"Helped build a shared feature flagging tool for internal rollouts and experiments."
 			],
 			"tech": "JavaScript, TypeScript, React, WebdriverIO, AWS Services",
 			"logo": "/assets/images/experiences/aws.svg"
 		},
 		{
 			"dates": "07.2019 – 07.2020",
-			"role": "Lead Software Engineer",
+			"role": "Lead Software Engineer & Platform Team Lead",
 			"company": "EF Education First",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Traffic Management: Designed architecture and migration path for Cloudflare Workers handling 100% of EF product page traffic (~13M req/day); served as primary technical contact with Cloudflare.",
-				"Team Leadership & Design System: Led 4-person platform infrastructure team for CI/CD automation and co-developed company-wide React component library with EF Global Creative Studio."
+				"Production scale: Designed the move to Cloudflare Workers for all EF product page traffic, about 13 million requests a day, and worked directly with Cloudflare on the migration.",
+				"Led a four-person platform team supporting internal teams through CI/CD and deployment automation, plus cross-team projects including an internal link shortener and global proxy configuration on Cloudflare Workers.",
+				"Helped build a shared React component library with EF Global Creative Studio that was adopted companywide."
 			],
 			"tech": "TypeScript, Go, AWS, Terraform, Cloudflare Workers, React, GraphQL",
 			"logo": "/assets/images/experiences/EF_logo.svg"
@@ -117,7 +121,9 @@
 			"company": "R3PI",
 			"location": "Zurich, Switzerland",
 			"highlights": [
-				"Frontend Lead & Prototyping: Led 3-person team developing CRM client app and built AR navigation prototypes. Optimized production builds by 25% and eliminated redundant roundtrips with DataLoader caching."
+				"Led a three-person frontend team delivering an automotive insurance claims platform for Solera.",
+				"Production optimization: Cut bundle size by 25% and used DataLoader caching to avoid redundant GraphQL data fetches.",
+				"Built AR navigation prototypes."
 			],
 			"tech": "TypeScript, JavaScript, Node.js, React, GraphQL, SASS",
 			"logo": "/assets/images/experiences/r3pi.jpeg"
@@ -128,7 +134,7 @@
 			"company": "EF Education First",
 			"location": "Lucerne, Switzerland",
 			"highlights": [
-				"Led front-end development for greenfield e-commerce JAMstack migration; standardized team Docker environments and Jest/Puppeteer test suites."
+				"Led frontend work on an e-commerce JAMstack migration. Standardized Docker development environments and Jest/Puppeteer test suites."
 			],
 			"tech": "JavaScript, Vue.js, Node.js, Docker, SASS, PostgreSQL",
 			"logo": "/assets/images/experiences/EF_logo.svg"
@@ -139,7 +145,8 @@
 			"company": "IS Engineering",
 			"location": "Zug, Switzerland",
 			"highlights": [
-				"Designed and implemented distributed Industry 4.0 factory tracking & analytics system; oversaw commissioning across 10+ glass plants globally."
+				"First engineer: Built a distributed factory tracking and analytics system from scratch and deployed it to production at more than 10 glass plants worldwide.",
+				"Defined requirements with customers, oversaw handover, and integrated external systems with partners."
 			],
 			"tech": "Ruby on Rails, PostgreSQL, MongoDB, Docker, Vue.js, Node.js",
 			"logo": "/assets/images/experiences/ise.png"
@@ -150,7 +157,7 @@
 			"company": "Early Career Roles (PGS Software · sharewise · CMS Mirage)",
 			"location": "Wrocław, Poland",
 			"highlights": [
-				"Delivered web applications and services including real-time WebSocket push systems, fleet management reporting, and frontend user interfaces."
+				"Built web apps and services, including real-time WebSocket updates, fleet reports, and user interfaces."
 			],
 			"tech": "Ruby on Rails, Java, JavaScript, Node.js, PostgreSQL, Git",
 			"logo": null
@@ -158,56 +165,51 @@
 	],
 	"projects": [
 		{
-			"name": "Practically Agents",
-			"role": "Founder & Technical Author",
-			"dates": "2025 – Present",
-			"url": "https://practicallyagents.com",
-			"urlDisplay": "practicallyagents.com",
-			"highlights": [
-				"AI Engineering Publication: Author in-depth architectural teardowns and production blueprints on multi-agent orchestration (LangGraph, Google ADK), evals, and agentic UI.",
-				"Hands-on Prototypes: Design and open-source experimental multi-agent workflows exploring state machines, tool synthesis, and agent communication protocols."
-			],
-			"tech": "LangChain, LangGraph, Google ADK, Astro, TypeScript, Python"
-		},
-		{
 			"name": "Notamify",
 			"role": "Co-Founder & CTO",
 			"dates": "2023 – 2024 (Stepped down)",
 			"url": "https://notamify.com",
 			"urlDisplay": "notamify.com",
 			"highlights": [
-				"Aviation Intelligence SaaS: Built an AI platform converting raw, cryptic NOTAM notices into clear, structured pre-flight briefings for pilots and aviation professionals.",
-				"Architecture: Designed automated data ingestion, semantic LLM parsing pipeline, and backend services on GCP with PostgreSQL. Parted ways amicably with my co-founder in 2024."
+				"Shipped AI product: Co-founded Notamify, which turns raw NOTAM notices into structured, readable pre-flight briefings for pilots and aviation professionals.",
+				"LLM pipeline: Built data ingestion, semantic LLM parsing, and backend services on GCP with PostgreSQL. Stepped down in 2024."
 			],
 			"tech": "Python, FastAPI, PostgreSQL, GCP, Docker, OpenAI"
 		},
 		{
-			"name": "Sr. Jr. Games",
-			"role": "Co-Creator & Developer",
+			"name": "Practically Agents",
+			"role": "Founder & Technical Author",
 			"dates": "2025 – Present",
-			"url": "https://srjrgames.com",
-			"urlDisplay": "srjrgames.com",
+			"url": "https://practicallyagents.com",
+			"urlDisplay": "practicallyagents.com",
 			"highlights": [
-				"Game Studio & AI Asset Workflows: Co-founded indie family game dev studio; published Pigeon Revenge and technical guides on AI-driven sprite animation generation and Cursor for Unity."
+				"Write about multi-agent orchestration, validation, evals, and agent interfaces based on production AI engineering work.",
+				"Build and open-source agent workflow prototypes to test the patterns I write about."
 			],
-			"tech": "Unity, C#, Astro, Generative AI"
+			"tech": "LangChain, LangGraph, Google ADK, Astro, TypeScript, Python"
 		}
 	],
 	"education": [
 		{
 			"institution": "Higher School of Information Technology and Management \"COPERNICUS\"",
-			"degree": "Computer Science",
+			"degree": "Studied Computer Science (no degree)",
 			"dates": "2007 – 2009",
 			"location": "Wrocław, Poland"
 		},
 		{
 			"institution": "University of Wroclaw",
-			"degree": "Archeology",
+			"degree": "Studied Archeology (no degree)",
 			"dates": "2001 – 2003",
 			"location": "Wrocław, Poland"
 		}
 	],
 	"certifications": [
+		{
+			"name": "Agentic System Design",
+			"issuer": "Educative",
+			"date": "Issued 02.2026",
+			"url": "https://www.educative.io/verify-certificate/y8E3zVt24jZB4WWRvfy1zXlM9qm1Tm"
+		},
 		{
 			"name": "AWS Certified Solutions Architect – Associate",
 			"issuer": "Amazon Web Services (AWS)",
