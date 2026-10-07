@@ -3,11 +3,15 @@ import { Image } from "astro:assets";
 import cvPhoto from "../assets/images/michal_cv_photo.jpeg";
 import cv from "../collections/cv.json";
 import Layout from "../layouts/main.astro";
+
+const summaryParts = cv.summary.split(
+  /(Google and AWS|customer-facing Gen AI simulation platform|co-founded and shipped Notamify)/g,
+);
 ---
 
 <Layout
   title={`Résumé — ${cv.name}, ${cv.title}`}
-  description={`${cv.name}'s résumé: 15+ years building software across Google, AWS, EF Education First, now leading engineering at Delta Labs.`}
+  description={`${cv.name}'s résumé: shipping Gen AI products to users, with 15+ years of software engineering experience across startups, Google, and AWS.`}
   noindex
   noHeader
   noFooter
@@ -131,41 +135,24 @@ import Layout from "../layouts/main.astro";
     </header>
 
     <!-- Professional Summary -->
-    <section class="resume-section py-4 print:py-2 border-b border-border dark:border-border-dark print:border-neutral-200 break-inside-avoid">
+    <section class="resume-section py-4 print:py-3 border-b border-border dark:border-border-dark print:border-neutral-200 break-inside-avoid">
       <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 print:text-teal-800 print:text-[10.5pt] mb-1.5 print:mb-1">
         Professional Summary
       </h2>
       <p class="font-body-md text-secondary dark:text-secondary-dark print:text-neutral-800 leading-relaxed text-sm md:text-[14.5px] print:text-[8.5pt] print:leading-[1.4]">
-        {cv.summary}
+        {summaryParts.map((part, index) =>
+          index % 2 ? <strong class="font-semibold">{part}</strong> : part,
+        )}
       </p>
     </section>
 
-    <!-- Technical Skills -->
-    <section class="resume-section py-4 print:py-2 border-b border-border dark:border-border-dark print:border-neutral-200 break-inside-avoid">
-      <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 print:text-teal-800 print:text-[10.5pt] mb-2 print:mb-1">
-        Technical Skills & Competencies
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 font-sans text-xs print:grid-cols-2 print:gap-x-5 print:gap-y-1">
-        {Object.entries(cv.skills).map(([category, skillsList]) => (
-          <div class="flex flex-col gap-0.5">
-            <span class="text-xs font-semibold text-primary dark:text-primary-dark print:text-neutral-900 uppercase tracking-wide print:text-[8pt]">
-              {category}
-            </span>
-            <p class="text-secondary dark:text-secondary-dark print:text-neutral-700 text-xs sm:text-[13px] print:text-[8pt] leading-normal">
-              {skillsList.join(" · ")}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-
     <!-- Work Experience -->
-    <section class="resume-section py-5 print:py-2.5 border-b border-border dark:border-border-dark print:border-neutral-200">
+    <section class="resume-section py-5 print:py-3 border-b border-border dark:border-border-dark print:border-neutral-200">
       <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 print:text-teal-800 print:text-[10.5pt] mb-3 print:mb-1.5">
         Professional Experience
       </h2>
 
-      <div class="space-y-6 print:space-y-3">
+      <div class="space-y-6 print:space-y-5">
         {cv.experiences.map((exp) => (
           <article class="job-item break-inside-avoid">
             <!-- Header for Desktop & Print -->
@@ -205,12 +192,12 @@ import Layout from "../layouts/main.astro";
             </div>
 
             {exp.highlights && exp.highlights.length > 0 && (
-              <ul class="mt-1.5 space-y-1 text-xs sm:text-[13.5px] text-secondary dark:text-secondary-dark print:text-neutral-800 print:text-[8pt] print:leading-[1.35] print:space-y-0.5 print:mt-0.5">
+              <ul class="mt-1.5 space-y-1 text-xs sm:text-[13.5px] text-secondary dark:text-secondary-dark print:text-neutral-800 print:text-[8pt] print:leading-[1.45] print:space-y-1 print:mt-0.5">
                 {exp.highlights.map((item) => {
                   const colonIdx = item.indexOf(":");
                   const hasPrefix = colonIdx > 0 && colonIdx < 40;
                   return (
-                    <li class="pl-3.5 -indent-3.5 leading-relaxed print:leading-[1.35] before:content-['•'] before:mr-1.5 before:font-bold before:text-primary dark:before:text-primary-dark print:before:text-black">
+                    <li class="pl-3.5 -indent-3.5 leading-relaxed print:leading-[1.45] before:content-['•'] before:mr-1.5 before:font-bold before:text-primary dark:before:text-primary-dark print:before:text-black">
                       {hasPrefix ? (
                         <>
                           <strong class="font-semibold text-primary dark:text-primary-dark print:text-black">
@@ -242,12 +229,12 @@ import Layout from "../layouts/main.astro";
 
     <!-- Selected Projects & Independent Engineering -->
     {cv.projects && cv.projects.length > 0 && (
-      <section class="resume-section py-5 print:py-2 border-b border-border dark:border-border-dark print:border-neutral-200">
+      <section class="resume-section py-5 print:py-3 border-b border-border dark:border-border-dark print:border-neutral-200">
         <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 print:text-teal-800 print:text-[10.5pt] mb-3 print:mb-1.5">
           Selected Projects & Independent Engineering
         </h2>
 
-        <div class="space-y-5 print:space-y-2">
+        <div class="space-y-5 print:space-y-4">
           {cv.projects.map((proj) => (
             <article class="project-item break-inside-avoid">
               <!-- Header for Desktop & Print -->
@@ -305,12 +292,12 @@ import Layout from "../layouts/main.astro";
               </div>
 
               {proj.highlights && proj.highlights.length > 0 && (
-                <ul class="mt-1.5 space-y-1 text-xs sm:text-[13.5px] text-secondary dark:text-secondary-dark print:text-neutral-800 print:text-[8pt] print:leading-[1.35] print:space-y-0.5 print:mt-0.5">
+                <ul class="mt-1.5 space-y-1 text-xs sm:text-[13.5px] text-secondary dark:text-secondary-dark print:text-neutral-800 print:text-[8pt] print:leading-[1.45] print:space-y-1 print:mt-0.5">
                   {proj.highlights.map((item) => {
                     const colonIdx = item.indexOf(":");
                     const hasPrefix = colonIdx > 0 && colonIdx < 40;
                     return (
-                      <li class="pl-3.5 -indent-3.5 leading-relaxed print:leading-[1.35] before:content-['•'] before:mr-1.5 before:font-bold before:text-primary dark:before:text-primary-dark print:before:text-black">
+                      <li class="pl-3.5 -indent-3.5 leading-relaxed print:leading-[1.45] before:content-['•'] before:mr-1.5 before:font-bold before:text-primary dark:before:text-primary-dark print:before:text-black">
                         {hasPrefix ? (
                           <>
                             <strong class="font-semibold text-primary dark:text-primary-dark print:text-black">
@@ -340,6 +327,25 @@ import Layout from "../layouts/main.astro";
         </div>
       </section>
     )}
+
+    <!-- Technical Skills -->
+    <section class="resume-section py-4 print:py-3 border-b border-border dark:border-border-dark print:border-neutral-200 break-inside-avoid">
+      <h2 class="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 print:text-teal-800 print:text-[10.5pt] mb-2 print:mb-1">
+        Technical Skills & Competencies
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 font-sans text-xs print:grid-cols-2 print:gap-x-5 print:gap-y-1">
+        {Object.entries(cv.skills).map(([category, skillsList]) => (
+          <div class="flex flex-col gap-0.5">
+            <span class="text-xs font-semibold text-primary dark:text-primary-dark print:text-neutral-900 uppercase tracking-wide print:text-[8pt]">
+              {category}
+            </span>
+            <p class="text-secondary dark:text-secondary-dark print:text-neutral-700 text-xs sm:text-[13px] print:text-[8pt] leading-normal">
+              {skillsList.join(" · ")}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- Education & Certifications -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-6 print:py-3 print:grid-cols-2 print:gap-8 break-inside-avoid">
@@ -375,7 +381,7 @@ import Layout from "../layouts/main.astro";
           {cv.certifications.map((cert) => (
             <div class="text-xs sm:text-sm print:text-[8.5pt]">
               <p class="font-bold text-primary dark:text-primary-dark print:text-black">
-                {cert.name}
+                {cert.url ? <a href={cert.url} target="_blank" rel="noopener noreferrer" class="hover:underline">{cert.name}</a> : cert.name}
               </p>
               <p class="text-secondary dark:text-secondary-dark print:text-neutral-800">
                 {cert.issuer}
