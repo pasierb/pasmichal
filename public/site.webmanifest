@@ -3,8 +3,8 @@
 	"short_name": "pasmichal",
 	"start_url": "/",
 	"display": "browser",
-	"theme_color": "#FAFAFA",
-	"background_color": "#FAFAFA",
+	"theme_color": "#121314",
+	"background_color": "#121314",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",

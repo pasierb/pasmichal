@@ -21,7 +21,7 @@
   --color-secondary: #5e5e5e;
   --color-on-surface-variant: #4c4546;
   --color-text-muted: #4b5563;
-  --color-border-main: #000000;
+  --color-border-main: #d4d4d8;
   --color-border: #e2e2e2;
   --color-on-primary: #ffffff;
 
@@ -129,55 +129,4 @@
 }
 html.dark .prose img {
   border-color: var(--color-border-main-dark);
-}
-
-#sun {
-  transform: translate3d(0, 0px, 0);
-}
-
-#moon {
-  transform: translate3d(0, 0px, 0);
-}
-
-#darkToggle:hover #sun {
-  transform: translate3d(0, 10px, 0);
-}
-
-#darkToggle:hover #moon {
-  transform: translate3d(0, 10px, 0);
-}
-
-.horizon .setting {
-  animation: 1s ease 0s 1 setting;
-}
-
-.horizon .rising {
-  animation: 1s ease 0s 1 rising;
-}
-
-@keyframes setting {
-  0% {
-    transform: translate3d(0, 10px, 0);
-  }
-  40% {
-    transform: translate3d(0, -2px, 0);
-  }
-  to {
-    transform: translate3d(0, 30px, 0);
-  }
-}
-
-@keyframes rising {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-  }
-  40% {
-    opacity: 1;
-    transform: translate3d(0, -2px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 10px, 0);
-  }
 }

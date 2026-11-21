@@ -1,13 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import profilePic from "../assets/images/profile_pic.webp";
+import profilePic from "../assets/images/michal-portrait.png";
 import JsonLd from "../components/json-ld.astro";
 import Layout from "../layouts/main.astro";
 import { formatMonth } from "../lib/date";
 import { graph, person, website } from "../lib/schema";
 
 const articles = (await getCollection("post", ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const appearances = (await getCollection("podcast")).sort(
 	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
 
@@ -31,22 +35,22 @@ function isExternal(post: (typeof articles)[number]) {
     <JsonLd data={graph(person(profilePic.src), website())} />
   </Fragment>
 
-  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-12 md:py-20 flex flex-col gap-12 md:gap-16">
+  <div class="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-24 flex flex-col gap-20 md:gap-28">
 
     <!-- Hero Section -->
-    <section class="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8">
-      <div class="w-20 h-20 md:w-24 md:h-24 shrink-0 border border-border-main dark:border-border-main-dark overflow-hidden">
+    <section class="flex flex-col sm:flex-row sm:items-center gap-8 md:gap-12">
+      <div class="w-32 h-40 md:w-40 md:h-50 shrink-0 rounded-lg overflow-hidden">
         <Image
           src={profilePic}
           alt="Michał Pasierbski"
-          width={96}
-          height={96}
+          width={200}
+          height={200}
           densities={[1, 2]}
           format="webp"
           quality={85}
           loading="eager"
           decoding="async"
-          class="w-full h-full object-cover filter contrast-105"
+          class="w-full h-full object-cover object-top"
         />
       </div>
       <div class="flex flex-col gap-2">
@@ -67,20 +71,49 @@ function isExternal(post: (typeof articles)[number]) {
           </button>
         </div>
         <p class="font-body-lg text-body-lg text-secondary dark:text-secondary-dark">
-          Leading AI product engineering · Zurich
+          Staff Software Engineer &amp; Engineering Lead · Zurich
         </p>
+        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-5 text-sm font-medium">
+          <a href="/about" class="underline underline-offset-4 hover:text-secondary dark:hover:text-secondary-dark">About me</a>
+          <a href="/projects" class="underline underline-offset-4 hover:text-secondary dark:hover:text-secondary-dark">Projects</a>
+          <a href="/resume" class="underline underline-offset-4 hover:text-secondary dark:hover:text-secondary-dark">Résumé</a>
+        </div>
       </div>
+    </section>
+
+    <section class="flex flex-col gap-6 md:gap-8">
+      <h2 class="font-label-mono-bold uppercase tracking-widest border-b border-border-main dark:border-border-main-dark pb-4">
+        Now
+      </h2>
+      <p class="font-body-lg text-secondary dark:text-secondary-dark max-w-3xl">
+        I’m a Staff Software Engineer and Engineering Lead at <a href="https://delta-labs.ch" class="text-primary dark:text-primary-dark underline underline-offset-4">Delta Labs AG</a> in Zurich, where I lead engineering for Elaiia, an AI market research platform. I build multi-agent simulation systems and help teams improve the quality, observability, and performance of AI products.
+      </p>
+    </section>
+
+    <section class="flex flex-col gap-6 md:gap-8">
+      <h2 class="font-label-mono-bold uppercase tracking-widest border-b border-border-main dark:border-border-main-dark pb-4">Selected work</h2>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div>
+          <h3 class="font-body-lg font-semibold"><a href="https://elaiia.ai" class="underline underline-offset-4">Elaiia</a></h3>
+          <p class="font-body-md text-secondary dark:text-secondary-dark mt-2">I lead engineering for an AI market research platform, building multi-agent simulation pipelines and production AI validation.</p>
+        </div>
+        <div>
+          <h3 class="font-body-lg font-semibold"><a href="https://practicallyagents.com" class="underline underline-offset-4">Practically Agents</a></h3>
+          <p class="font-body-md text-secondary dark:text-secondary-dark mt-2">I help companies design, build, and deploy production AI agent systems that integrate with their existing workflows and tools.</p>
+        </div>
+      </div>
+      <a href="/projects" class="self-start font-body-md underline underline-offset-4 hover:text-secondary dark:hover:text-secondary-dark">View all projects</a>
     </section>
 
     <!-- Articles Section -->
     <section class="flex flex-col gap-6 md:gap-8">
       <div class="border-b border-border-main dark:border-border-main-dark pb-4">
         <h2 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark">
-          Articles
+          Recent writing
         </h2>
       </div>
       <ul class="flex flex-col gap-5 md:gap-6">
-        {articles.map((post) => (
+        {articles.slice(0, 6).map((post) => (
           <li class="group">
             <a
               href={postHref(post)}
@@ -106,48 +139,31 @@ function isExternal(post: (typeof articles)[number]) {
           </li>
         ))}
       </ul>
+      <a href="/posts" class="self-start font-body-md underline underline-offset-4 hover:text-secondary dark:hover:text-secondary-dark">View all articles</a>
     </section>
 
-    <!-- Also Section -->
     <section class="flex flex-col gap-6 md:gap-8">
-      <h3 class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary dark:text-primary-dark border-b border-border-main dark:border-border-main-dark pb-4">
-        Also
-      </h3>
-      <ul class="flex flex-col gap-3 font-body-md text-body-md">
-        <li>
-          <a
-            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
-            href="/projects"
-          >
-            I build things → projects
-          </a>
-        </li>
-        <li>
-          <a
-            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
-            href="/podcasts"
-          >
-            I appear on podcasts &amp; talks → podcasts
-          </a>
-        </li>
-        <li>
-          <a
-            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
-            href="/services"
-          >
-            Available for consulting → services
-          </a>
-        </li>
-        <li>
-          <a
-            class="hover:bg-primary hover:text-on-primary dark:hover:bg-primary-dark dark:hover:text-on-primary-dark transition-colors px-2 py-1 -ml-2 inline-block border border-transparent hover:border-border-main dark:hover:border-border-main-dark"
-            href="/about"
-          >
-            More about me → about
-          </a>
-        </li>
+      <h2 class="font-label-mono-bold uppercase tracking-widest border-b border-border-main dark:border-border-main-dark pb-4">
+        Appearances
+      </h2>
+      <ul class="flex flex-col gap-5 md:gap-6">
+        {appearances.slice(0, 3).map((appearance) => (
+          <li class="group">
+            <a href={`/podcast/${appearance.id}`} class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-8">
+              <time datetime={appearance.data.pubDate.toISOString()} class="font-label-mono text-secondary dark:text-secondary-dark w-32 shrink-0">
+                {formatMonth(appearance.data.pubDate)}
+              </time>
+              <span class="flex flex-col gap-1">
+                <span class="font-body-lg group-hover:underline decoration-1 underline-offset-4">{appearance.data.seoTitle ?? appearance.data.title}</span>
+                <span class="font-body-md text-secondary dark:text-secondary-dark">{appearance.data.author}</span>
+              </span>
+            </a>
+          </li>
+        ))}
       </ul>
+      <a href="/podcasts" class="self-start font-body-md underline underline-offset-4 hover:text-secondary dark:hover:text-secondary-dark">View all appearances</a>
     </section>
+
 
   </div>
 </Layout>
