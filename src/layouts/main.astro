@@ -17,7 +17,7 @@ const { noFooter = false, noHeader = false, lang = "en", ...seo } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,18 +33,6 @@ const { noFooter = false, noHeader = false, lang = "en", ...seo } = Astro.props;
       gtag('config', 'G-C8TGGKR2VF');
     </script>
 
-    <!-- Used to add dark mode right away, adding here prevents any flicker -->
-    <script is:inline>
-      if (typeof Storage !== "undefined") {
-        if (
-          localStorage.getItem("dark_mode") &&
-          localStorage.getItem("dark_mode") == "true"
-        ) {
-          document.documentElement.classList.add("dark");
-        }
-      }
-    </script>
-
     <Font cssVariable="--font-sans-family" preload />
     <Font cssVariable="--font-mono-family" preload />
 
@@ -52,7 +40,7 @@ const { noFooter = false, noHeader = false, lang = "en", ...seo } = Astro.props;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#121314" />
 
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
 
@@ -66,7 +54,6 @@ const { noFooter = false, noHeader = false, lang = "en", ...seo } = Astro.props;
       <slot />
     </main>
     {!noFooter && <Footer />}
-    <script src="../assets/js/main.js"></script>
     <Fragment set:html={import.meta.env.FOOTER_INJECT} />
   </body>
 </html>
